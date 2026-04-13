@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+
+<!-- đầu trang -->
+<div id="header"></div>
+
+<!-- đăng nhập -->
+<div class="login-container">
+
+    <!-- phần đăng nhập trái -->
+    <div class="login-left">
+      <h2>Sign in</h2>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+
+      <div class="login-options">
+        <div class="remember">
+          <label for="remember">Remember me</label>
+          <input type="checkbox" id="remember">
+        </div>
+        <a href="#">Forgot password?</a>     <!-- link lấy password -->
+      </div>
+
+      <button id ="loginleft">Sign in</button>
+    </div>
+
+    <!-- đăng nhập bên phải -->
+    
+    <div class="login-right">
+      <div class="overlay">
+        <h2>Welcome <br> Back!</h2>
+        <p>Please enter your details</p>
+        <p>Don't have an account?</p>
+        <button class="signup" id="signupBtn">Sign Up</button>
+      </div>
+    </div>
+
+  </div>
+
+<!-- cuối trang -->
+<footer class="footer">
+  <div class="footer-left">
+    <div class="logo">Fashion<span>.</span></div>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+  </div>
+
+  <div class="footer-center">
+    <h4>COMPANY</h4>
+    <a href="#">TRANG CHỦ</a>                
+    <a href="#">ÁO</a>
+    <a href="#">QUẦN</a>
+    <a href="#">PHỤ KIỆN</a>
+    <a href="#">THÔNG TIN</a>
+  </div>
+
+  <div class="footer-right">
+    <h4>GET IN TOUCH</h4>
+    <p>+84 869865313</p>
+    <p>doantienle@gmail.com</p>
+  </div>
+</footer>
+
+<div id="toast-container"></div>
+<script type="module" src="../js/main.js"></script>
+<script src="../js/navigation/redirect.js"></script>
+</body>
+
+
+</html>
