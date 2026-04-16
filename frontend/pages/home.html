@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Home</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
 
@@ -12,8 +13,16 @@
 
   <!-- Nội dung trang -->
   <main style="padding: 40px;">
-    <h1>Trang chủ</h1>
-    <p>Chào mừng bạn đến với website Fashion 👋</p>
+    <h2 class="title">ÁO XUÂN HÈ</h2>
+
+    <div class="menu">
+       <span>ÁO PHÔNG</span>
+       <span>ÁO POLO</span>
+       <span>ÁO SƠ MI NGẮN TAY</span>
+       <span>BỘ THỂ THAO HÈ</span>
+    </div>
+
+    <div class="product-list" id="productList"></div>
   </main>
 
   <!-- Footer -->
@@ -39,10 +48,8 @@
     </div>
   </footer>
 
-  <!-- Toast -->
-  <div id="toast-container"></div>
-
-  <!-- CHỈ cần 1 script -->
+  <script src="../js/data/products.js"></script>
+  <script src="../js/pages/home.js"></script>
   <script type="module" src="../js/main.js"></script>
 
 </body>
