@@ -25,12 +25,16 @@ const products = [
     price: 129000,
     category: "ao-phong",
 
-    thumbnail: "LINK_WHITE_2",
+    thumbnail: "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400160/Ao-Phong-Loose-L-4-2807-white_kraxwm.jpg",
 
     colors: [
       {
         name: "white",
-        image: "LINK_WHITE_2"
+        image: "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400160/Ao-Phong-Loose-L-4-2807-white_kraxwm.jpg"
+      },
+      {
+        name: "black",
+        image: "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400211/Ao-Phong-Loose-L-4-2807-black_zo4rlm.jpg"
       }
     ]
   }

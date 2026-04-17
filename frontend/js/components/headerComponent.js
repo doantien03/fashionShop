@@ -1,5 +1,9 @@
-export function headerComponent() {
-  return `
+export function renderHeader() {
+  const header = document.getElementById("header");
+  
+  if (!header) return; 
+
+  header.innerHTML = `
     <header class="header">
       <div class="logo">FASHION</div>
 

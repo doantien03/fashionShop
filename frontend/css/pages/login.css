@@ -5,43 +5,7 @@
   box-sizing: border-box;
 }
 
-/* header */
-.header {
-  display: flex;                 
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 90px;
-  border-bottom: 1px solid #ddd;
-}
-
-/* logo fashion */
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-/* nav */
-.header nav {
-  display: flex;                
-  gap: 30px;
-}
-
-.header nav a {
-  text-decoration: none;
-  color: black;
-  font-size: 16px;
-
-}
-
-/* icons */
-.icons {
-  display: flex;                 
-  gap: 11px;
-  font-size: 14px;
-  
-}
-
-.register-container {
+.login-container {
   display: flex;
   height: 60vh;
   width: 50%;
@@ -52,48 +16,48 @@
 
 
 /*login left */
-.register-left {
+.login-left {
   width: 55%;
   padding: 60px;
   background: #f5efe6;
 }
 
-.register-left h2 {
+.login-left h2 {
   margin: 20px 0;
   text-align: center;
   font-weight: bold;
 
 }
 
-.register-left input {
+.login-left input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
   border-radius: 20px;
 }
 
-.register-options {
+.login-options {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 12px;
 }
 
-.term {
+.remember {
   display: flex;
   align-items: center;
   gap: 6px;
   flex-wrap: nowrap;
 }
-.term label {
+.remember label {
   white-space: nowrap;
 }
 
-.term input {
+.remember input {
   margin: 0;
 }
 
-.register-left button {
+.login-left button  {
   width: 100%;
   padding: 10px;
   background: #6c63ff;
@@ -104,18 +68,18 @@
   transition: 0.3s;
 }
 
-.register-left button:hover {
+.login-left button:hover {
   background: #8a84ff;
   color: white;
 }
 
-.register-left button:active {
+.login-left button:active {
   transform: scale(0.9); 
 }
 
 /* login right */
 
-.register-right {
+.login-right {
   width: 45%;
   background: linear-gradient(135deg, #5f6cff, #7b4dff);
   display: flex;
@@ -136,7 +100,7 @@
   color: #FFD700;
 }
 
-.signin {
+.signup {
   margin-top: 15px;
   padding: 10px 20px;
   border: 1px solid white;
@@ -147,12 +111,12 @@
   transition: 0.3s;
 }
 
-.signin:hover {
+.signup:hover {
   background: #8a84ff;
   color: white;
 }
 
-.signin:active {
+.signup:active {
   transform: scale(0.9); 
 }
 
@@ -204,36 +168,4 @@
   right: 20px;
   z-index: 9999;
 }
-
-.toast {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 250px;
-  margin-bottom: 10px;
-  padding: 12px 16px;
-  border-radius: 8px;
-  color: white;
-  font-size: 14px;
-  animation: slideIn 0.3s ease, fadeOut 0.5s ease 2.5s forwards;
-}
-
-.toast .icon {
-  font-size: 18px;
-}
-
-.toast.success { background: #28a745; }
-.toast.error { background: #dc3545; }
-.toast.warning { background: #ffc107; color: black; }
-.toast.info { background: #17a2b8; }
-
-@keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; transform: translateX(100%); }
-}
-
 

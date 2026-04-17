@@ -1,0 +1,41 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px;
+  border-top: 1px solid #ddd;
+}
+
+/* LEFT */
+.footer-left {
+  max-width: 300px;
+}
+
+.footer-left p {
+  color: #777;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* CENTER */
+.footer-center {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-center h4 {
+  margin-bottom: 10px;
+}
+
+.footer-center a {
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+}
+
+/* RIGHT */
+.footer-right p {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}

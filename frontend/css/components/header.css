@@ -1,0 +1,35 @@
+/* header */
+.header {
+  display: flex;                 
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 90px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* logo fashion */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* nav */
+.header nav {
+  display: flex;                
+  gap: 30px;
+}
+
+.header nav a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+
+}
+
+/* icons */
+.icons {
+  display: flex;                 
+  gap: 11px;
+  font-size: 14px;
+  
+}
