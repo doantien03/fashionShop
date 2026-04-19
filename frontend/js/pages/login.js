@@ -23,12 +23,6 @@ async function handleLogin() {
     return;
   }
 
-  if (signupBtn) {
-  signupBtn.addEventListener("click", () => {
-    window.location.href = "register.html";
-  });
-  }
-
   // gọi service
   try {
     const { ok, data } = await loginAPI(email, password);

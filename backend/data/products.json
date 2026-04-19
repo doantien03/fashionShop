@@ -1,0 +1,64 @@
+[
+  {
+    "name": "Áo Phông Regular L.4.2795",
+    "price": 109000,
+    "category": "ao-phong",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352268/Ao-Phong-Regular-L-4-2795-white_ncsezp.jpg",
+    "colors": [
+      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352268/Ao-Phong-Regular-L-4-2795-white_ncsezp.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352393/Ao-Phong-Regular-L-4-2795-black_u4ugqd.jpg" },
+      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352452/Ao-Phong-Regular-L-4-2795-Beige_fqo7e6.jpg"},
+      { "name": "gray", "image":  "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352510/Ao-Phong-Regular-L-4-2795-gray_xmxsj9.jpg"}
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Áo phông regular fit, chất liệu cotton thoáng mát",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Áo Phông Loose L.4.2873",
+    "price": 129000,
+    "category": "ao-phong",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776401263/Ao-Phong-Loose-L-4-2807-cream_sl904w.jpg",
+    "colors": [
+      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400160/Ao-Phong-Loose-L-4-2807-white_kraxwm.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400211/Ao-Phong-Loose-L-4-2807-black_zo4rlm.jpg" },
+      { "name": "gray",  "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776401171/Ao-Phong-Loose-L-4-2807-gray_i69j8y.jpg"},
+      { "name": "cream", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776401263/Ao-Phong-Loose-L-4-2807-cream_sl904w.jpg"}
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Áo phông loose fit, form rộng thoải mái",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Áo Phông Regular L.3.2823",
+    "price": 119000,
+    "category": "ao-phong",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599973/Ao-Phong-Regular-L-3-2823-navy_j7jofz.jpg",
+    "colors": [
+      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599936/Ao-Phong-Regular-L-3-2823-white_tuifbn.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599951/Ao-Phong-Regular-L-3-2823-black_aewrpb.jpg" },
+      { "name": "navy", "image":  "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599973/Ao-Phong-Regular-L-3-2823-navy_j7jofz.jpg"}
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Áo phông regular fit, form rộng thoải mái",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Áo Len Slim L.2.2829",
+    "price": 199000,
+    "category": "ao-phong",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600305/Ao-Len-Slim-L-2-2829-white_xlqifg.jpg",
+    "colors": [
+      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600305/Ao-Len-Slim-L-2-2829-white_xlqifg.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600336/Ao-Len-Slim-L-2-2829-black_jboxbe.jpg" }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Áo phông slim fit, form rộng thoải mái",
+    "stock": 100,
+    "isActive": true
+  }
+
+]

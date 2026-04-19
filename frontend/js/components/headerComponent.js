@@ -8,11 +8,11 @@ export function renderHeader() {
       <div class="logo">FASHION</div>
 
       <nav>
-        <a href="/">TRANG CHỦ</a>                
-        <a href="/ao">ÁO</a>
-        <a href="/quan">QUẦN</a>
-        <a href="/phu-kien">PHỤ KIỆN</a>
-        <a href="/thong-tin">THÔNG TIN</a>
+        <a href="../pages/home.html" class="nav-link">TRANG CHỦ</a>                
+        <a href="/ao" class="nav-link">ÁO</a>
+        <a href="/quan" class="nav-link">QUẦN</a>
+        <a href="/phu-kien" class="nav-link">PHỤ KIỆN</a>
+        <a href="/thong-tin" class="nav-link">THÔNG TIN</a>
       </nav>
 
       <div class="icons">
@@ -22,4 +22,11 @@ export function renderHeader() {
       </div>
     </header>
   `;
+
+  const currentPath = window.location.pathname;
+  document.querySelectorAll(".nav-link").forEach(link => {
+    if (link.getAttribute("href") === currentPath) {
+      link.classList.add("active");
+    }
+  });
 }

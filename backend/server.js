@@ -12,8 +12,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-//api login and register
+//route
 app.use("/api/auth", require("./routes/userRoute"));
+app.use("/api/products", require("./routes/productRoute"));
+
 
 // test route
 app.get("/", (req, res) => {

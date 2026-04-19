@@ -2,7 +2,7 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// REGISTER
+// đăng kí
 exports.register = async (req, res) => {
   const { name,email, password } = req.body;
 
@@ -29,7 +29,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// LOGIN
+// đăng nhập
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
