@@ -19,7 +19,17 @@ function renderProducts(products) {
           loading="lazy"
         />
         <div class="overlay">
-          <button>Thêm vào giỏ</button>
+          <button>
+          <img src="../assets/icons/cart.svg" class="icon" />
+          Mua nhanh
+          </button>
+          
+          <div class="divider"></div>
+
+          <button>
+          <img src="../assets/icons/eye.svg" class="icon" />
+          Xem chi tiết
+          </button>
         </div>
       </div>
 
