@@ -47,8 +47,22 @@
     "isActive": true
   },
   {
+    "name": "Áo Phông Loose L.2.2822",
+    "price": 169000,
+    "category": "ao-phong",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738244/Ao-Phong-Loose-L-2-2822-black_nnthiu.jpg",
+    "colors": [
+      { "name": "cream", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738279/Ao-Phong-Loose-L-2-2822-cream_n6bipb.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738244/Ao-Phong-Loose-L-2-2822-black_nnthiu.jpg" }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Áo phông loose fit, form rộng thoải mái, chất liệu cotton thoáng mát",
+    "stock": 100,
+    "isActive": true
+  },
+  {
     "name": "Áo Len Slim L.2.2829",
-    "price": 199000,
+    "price": 129000,
     "category": "ao-phong",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600305/Ao-Len-Slim-L-2-2829-white_xlqifg.jpg",
     "colors": [
@@ -56,9 +70,10 @@
       { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600336/Ao-Len-Slim-L-2-2829-black_jboxbe.jpg" }
     ],
     "sizes": ["S", "M", "L", "XL"],
-    "description": "Áo phông slim fit, form rộng thoải mái",
+    "description": "Áo phông loose fit, form rộng thoải mái.",
     "stock": 100,
     "isActive": true
   }
+
 
 ]
