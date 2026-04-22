@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const dotenv = require("dotenv");
 const connectDB = require("./config/mongodb");
 
@@ -15,6 +16,12 @@ app.use(express.json());
 //route
 app.use("/api/auth", require("./routes/userRoute"));
 app.use("/api/products", require("./routes/productRoute"));
+
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
 
 
 // test route
