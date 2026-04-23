@@ -1,10 +1,62 @@
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 40px;
+  font-size: 14px;
+  background: #f5f5f5;
+}
+
+.top-bar .right span {
+  margin-left: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.account-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+#cart-count {
+  margin: 0;
+  padding: 0;
+}
+
+.icon-top {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.icon:hover {
+  opacity: 1;
+}
+
 /* header */
-.header {
+.header-main {
   position: relative;            
   display: flex;                 
   justify-content: space-between;
   align-items: center;
   padding: 20px 90px;
+  padding-left: 40px;
+  padding-right: 40px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -15,39 +67,67 @@
 }
 
 /* nav */
-.header nav {
+.header-main nav {
   display: flex;
   align-items: center;           
   gap: 30px;
 }
 
-
 .nav-item {
   position: relative;            
   display: flex;                 
-  align-items: center;           
+  align-items: center;          
 }
 
-.header nav a {
+.header-main nav a {
   text-decoration: none;
   color: black;
   font-size: 16px;
 }
 
+/* tìm kiếm  */
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
 
-.icons {
-  display: flex;                 
-  gap: 11px;
+  width: 220px;              
+  padding: 6px 12px;
+
+  border: 1px solid #ddd;
+  border-radius: 999px;      
+  background: #fff;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  flex: 1;                 
   font-size: 14px;
+  background: transparent;
+}
+
+/* Icons */
+.search-box .icons {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.search-box .icons:hover {
+  opacity: 1;
 }
 
 .nav-link {
+  display: inline-block;
   text-decoration: none;
   color: black;
   font-weight: 500;
   padding-bottom: 4px;
   border-bottom: 2px solid transparent;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s
 }
 
 .nav-link:hover {
@@ -55,7 +135,7 @@
 }
 
 .nav-link.active {
-  border-bottom: 2px solid black;
+  border-bottom-color: black;
 }
 
 .dropdown {

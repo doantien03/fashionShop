@@ -1,14 +1,35 @@
+
 export function renderHeader() {
   const header = document.getElementById("header");
   
   if (!header) return; 
 
-  header.innerHTML = `
+  header.innerHTML = ` 
     <header class="header">
-      <div class="logo">FASHION</div>
 
-      <nav>
-        <a href="../pages/home.html" class="nav-link">TRANG CHỦ</a>
+      <div class="top-bar">
+         <div class="phone">
+             <img src="../assets/icons/phone.svg" class="icon-top" />
+             086986.5313
+         </div>
+
+         <div class="right">
+             <a href="/pages/register.html" class="account-link">
+                <img src="../assets/icons/user.svg" class="icon-top" />
+                Tài khoản
+             </a>
+
+             <span class="cart">
+                <img src="../assets/icons/cart.svg" class="icon-top" />
+                Giỏ hàng (<span id="cart-count">0</span>)
+             </span>
+         </div>
+      </div>
+      
+      <div class="header-main">
+      <div class="logo">FASHION</div>
+        <nav>
+        <a href="/home" class="nav-link">TRANG CHỦ</a>
         
         <div class="nav-item">
         <a href="/ao" class="nav-link">ÁO</a>
@@ -33,22 +54,23 @@ export function renderHeader() {
             <a href="/phu-kien/day-lung">Dây lưng</a>
           </div>
         </div>
+
+        
         <a href="/thong-tin" class="nav-link">THÔNG TIN</a>
         
       </nav>
 
-      <div class="icons">
-        <img src="../assets/icons/search.svg" />
-        <img src="../assets/icons/user.svg" />
-        <img src="../assets/icons/cart.svg" />
+      <div class="search-box">
+        <input type="text" placeholder="Tìm kiếm..." />
+        <img src="../assets/icons/search.svg" class="icons" />
+      </div>
       </div>
     </header>
   `;
 
-  const currentPath = window.location.pathname;
-  document.querySelectorAll(".nav-link").forEach(link => {
-    if (link.getAttribute("href") === currentPath) {
-      link.classList.add("active");
-    }
+  const currentPath = window.location.pathname; 
+  document.querySelectorAll(".nav-link").forEach(link => { 
+    if (link.getAttribute("href") === currentPath) 
+      { link.classList.add("active"); } 
   });
 }

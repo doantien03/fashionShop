@@ -108,4 +108,9 @@ async function loadProducts() {
   }
 }
 
-loadProducts();
+export function init() {
+  loadProducts();
+}
+
+init();
+

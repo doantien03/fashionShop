@@ -29,9 +29,10 @@ async function handleLogin() {
 
     if (ok && data.token) {
       saveToken(data.token);
-      setTimeout(() => {
-        window.location.href = "home.html";
-      }, 500);
+      setTimeout(() => { 
+        window.location.href = "../pages/home.html"; 
+        }, 
+        1000);
     } else {
       showToast(data.message || "Đăng nhập thất bại", "error");
     }
@@ -45,10 +46,9 @@ async function handleLogin() {
 document.getElementById("signinleft").addEventListener("click", handleLogin);
 
 //điều hướng khi click signup
-const signupBtn = document.getElementById("signupBtn");
-
-if (signupBtn) {
-  signupBtn.addEventListener("click", () => {
-    window.location.href = "register.html";
-  });
+const signupBtn = document.getElementById("signupBtn"); 
+if (signupBtn) { 
+  signupBtn.addEventListener("click", () => { 
+    window.location.href = "register.html"; 
+  }); 
 }
