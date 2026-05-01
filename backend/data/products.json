@@ -118,6 +118,89 @@
     "description": "Quần Short Fitted L.4.1593 thiết kế dáng ôm gọn, tôn dáng hiện đại, mang lại vẻ ngoài năng động và trẻ trung.",
     "stock": 100,
     "isActive": true
+  },
+  {
+    "name": "Quần Short Regular L.3.1615",
+    "price": 149000,
+    "category": "quan-short",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620665/Quan-Short-Regular-L-3-1615-gray_pbgtot.jpg",
+    "colors": [
+      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620665/Quan-Short-Regular-L-3-1615-gray_pbgtot.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620633/Quan-Short-Regular-L-3-1615-black_xw4ijb.jpg" },
+      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620652/Quan-Short-Regular-L-3-1615-beige_zdqywh.jpg" }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Quần Short Regular L.3.1615 có form dáng rộng rãi, dễ mặc, mang lại cảm giác thoải mái và linh hoạt cho mọi hoạt động hàng ngày.",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Quần Short Regular L.5.1601",
+    "price": 179000,
+    "category": "quan-short",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620881/Quan-Short-Regular-L-5-1601-black_wpoaza.jpg",
+    "colors": [
+      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620912/Quan-Short-Regular-L-5-1601-gray_jludsp.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620881/Quan-Short-Regular-L-5-1601-black_wpoaza.jpg" },
+      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620893/Quan-Short-Regular-L-5-1601-beige_l3c9wo.jpg" }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Quần Short Regular L.5.1601 có form dáng rộng rãi, dễ mặc, mang lại cảm giác thoải mái và linh hoạt cho mọi hoạt động hàng ngày.",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Túi chéo 1.9356",
+    "price": 275000,
+    "category": "tui-balo",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621931/T%C3%BAi_Ch%C3%A9o-1.9356-black_cknfok.jpg",
+    "colors": [
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621931/T%C3%BAi_Ch%C3%A9o-1.9356-black_cknfok.jpg" }
+    ],
+    "sizes": [],
+    "description": "Túi chéo 1.9356 mang kiểu dáng hiện đại, gọn nhẹ, dễ phối đồ.",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Túi chéo 1.9357",
+    "price": 269000,
+    "category": "tui-balo",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621740/T%C3%BAi_Ch%C3%A9o-1.9357-black_qwppoi.jpg",
+    "colors": [
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621740/T%C3%BAi_Ch%C3%A9o-1.9357-black_qwppoi.jpg" }
+    ],
+    "sizes": [],
+    "description": "Túi chéo 1.9357 gọn nhẹ, hiện đại, tiện mang theo mọi lúc.",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Túi chéo 1.9358",
+    "price": 259000,
+    "category": "tui-balo",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621343/T%C3%BAi_Ch%C3%A9o-1.9358-black_kghhot.jpg",
+    "colors": [
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621343/T%C3%BAi_Ch%C3%A9o-1.9358-black_kghhot.jpg" }
+    ],
+    "sizes": [],
+    "description": "Túi chéo 1.9358 gọn nhẹ, hiện đại, tiện mang theo mọi lúc.",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Túi chéo 2.9353",
+    "price": 249000,
+    "category": "tui-balo",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777622015/T%C3%BAi_Ch%C3%A9o-2.9353-brown_yomw6s.jpg",
+    "colors": [
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621999/T%C3%BAi_Ch%C3%A9o-2.9353-black_uzdzwq.jpg" },
+      { "name": "brown", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777622015/T%C3%BAi_Ch%C3%A9o-2.9353-brown_yomw6s.jpg" }
+    ],
+    "sizes": [],
+    "description": "Túi chéo 2.9353 thiết kế gọn gàng, hiện đại, tiện dụng cho nhu cầu mang theo vật dụng cá nhân khi di chuyển.",
+    "stock": 100,
+    "isActive": true
   }
 
 
