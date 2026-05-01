@@ -73,6 +73,51 @@
     "description": "Áo phông loose fit, form rộng thoải mái.",
     "stock": 100,
     "isActive": true
+  },
+  {
+    "name": "Quần Short Fitted L.3.1605",
+    "price": 239000,
+    "category": "quan-short",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620293/Quan-Short-Fitted-L-3-1605-beige_ikijs6.jpg",
+    "colors": [
+      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620283/Quan-Short-Fitted-L-3-1605-white_vpwcan.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620271/Quan-Short-Fitted-L-3-1605-black_bkqxmg.jpg" },
+      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620293/Quan-Short-Fitted-L-3-1605-beige_ikijs6.jpg" }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Quần short Fitted L.3.1605 mang thiết kế dáng ôm hiện đại, tôn dáng gọn gàng cùng chất liệu thoáng mát, phù hợp cho phong cách năng động ngày hè.",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Quần Short Fitted L.3.1612",
+    "price": 129000,
+    "category": "quan-short",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619801/Quan-Short-Fitted-L-3-1612-gray_nfptjr.jpg",
+    "colors": [
+      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619801/Quan-Short-Fitted-L-3-1612-gray_nfptjr.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619790/Quan-Short-Fitted-L-3-1612-black_d0gipc.jpg" },
+      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619812/Quan-Short-Fitted-L-3-1612-Beige_inoril.jpg" }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Quần Short Fitted L.3.1612 sở hữu form dáng ôm gọn tôn dáng, thiết kế tối giản nhưng tinh tế, mang lại vẻ ngoài hiện đại và năng động.",
+    "stock": 100,
+    "isActive": true
+  },
+  {
+    "name": "Quần Short Fitted L.4.1593",
+    "price": 129000,
+    "category": "quan-short",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618858/Quan-Short-Fitted-L-4-1593-beige_wiklkb.jpg",
+    "colors": [
+      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618867/Quan-Short-Fitted-L-4-1593-gray_a7mcfw.jpg" },
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618847/Quan-Short-Fitted-L-4-1593-black_pnodxa.jpg" },
+      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618858/Quan-Short-Fitted-L-4-1593-beige_wiklkb.jpg" }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Quần Short Fitted L.4.1593 thiết kế dáng ôm gọn, tôn dáng hiện đại, mang lại vẻ ngoài năng động và trẻ trung.",
+    "stock": 100,
+    "isActive": true
   }
 
 
