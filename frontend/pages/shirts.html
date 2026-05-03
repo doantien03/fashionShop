@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
+  <title>Shirts</title>
   <link rel="stylesheet" href="../css/pages/home.css">
   <link rel="stylesheet" href="../css/components/header.css">
   <link rel="stylesheet" href="../css/components/footer.css">
@@ -18,15 +18,15 @@
     <img src="../assets/images/hompage_image.jpg" alt="banner" /></div>
     
     <div class="title-menu">
-    <h2 class="title">ÁO XUÂN HÈ</h2>
-    <div class="menu">
-       <span>ÁO PHÔNG</span>
-       <span>ÁO POLO</span>
-       <span>ÁO SƠ MI</span>
+    <h2 class="title" id="page-title">ÁO XUÂN HÈ</h2>
+    <div class="menu" id="menu">
+       <a href="/ao/phong">ÁO PHÔNG</a>
+       <a href="/ao/polo">ÁO POLO</a>
+       <a href="/ao/somi">ÁO SƠ MI</a>
     </div></div>
 
     <section class="products-section">
-    <div id="product-list" class="product-list"></div>
+    <div id="product-shirt" class="product-list"></div>
     </section>
 
   </main>
@@ -53,6 +53,9 @@
       <p>doantienle@gmail.com</p>
     </div>
   </footer>
+
+<script type="module" src="../js/main.js"></script>
+<script type="module" src="../js/pages/shirts.js"></script>
 
 </body>
 </html>

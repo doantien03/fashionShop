@@ -1,7 +1,6 @@
 import { getProducts } from "../services/product.js";
 
-let isBound = false;
-let allProducts = [];
+let isEventsBound = false;
 
 function renderProducts(products, elementId) {
   const container = document.getElementById(elementId);
@@ -54,6 +53,25 @@ function renderProducts(products, elementId) {
   `).join("");
 }
 
+export function renderPage({ category, type }) {
+  const titleMap = {
+    "ao-phong": "ÁO PHÔNG",
+    "ao-polo": "ÁO POLO",
+    "ao-somi": "ÁO SƠ MI"
+  };
+
+  const titleEl = document.getElementById("page-title");
+
+  if (type && titleMap[type]) {
+    titleEl.innerText = titleMap[type];
+
+    document.getElementById("menu")?.classList.add("hide");
+  } else {
+    titleEl.innerText = "ÁO XUÂN HÈ";
+  }
+  loadProducts({ category, type });
+}
+
 // Click chuyển màu
 function handleColorClick(e) {
   const color = e.target.closest(".color-item");
@@ -81,13 +99,13 @@ function handleCardClick(e) {
   window.location.href = `product-detail.html?id=${id}`;
 }
 
-// chọn vùng sự kiện click
+//scoped event
 function bindEvents() {
-  if (isBound) return;
-  isBound = true;
-  const container = document.getElementById("app");
+  const container = document.getElementById("product-shirt");
+  if (!container) return;
 
   container.addEventListener("click", (e) => {
+
     if (e.target.closest(".color-item")) {
       handleColorClick(e);
       return;
@@ -99,49 +117,8 @@ function bindEvents() {
   });
 }
 
-// sự kiện click menu
-function menuEvents() {
-  document.querySelectorAll(".menu span").forEach(item => {
-    item.addEventListener("click", () => {
-
-      document.querySelectorAll(".menu span")
-      .forEach(i => i.classList.remove("active"));
-      item.classList.add("active");
-
-      const type = item.dataset.type;
-
-      //  ÁO
-      if (type.startsWith("ao-")) {
-        const filtered = allProducts.filter(
-          p => p.category === "ao" && p.type === type
-        );
-        renderProducts(filtered, "product-shirt");
-        return;
-      }
-
-      // QUẦN
-      if (type.startsWith("quan-")) {
-        const filtered = allProducts.filter(
-          p => p.category === "quan" && p.type === type
-        );
-        renderProducts(filtered, "product-pants");
-        return;
-      }
-
-      // PHỤ KIỆN
-      if (type === "tui-balo" || type === "giay-dep" || type === "day-lung") {
-        const filtered = allProducts.filter(
-          p => p.category === "phu-kien" && p.type === type
-        );
-        renderProducts(filtered, "product-accessory");
-        return;
-      }
-    });
-  });
-}
-
 // Load sản phẩm
-async function loadProducts() {
+async function loadProducts({ category, type } = {}) {
   try {
     const res = await getProducts();
 
@@ -149,15 +126,17 @@ async function loadProducts() {
       console.error("Lỗi:", res.data.message);
       return;
     }
-    allProducts = res.data.products;
 
-    const shirts = allProducts.filter(p => p.category === "ao");
-    const pants = allProducts.filter(p => p.category === "quan");
-    const accessory = allProducts.filter(p => p.category === "phu-kien");
+    let products = res.data.products;
 
-    renderProducts(shirts, "product-shirt");
-    renderProducts(pants, "product-pants");
-    renderProducts(accessory, "product-accessory");
+    // lọc theo loại
+    if (category) {
+      products = products.filter(p => p.category === category);
+    }
+    if (type) {
+      products = products.filter(p => p.type === type);
+    }
+    renderProducts(products, "product-shirt");
 
   } catch (err) {
     console.error("Lỗi server:", err);
@@ -165,7 +144,7 @@ async function loadProducts() {
 }
 
 export function init() {
-  loadProducts();
   bindEvents();
-  menuEvents();
 }
+
+window.renderPage = renderPage;

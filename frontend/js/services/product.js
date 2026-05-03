@@ -1,7 +1,7 @@
 import { ENDPOINTS, getHeaders } from "../config/apiConfig.js";
 
 // Lấy tất cả sản phẩm
-export async function fetchProductsAPI() {
+export async function getProducts() {
   const res = await fetch(ENDPOINTS.products.getAll, {
     headers: getHeaders()
   });
@@ -9,8 +9,8 @@ export async function fetchProductsAPI() {
   return { ok: res.ok, data };
 }
 
-// Lấy 1 sản phẩm theo id
-export async function fetchProductByIdAPI(id) {
+// Lấy sản phẩm theo id
+export async function getProduct(id) {
   const res = await fetch(ENDPOINTS.products.getById(id), {
     headers: getHeaders()
   });
@@ -18,9 +18,9 @@ export async function fetchProductByIdAPI(id) {
   return { ok: res.ok, data };
 }
 
-// Lấy sản phẩm theo category
-export async function fetchProductsByCategoryAPI(slug) {
-  const res = await fetch(ENDPOINTS.products.getByCategory(slug), {
+// Lấy theo category
+export async function getProductsByCategory(category) {
+  const res = await fetch(ENDPOINTS.products.getByCategory(category), {
     headers: getHeaders()
   });
   const data = await res.json();

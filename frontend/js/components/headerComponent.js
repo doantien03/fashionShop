@@ -1,4 +1,3 @@
-
 export function renderHeader() {
   const header = document.getElementById("header");
   
@@ -34,9 +33,9 @@ export function renderHeader() {
         <div class="nav-item">
         <a href="/ao" class="nav-link">ÁO</a>
         <div class="dropdown">
-            <a href="/ao/phong">Áo Phông</a>
-            <a href="/ao/polo">Áo Polo</a>
-            <a href="/ao/somi">Áo Sơ Mi</a>
+            <a href="/ao/phong" data-category="ao" data-type="ao-phong">Áo Phông</a>
+            <a href="/ao/polo" data-category="ao" data-type="ao-polo">Áo Polo</a>
+            <a href="/ao/somi" data-category="ao" data-type="ao-somi">Áo Sơ Mi</a>
         </div></div>
         
         <div class="nav-item">

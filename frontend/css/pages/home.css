@@ -12,20 +12,59 @@
   display: block;
 }
 
+/* thanh menu */
 .title-menu {
   display: flex;
   align-items: center;
   gap: 80px;
   margin-top: 60px;
 }
+
 .title {
-  margin-left: 20px; 
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.menu {
+  display: flex;
+  gap: 30px; 
 }
 
 .menu span {
-  margin: 0 10px;
-  cursor: pointer;
+  text-decoration: none;
+  color: #333;
   font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 5px;
+  transition: 0.3s;
+}
+.menu span:hover {
+  color: black;
+}
+
+.menu span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: black;
+  transition: 0.3s;
+}
+
+.menu span:hover::after {
+  width: 100%;
+}
+
+.menu span.active::after {
+  width: 100%;
+}
+
+.hide {
+  display: none;
 }
 
 .product-list {
