@@ -2,7 +2,8 @@
   {
     "name": "Áo Phông Regular L.4.2795",
     "price": 109000,
-    "category": "ao-phong",
+    "category": "ao",          
+    "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352268/Ao-Phong-Regular-L-4-2795-white_ncsezp.jpg",
     "colors": [
       { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352268/Ao-Phong-Regular-L-4-2795-white_ncsezp.jpg" },
@@ -18,7 +19,8 @@
   {
     "name": "Áo Phông Loose L.4.2873",
     "price": 129000,
-    "category": "ao-phong",
+    "category": "ao",          
+    "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776401263/Ao-Phong-Loose-L-4-2807-cream_sl904w.jpg",
     "colors": [
       { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400160/Ao-Phong-Loose-L-4-2807-white_kraxwm.jpg" },
@@ -34,7 +36,8 @@
   {
     "name": "Áo Phông Regular L.3.2823",
     "price": 119000,
-    "category": "ao-phong",
+    "category": "ao",          
+    "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599973/Ao-Phong-Regular-L-3-2823-navy_j7jofz.jpg",
     "colors": [
       { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599936/Ao-Phong-Regular-L-3-2823-white_tuifbn.jpg" },
@@ -49,7 +52,8 @@
   {
     "name": "Áo Phông Loose L.2.2822",
     "price": 169000,
-    "category": "ao-phong",
+    "category": "ao",          
+    "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738244/Ao-Phong-Loose-L-2-2822-black_nnthiu.jpg",
     "colors": [
       { "name": "cream", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738279/Ao-Phong-Loose-L-2-2822-cream_n6bipb.jpg" },
@@ -63,7 +67,8 @@
   {
     "name": "Áo Len Slim L.2.2829",
     "price": 129000,
-    "category": "ao-phong",
+    "category": "ao",          
+    "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600305/Ao-Len-Slim-L-2-2829-white_xlqifg.jpg",
     "colors": [
       { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600305/Ao-Len-Slim-L-2-2829-white_xlqifg.jpg" },
@@ -77,7 +82,8 @@
   {
     "name": "Quần Short Fitted L.3.1605",
     "price": 239000,
-    "category": "quan-short",
+    "category": "quan",          
+    "type": "quan-short", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620293/Quan-Short-Fitted-L-3-1605-beige_ikijs6.jpg",
     "colors": [
       { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620283/Quan-Short-Fitted-L-3-1605-white_vpwcan.jpg" },
@@ -92,7 +98,8 @@
   {
     "name": "Quần Short Fitted L.3.1612",
     "price": 129000,
-    "category": "quan-short",
+    "category": "quan",          
+    "type": "quan-short", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619801/Quan-Short-Fitted-L-3-1612-gray_nfptjr.jpg",
     "colors": [
       { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619801/Quan-Short-Fitted-L-3-1612-gray_nfptjr.jpg" },
@@ -107,7 +114,8 @@
   {
     "name": "Quần Short Fitted L.4.1593",
     "price": 129000,
-    "category": "quan-short",
+    "category": "quan",          
+    "type": "quan-short",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618858/Quan-Short-Fitted-L-4-1593-beige_wiklkb.jpg",
     "colors": [
       { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618867/Quan-Short-Fitted-L-4-1593-gray_a7mcfw.jpg" },
@@ -122,7 +130,8 @@
   {
     "name": "Quần Short Regular L.3.1615",
     "price": 149000,
-    "category": "quan-short",
+    "category": "quan",          
+    "type": "quan-short",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620665/Quan-Short-Regular-L-3-1615-gray_pbgtot.jpg",
     "colors": [
       { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620665/Quan-Short-Regular-L-3-1615-gray_pbgtot.jpg" },
@@ -137,7 +146,8 @@
   {
     "name": "Quần Short Regular L.5.1601",
     "price": 179000,
-    "category": "quan-short",
+    "category": "quan",          
+    "type": "quan-short",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620881/Quan-Short-Regular-L-5-1601-black_wpoaza.jpg",
     "colors": [
       { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620912/Quan-Short-Regular-L-5-1601-gray_jludsp.jpg" },
@@ -152,7 +162,8 @@
   {
     "name": "Túi chéo 1.9356",
     "price": 275000,
-    "category": "tui-balo",
+    "category": "phu-kien",          
+    "type": "tui-balo",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621931/T%C3%BAi_Ch%C3%A9o-1.9356-black_cknfok.jpg",
     "colors": [
       { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621931/T%C3%BAi_Ch%C3%A9o-1.9356-black_cknfok.jpg" }
@@ -165,7 +176,8 @@
   {
     "name": "Túi chéo 1.9357",
     "price": 269000,
-    "category": "tui-balo",
+    "category": "phu-kien",          
+    "type": "tui-balo",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621740/T%C3%BAi_Ch%C3%A9o-1.9357-black_qwppoi.jpg",
     "colors": [
       { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621740/T%C3%BAi_Ch%C3%A9o-1.9357-black_qwppoi.jpg" }
@@ -178,7 +190,8 @@
   {
     "name": "Túi chéo 1.9358",
     "price": 259000,
-    "category": "tui-balo",
+    "category": "phu-kien",          
+    "type": "tui-balo",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621343/T%C3%BAi_Ch%C3%A9o-1.9358-black_kghhot.jpg",
     "colors": [
       { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621343/T%C3%BAi_Ch%C3%A9o-1.9358-black_kghhot.jpg" }
@@ -191,7 +204,8 @@
   {
     "name": "Túi chéo 2.9353",
     "price": 249000,
-    "category": "tui-balo",
+    "category": "phu-kien",          
+    "type": "tui-balo",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777622015/T%C3%BAi_Ch%C3%A9o-2.9353-brown_yomw6s.jpg",
     "colors": [
       { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621999/T%C3%BAi_Ch%C3%A9o-2.9353-black_uzdzwq.jpg" },
