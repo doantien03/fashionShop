@@ -22,14 +22,14 @@ function renderProducts(products, elementId) {
           loading="lazy"
         />
         <div class="overlay">
-          <button>
+          <button class="btn-buy">
           <img src="../assets/icons/cart.svg" class="icon" />
           Mua nhanh
           </button>
           
           <div class="divider"></div>
 
-          <button>
+          <button class="btn-detail">
           <img src="../assets/icons/eye.svg" class="icon" />
           Xem chi tiết
           </button>
@@ -73,12 +73,10 @@ function handleColorClick(e) {
   color.classList.add("active");
 }
 
-function handleCardClick(e) {
-  const card = e.target.closest(".product");
-  if (!card) return;
-
+function handleCardClick(card) {
   const id = card.dataset.id;
-  window.location.href = `product-detail.html?id=${id}`;
+  history.pushState({}, "", `/product/${id}`);
+  window.renderRoute(`/product/${id}`);
 }
 
 // chọn vùng sự kiện click
@@ -88,14 +86,41 @@ function bindEvents() {
   const container = document.getElementById("app");
 
   container.addEventListener("click", (e) => {
-    if (e.target.closest(".color-item")) {
+    const color = e.target.closest(".color-item");
+    if (color) {
       handleColorClick(e);
       return;
     }
 
-    if (e.target.closest(".product")) {
-      handleCardClick(e);
+    // click "Mua nhanh"
+    const buyBtn = e.target.closest(".btn-buy");
+    if (buyBtn) {
+      e.stopPropagation();
+
+      const product = buyBtn.closest(".product");
+      const id = product.dataset.id;
+
+      console.log("🛒 Mua nhanh:", id);
+      
+      return;
     }
+
+    // click "Xem chi tiết"
+    const detailBtn = e.target.closest(".btn-detail");
+    if (detailBtn) {
+      e.stopPropagation();
+
+      const product = detailBtn.closest(".product");
+      handleCardClick(product);
+      return;
+    }
+
+    // click cả card
+    const card = e.target.closest(".product");
+    if (card) {
+      handleCardClick(card);
+    }
+
   });
 }
 

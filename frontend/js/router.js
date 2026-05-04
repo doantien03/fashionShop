@@ -12,7 +12,6 @@ export function initRouter() {
     if (!href || !href.startsWith("/")) return;
 
     e.preventDefault();
-
     history.pushState({}, "", href);
     renderRoute(href);
   });
@@ -40,17 +39,41 @@ async function renderRoute(path) {
   else if (path === "/phu-kien") {
     page = "accessory";
   }
+  else if (path === "/thong-tin") {
+    page = "info";
+  }
+  else if (path.startsWith("/product/")) {
+    page = "product-detail";
+  } 
+  else if (path === "/login") {
+    page = "login";
+  } 
+  else if (path === "/register") {
+    page = "register";
+  }
 
-  //  chờ load HTML
   await loadPage(page);
-
   setActiveLink(path);
 
-  //  xử lý category + type
-  handleCategory(path);
-}
+  if (path.startsWith("/ao")) {
+    handleCategory(path);
+  }
 
-// ===============================
+  // register
+  if (path === "/register") {
+    window.initRegister?.();
+  }
+
+  // login
+  if (path === "/login") {
+    window.initLogin?.();
+  }
+
+  // product detail
+  if (path.startsWith("/product/")) {
+    window.initProductDetail?.(path);
+  }
+}
 
 function handleCategory(path) {
   let category = null;
@@ -78,3 +101,5 @@ function handleCategory(path) {
     window.renderPage?.({ category, type });
   }
 }
+
+window.renderRoute = renderRoute;

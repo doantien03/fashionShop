@@ -13,7 +13,7 @@ export function renderHeader() {
          </div>
 
          <div class="right">
-             <a href="/pages/register.html" class="account-link">
+             <a href="/register" class="account-link">
                 <img src="../assets/icons/user.svg" class="icon-top" />
                 Tài khoản
              </a>
@@ -73,3 +73,5 @@ export function renderHeader() {
       { link.classList.add("active"); } 
   });
 }
+
+  

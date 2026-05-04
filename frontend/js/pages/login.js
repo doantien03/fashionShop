@@ -29,10 +29,10 @@ async function handleLogin() {
 
     if (ok && data.token) {
       saveToken(data.token);
-      setTimeout(() => { 
-        window.location.href = "../pages/home.html"; 
-        }, 
-        1000);
+      setTimeout(() => {
+        history.pushState({}, "", "/home");
+          window.renderRoute("/home");
+      }, 1000);
     } else {
       showToast(data.message || "Đăng nhập thất bại", "error");
     }
@@ -42,13 +42,21 @@ async function handleLogin() {
   }
 }
 
-// gắn event vào button
-document.getElementById("signinleft").addEventListener("click", handleLogin);
+export function initLogin() {
+  const signupBtn = document.getElementById("signupBtn");
 
-//điều hướng khi click signup
-const signupBtn = document.getElementById("signupBtn"); 
-if (signupBtn) { 
-  signupBtn.addEventListener("click", () => { 
-    window.location.href = "register.html"; 
-  }); 
+  // nút đăng nhập
+  const signinBtn = document.getElementById("signinleft");
+  if (signinBtn) {
+    signinBtn.addEventListener("click", handleLogin);
+  }
+
+  // nút chuyển trang đăng ký
+  if (signupBtn) {
+    signupBtn.addEventListener("click", () => {
+      history.pushState({}, "", "/register");
+      window.renderRoute("/register");
+    });
+  }
 }
+window.initLogin = initLogin;
