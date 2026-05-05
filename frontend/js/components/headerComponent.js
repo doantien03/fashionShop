@@ -41,16 +41,16 @@ export function renderHeader() {
         <div class="nav-item">
         <a href="/quan" class="nav-link">QUẦN</a>
         <div class="dropdown">
-            <a href="/quan/dai">Quần dài</a>
-            <a href="/quan/short">Quần short</a>
+            <a href="/quan/dai" data-category="quan" data-type="quan-dai">Quần dài</a>
+            <a href="/quan/short" data-category="quan" data-type="quan-short">Quần short</a>
         </div></div>
         
         <div class="nav-item">
         <a href="/phu-kien" class="nav-link">PHỤ KIỆN</a>
         <div class="dropdown">
-            <a href="/phu-kien/tui-balo">Túi/Balo</a>
-            <a href="/phu-kien/giay-dep">Giày dép</a>
-            <a href="/phu-kien/day-lung">Dây lưng</a>
+            <a href="/phu-kien/tui-balo" data-category="phu-kien" data-type="tui-balo">Túi/Balo</a>
+            <a href="/phu-kien/giay-dep" data-category="phu-kien" data-type="giay-dep">Giày dép</a>
+            <a href="/phu-kien/day-lung" data-category="phu-kien" data-type="day-lung">Dây lưng</a>
           </div>
         </div>
 

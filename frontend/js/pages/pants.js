@@ -53,21 +53,20 @@ function renderProducts(products, elementId) {
   `).join("");
 }
 
-export function renderShirts({ category, type }) {
+export function renderPants({ category, type }) {
   const titleMap = {
-    "ao-phong": "ÁO PHÔNG",
-    "ao-polo": "ÁO POLO",
-    "ao-somi": "ÁO SƠ MI"
+    "quan-short": "QUẦN SHORT",
+    "quan-dai": "QUẦN DÀI"
   };
 
-  const titleEl = document.getElementById("page-title");
+  const titleEl = document.getElementById("pants-title");
 
   if (type && titleMap[type]) {
     titleEl.innerText = titleMap[type];
 
-    document.getElementById("menu")?.classList.add("hide");
+    document.getElementById("pants-menu")?.classList.add("hide");
   } else {
-    titleEl.innerText = "ÁO XUÂN HÈ";
+    titleEl.innerText = "QUẦN";
   }
   loadProducts({ category, type });
 }
@@ -101,7 +100,7 @@ function handleCardClick(e) {
 
 //scoped event
 function bindEvents() {
-  const container = document.getElementById("product-shirt");
+  const container = document.getElementById("product-pants");
   if (!container) return;
 
   container.addEventListener("click", (e) => {
@@ -136,7 +135,7 @@ async function loadProducts({ category, type } = {}) {
     if (type) {
       products = products.filter(p => p.type === type);
     }
-    renderProducts(products, "product-shirt");
+    renderProducts(products, "product-pants");
 
   } catch (err) {
     console.error("Lỗi server:", err);
@@ -147,4 +146,4 @@ export function init() {
   bindEvents();
 }
 
-window.renderShirts = renderShirts;
+window.renderPants = renderPants;

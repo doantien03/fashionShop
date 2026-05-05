@@ -2,9 +2,6 @@ import { getProducts } from "../services/product.js";
 
 let currentProduct = null;
 
-// =======================
-// 🔥 INIT (SPA)
-// =======================
 export async function initProductDetail(path) {
   console.log("INIT PRODUCT DETAIL:", path);
 
@@ -37,9 +34,6 @@ export async function initProductDetail(path) {
 // expose global cho router
 window.initProductDetail = initProductDetail;
 
-// =======================
-// 🔥 RENDER
-// =======================
 function renderProduct() {
   document.getElementById("name").innerText = currentProduct.name;
 
@@ -65,9 +59,6 @@ function renderProduct() {
   `).join("");
 }
 
-// =======================
-// 🔥 EVENTS
-// =======================
 function bindEvents() {
 
   // đổi ảnh (colors)

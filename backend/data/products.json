@@ -160,6 +160,21 @@
     "isActive": true
   },
   {
+    "name": "Quần Nỉ Loose L.2.1843",
+    "price": 229000,
+    "category": "quan",          
+    "type": "quan-dai",
+    "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777988674/quan-ni-staright-L.2.1843-black-M_qubby6.jpg",
+    "colors": [
+      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777988674/quan-ni-staright-L.2.1843-black-M_qubby6.jpg"},
+      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777988662/quan-ni-straight-L.2.1843-gray-M_yqd1um.jpg" }
+    ],
+    "sizes": ["S", "M", "L", "XL"],
+    "description": "Quần nỉ L.2.1843 form loose thoải mái, chất liệu mềm mại, giữ ấm tốt, phù hợp cho phong cách năng động hằng ngày.",
+    "stock": 100,
+    "isActive": true
+  },
+  {
     "name": "Túi chéo 1.9356",
     "price": 275000,
     "category": "phu-kien",          

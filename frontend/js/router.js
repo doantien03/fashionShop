@@ -33,13 +33,13 @@ async function renderRoute(path) {
   else if (path.startsWith("/ao")) {
     page = "shirts";
   } 
-  else if (path === "/quan") {
+  else if (path.startsWith("/quan")) {
     page = "pants";
   } 
-  else if (path === "/phu-kien") {
+  else if (path.startsWith("/phu-kien")) {
     page = "accessory";
   }
-  else if (path === "/thong-tin") {
+  else if (path.startsWith("/thong-tin")) {
     page = "info";
   }
   else if (path.startsWith("/product/")) {
@@ -55,8 +55,12 @@ async function renderRoute(path) {
   await loadPage(page);
   setActiveLink(path);
 
-  if (path.startsWith("/ao")) {
-    handleCategory(path);
+  if (
+  path.startsWith("/ao") ||
+  path.startsWith("/quan") ||
+  path.startsWith("/phu-kien")
+  ) {
+  handleCategory(path);
   }
 
   // register
@@ -96,10 +100,48 @@ function handleCategory(path) {
     type = "ao-somi";
   }
 
-  //  gọi sang shirts.js
-  if (category) {
-    window.renderPage?.({ category, type });
+  // nhóm quần
+  else if (path === "/quan") {
+    category = "quan";
+  } 
+  else if (path === "/quan/short") {
+    category = "quan";
+    type = "quan-short";
+  } 
+  else if (path === "/quan/dai") {
+    category = "quan";
+    type = "quan-dai";
   }
+  
+  // phụ kiện
+  else if (path === "/phu-kien") {
+    category = "phu-kien";
+  }
+  else if (path === "/phu-kien/tui-balo") {
+    category = "phu-kien";
+    type = "tui-balo";
+  }
+  else if (path === "/phu-kien/giay-dep") {
+    category = "phu-kien";
+    type = "giay-dep";
+  }
+  else if (path === "/phu-kien/day-lung") {
+    category = "phu-kien";
+    type = "day-lung";
+  }   
+
+  //  gọi sang shirts.js
+  if (path.startsWith("/ao")) {
+  window.renderShirts?.({ category, type });
+  }
+
+  if (path.startsWith("/quan")) {
+  window.renderPants?.({ category, type });
+  }
+
+  if (path.startsWith("/phu-kien")) {
+  window.renderAccessory?.({ category, type });
+}
 }
 
 window.renderRoute = renderRoute;
