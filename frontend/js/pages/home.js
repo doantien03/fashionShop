@@ -1,4 +1,5 @@
 import { getProducts } from "../services/product.js";
+import { openModal } from "../modules/modal.js";
 
 let isBound = false;
 let allProducts = [];
@@ -100,11 +101,10 @@ function bindEvents() {
       const product = buyBtn.closest(".product");
       const id = product.dataset.id;
 
-      console.log("🛒 Mua nhanh:", id);
-      
+      openModal(id);
       return;
     }
-
+  
     // click "Xem chi tiết"
     const detailBtn = e.target.closest(".btn-detail");
     if (detailBtn) {

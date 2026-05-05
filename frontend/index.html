@@ -4,18 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fashion Shop</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="./css/components/header.css">
+  <link rel="stylesheet" href="./css/pages/product-modal.css"> 
 
 </head>
 
 <body>
-  
 
   <!-- HEADER -->
   <div id="header"></div>
 
   <!-- MAIN CONTENT -->
   <main id="app"></main>
+
+  <!-- MODAL -->
+  <div class="product-modal" id="productModal">
+    <div class="modal-overlay"></div>
+
+    <div class="modal-content">
+      
+      <!-- LEFT -->
+      <div class="modal-left">
+        <div class="thumbs" id="modal-thumbs"></div>
+        <img id="modal-main-img" />
+      </div>
+
+      <!-- RIGHT -->
+      <div class="modal-right">
+        <button class="close-modal" id="closeModal">✕</button>
+
+        <h3 id="modal-name"></h3>
+        <p class="status">Còn hàng</p>
+        <p class="price" id="modal-price"></p>
+
+        <h4>MÀU SẮC</h4>
+        <div id="modal-colors"></div>
+
+        <h4>KÍCH THƯỚC</h4>
+        <div class="sizes">
+          <span>M</span>
+          <span>L</span>
+          <span>XL</span>
+          <span>2XL</span>
+        </div>
+
+        <button class="buy-btn">SỞ HỮU NGAY</button>
+      </div>
+
+    </div>
+  </div>
 
   <!-- JS -->
   <script type="module" src="./js/main.js"></script>
