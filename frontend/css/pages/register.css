@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+body {
+  padding-top: 60px; 
+}
+
 .register-container {
   display: flex;
   height: 60vh;

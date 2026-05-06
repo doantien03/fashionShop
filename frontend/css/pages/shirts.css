@@ -12,6 +12,10 @@
   display: block;
 }
 
+body {
+  padding-top: 60px; 
+}
+
 /* thanh menu */
 .title-menu {
   display: flex;

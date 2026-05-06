@@ -11,6 +11,9 @@ export async function openModal(id) {
   const modal = document.getElementById("productModal");
   modal.classList.add("active");
 
+  // khóa scroll + interaction phía sau
+  document.body.classList.add("no-scroll");
+
   renderModal();
 }
 
@@ -34,4 +37,7 @@ export function initModal() {
 function closeModal() {
   document.getElementById("productModal")
     .classList.remove("active");
+
+  //  mở lại scroll
+  document.body.classList.remove("no-scroll");
 }
