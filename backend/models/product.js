@@ -11,7 +11,8 @@ const productSchema = new Schema(
 
     colors: [
       {
-        name: String,   
+        name: String,
+        code: String,   
         image: String   
       }
     ],

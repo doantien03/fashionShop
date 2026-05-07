@@ -31,7 +31,6 @@ export async function initProductDetail(path) {
   }
 }
 
-// expose global cho router
 window.initProductDetail = initProductDetail;
 
 function renderProduct() {
@@ -51,12 +50,34 @@ function renderProduct() {
 
   // colors
   const colors = document.getElementById("colors");
+  const colorNameEl = document.getElementById("select-color");
+
   colors.innerHTML = currentProduct.colors.map(c => `
-    <span class="color-item"
-      style="background:${c.name}"
-      data-image="${c.image}">
-    </span>
-  `).join("");
+    <span 
+       class="color-item"
+       style="background:${c.code}"
+       data-image="${c.image}"
+       data-name="${c.name}"
+    ></span>
+      `).join("");
+
+  // mặc định hiện màu đầu tiên
+  if (currentProduct.colors.length > 0) {
+     colorNameEl.textContent = currentProduct.colors[0].name;
+  }
+
+  // click màu
+  document.querySelectorAll(".color-item").forEach(item => {
+     item.addEventListener("click", () => {
+
+     // hiện tên màu
+     colorNameEl.textContent = item.dataset.name;
+
+     // đổi ảnh
+     const newImage = item.dataset.image;
+     document.getElementById("main-image").src = newImage;
+    });
+   });
 }
 
 function bindEvents() {
@@ -103,11 +124,11 @@ function bindEvents() {
 
   // add cart
   document.querySelector(".add-cart").onclick = () => {
-    console.log("🛒 Thêm giỏ:", currentProduct._id);
+    console.log(" Thêm giỏ:", currentProduct._id);
   };
 
   // buy now
   document.querySelector(".buy-now").onclick = () => {
-    console.log("⚡ Mua ngay:", currentProduct._id);
+    console.log(" Mua ngay:", currentProduct._id);
   };
 }

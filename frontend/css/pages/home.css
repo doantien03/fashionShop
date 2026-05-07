@@ -143,7 +143,7 @@
   filter: brightness(0) invert(1);
 }
 
-/* màu */
+/* đổi màu khi click titlt màu */
 .colors {
   margin: 10px 0;
 }

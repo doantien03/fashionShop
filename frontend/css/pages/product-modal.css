@@ -1,6 +1,3 @@
-body.no-scroll {
-  overflow: hidden;
-}
 /* ===== OVERLAY ===== */
 .product-modal {
   position: fixed;
@@ -8,7 +5,7 @@ body.no-scroll {
   display: none;
   z-index: 9999;
   font-family: Arial, sans-serif;
-   pointer-events: none;
+  pointer-events: none;
 }
 
 .product-modal.active {
@@ -45,28 +42,42 @@ body.no-scroll {
 }
 
 /* thumbnails */
-.thumbs {
-  width: 90px;
-  background: #fff;
-  padding: 10px;
+#modal-thumbs {
+  width: 120px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 10px;
   overflow-y: auto;
+  background: #fff;
   border-right: 1px solid #eee;
 }
 
-.thumbs img {
+.thumb-item {
   width: 100%;
   height: 90px;
   object-fit: cover;
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
   cursor: pointer;
   transition: 0.2s;
 }
 
-.thumbs img:hover {
+.thumb-item:hover {
   border-color: #000;
+}
+
+.thumb-item.active {
+  border: 2px solid #000;
+}
+
+.color-item {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  margin-right: 8px;
 }
 
 /* main image */

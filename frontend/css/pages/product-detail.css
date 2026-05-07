@@ -54,7 +54,7 @@ body {
 
 .info h2 {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
@@ -70,6 +70,23 @@ body {
 }
 
 /* ===== COLORS ===== */
+.info h4 {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+#select-color {
+  font-size: 13px;
+  font-weight: 400;
+  color: #666;
+  text-transform: none;
+}
+
 .colors {
   display: flex;
   gap: 10px;
@@ -77,9 +94,10 @@ body {
 }
 
 .colors .color-item {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border-radius: 20%;
   border: 1px solid #ccc;
   cursor: pointer;
   transition: 0.2s;
@@ -91,6 +109,36 @@ body {
 
 .colors .color-item.active {
   border: 2px solid #000;
+}
+
+.colors .color-item::after {
+  content: attr(data-name);
+
+  position: absolute;
+  bottom: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  padding: 5px 8px;
+  border-radius: 6px;
+
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* hiện tooltip khi hover */
+.colors .color-item:hover::after {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* ===== SIZE ===== */

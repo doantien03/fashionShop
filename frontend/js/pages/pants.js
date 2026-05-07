@@ -39,7 +39,7 @@ function renderProducts(products, elementId) {
         ${p.colors.map(c => `
           <span 
             class="color-item"
-            style="background-color: ${c.name}"
+            style="background-color: ${c.code}"
             data-image="${c.image}"
             title="${c.name}">
           </span>

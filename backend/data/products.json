@@ -6,10 +6,10 @@
     "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352268/Ao-Phong-Regular-L-4-2795-white_ncsezp.jpg",
     "colors": [
-      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352268/Ao-Phong-Regular-L-4-2795-white_ncsezp.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352393/Ao-Phong-Regular-L-4-2795-black_u4ugqd.jpg" },
-      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352452/Ao-Phong-Regular-L-4-2795-Beige_fqo7e6.jpg"},
-      { "name": "gray", "image":  "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352510/Ao-Phong-Regular-L-4-2795-gray_xmxsj9.jpg"}
+      { "name": "Trắng", "code": "#ffffff", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352268/Ao-Phong-Regular-L-4-2795-white_ncsezp.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352393/Ao-Phong-Regular-L-4-2795-black_u4ugqd.jpg" },
+      { "name": "Be", "code":"#F5F5DC", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352452/Ao-Phong-Regular-L-4-2795-Beige_fqo7e6.jpg"},
+      { "name": "Xám", "code": "#b3b1b1", "image":  "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776352510/Ao-Phong-Regular-L-4-2795-gray_xmxsj9.jpg"}
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Áo phông regular fit, chất liệu cotton thoáng mát",
@@ -23,10 +23,10 @@
     "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776401263/Ao-Phong-Loose-L-4-2807-cream_sl904w.jpg",
     "colors": [
-      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400160/Ao-Phong-Loose-L-4-2807-white_kraxwm.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400211/Ao-Phong-Loose-L-4-2807-black_zo4rlm.jpg" },
-      { "name": "gray",  "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776401171/Ao-Phong-Loose-L-4-2807-gray_i69j8y.jpg"},
-      { "name": "cream", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776401263/Ao-Phong-Loose-L-4-2807-cream_sl904w.jpg"}
+      { "name": "Trắng", "code": "#ffffff", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400160/Ao-Phong-Loose-L-4-2807-white_kraxwm.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776400211/Ao-Phong-Loose-L-4-2807-black_zo4rlm.jpg" },
+      { "name": "Xám", "code": "#b3b1b1", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776401171/Ao-Phong-Loose-L-4-2807-gray_i69j8y.jpg"},
+      { "name": "Kem", "code": "#FFFDD0", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776401263/Ao-Phong-Loose-L-4-2807-cream_sl904w.jpg"}
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Áo phông loose fit, form rộng thoải mái",
@@ -40,9 +40,9 @@
     "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599973/Ao-Phong-Regular-L-3-2823-navy_j7jofz.jpg",
     "colors": [
-      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599936/Ao-Phong-Regular-L-3-2823-white_tuifbn.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599951/Ao-Phong-Regular-L-3-2823-black_aewrpb.jpg" },
-      { "name": "navy", "image":  "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599973/Ao-Phong-Regular-L-3-2823-navy_j7jofz.jpg"}
+      { "name": "Trắng", "code": "#ffffff", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599936/Ao-Phong-Regular-L-3-2823-white_tuifbn.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599951/Ao-Phong-Regular-L-3-2823-black_aewrpb.jpg" },
+      { "name": "Xanh", "code": "#1b263b", "image":  "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776599973/Ao-Phong-Regular-L-3-2823-navy_j7jofz.jpg"}
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Áo phông regular fit, form rộng thoải mái",
@@ -56,8 +56,8 @@
     "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738244/Ao-Phong-Loose-L-2-2822-black_nnthiu.jpg",
     "colors": [
-      { "name": "cream", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738279/Ao-Phong-Loose-L-2-2822-cream_n6bipb.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738244/Ao-Phong-Loose-L-2-2822-black_nnthiu.jpg" }
+      { "name": "Kem", "code": "#FFFDD0", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738279/Ao-Phong-Loose-L-2-2822-cream_n6bipb.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776738244/Ao-Phong-Loose-L-2-2822-black_nnthiu.jpg" }
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Áo phông loose fit, form rộng thoải mái, chất liệu cotton thoáng mát",
@@ -71,8 +71,8 @@
     "type": "ao-phong", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600305/Ao-Len-Slim-L-2-2829-white_xlqifg.jpg",
     "colors": [
-      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600305/Ao-Len-Slim-L-2-2829-white_xlqifg.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600336/Ao-Len-Slim-L-2-2829-black_jboxbe.jpg" }
+      { "name": "Trắng", "code": "#ffffff", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600305/Ao-Len-Slim-L-2-2829-white_xlqifg.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1776600336/Ao-Len-Slim-L-2-2829-black_jboxbe.jpg" }
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Áo phông loose fit, form rộng thoải mái.",
@@ -86,9 +86,9 @@
     "type": "quan-short", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620293/Quan-Short-Fitted-L-3-1605-beige_ikijs6.jpg",
     "colors": [
-      { "name": "white", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620283/Quan-Short-Fitted-L-3-1605-white_vpwcan.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620271/Quan-Short-Fitted-L-3-1605-black_bkqxmg.jpg" },
-      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620293/Quan-Short-Fitted-L-3-1605-beige_ikijs6.jpg" }
+      { "name": "Trắng", "code": "#ffffff", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620283/Quan-Short-Fitted-L-3-1605-white_vpwcan.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620271/Quan-Short-Fitted-L-3-1605-black_bkqxmg.jpg" },
+      { "name": "Be", "code": "#F5F5DC", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620293/Quan-Short-Fitted-L-3-1605-beige_ikijs6.jpg" }
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Quần short Fitted L.3.1605 mang thiết kế dáng ôm hiện đại, tôn dáng gọn gàng cùng chất liệu thoáng mát, phù hợp cho phong cách năng động ngày hè.",
@@ -102,9 +102,9 @@
     "type": "quan-short", 
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619801/Quan-Short-Fitted-L-3-1612-gray_nfptjr.jpg",
     "colors": [
-      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619801/Quan-Short-Fitted-L-3-1612-gray_nfptjr.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619790/Quan-Short-Fitted-L-3-1612-black_d0gipc.jpg" },
-      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619812/Quan-Short-Fitted-L-3-1612-Beige_inoril.jpg" }
+      { "name": "Xám", "code": "#b3b1b1", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619801/Quan-Short-Fitted-L-3-1612-gray_nfptjr.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619790/Quan-Short-Fitted-L-3-1612-black_d0gipc.jpg" },
+      { "name": "Be", "code": "#F5F5DC", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777619812/Quan-Short-Fitted-L-3-1612-Beige_inoril.jpg" }
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Quần Short Fitted L.3.1612 sở hữu form dáng ôm gọn tôn dáng, thiết kế tối giản nhưng tinh tế, mang lại vẻ ngoài hiện đại và năng động.",
@@ -118,9 +118,9 @@
     "type": "quan-short",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618858/Quan-Short-Fitted-L-4-1593-beige_wiklkb.jpg",
     "colors": [
-      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618867/Quan-Short-Fitted-L-4-1593-gray_a7mcfw.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618847/Quan-Short-Fitted-L-4-1593-black_pnodxa.jpg" },
-      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618858/Quan-Short-Fitted-L-4-1593-beige_wiklkb.jpg" }
+      { "name": "Xám", "code": "#b3b1b1", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618867/Quan-Short-Fitted-L-4-1593-gray_a7mcfw.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618847/Quan-Short-Fitted-L-4-1593-black_pnodxa.jpg" },
+      { "name": "Be", "code": "#F5F5DC", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777618858/Quan-Short-Fitted-L-4-1593-beige_wiklkb.jpg" }
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Quần Short Fitted L.4.1593 thiết kế dáng ôm gọn, tôn dáng hiện đại, mang lại vẻ ngoài năng động và trẻ trung.",
@@ -134,9 +134,9 @@
     "type": "quan-short",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620665/Quan-Short-Regular-L-3-1615-gray_pbgtot.jpg",
     "colors": [
-      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620665/Quan-Short-Regular-L-3-1615-gray_pbgtot.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620633/Quan-Short-Regular-L-3-1615-black_xw4ijb.jpg" },
-      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620652/Quan-Short-Regular-L-3-1615-beige_zdqywh.jpg" }
+      { "name": "Xám", "code": "#b3b1b1", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620665/Quan-Short-Regular-L-3-1615-gray_pbgtot.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620633/Quan-Short-Regular-L-3-1615-black_xw4ijb.jpg" },
+      { "name": "Be", "code": "#F5F5DC", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620652/Quan-Short-Regular-L-3-1615-beige_zdqywh.jpg" }
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Quần Short Regular L.3.1615 có form dáng rộng rãi, dễ mặc, mang lại cảm giác thoải mái và linh hoạt cho mọi hoạt động hàng ngày.",
@@ -150,9 +150,9 @@
     "type": "quan-short",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620881/Quan-Short-Regular-L-5-1601-black_wpoaza.jpg",
     "colors": [
-      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620912/Quan-Short-Regular-L-5-1601-gray_jludsp.jpg" },
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620881/Quan-Short-Regular-L-5-1601-black_wpoaza.jpg" },
-      { "name": "beige", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620893/Quan-Short-Regular-L-5-1601-beige_l3c9wo.jpg" }
+      { "name": "Xám", "code": "#b3b1b1", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620912/Quan-Short-Regular-L-5-1601-gray_jludsp.jpg" },
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620881/Quan-Short-Regular-L-5-1601-black_wpoaza.jpg" },
+      { "name": "Be", "code": "#F5F5DC", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777620893/Quan-Short-Regular-L-5-1601-beige_l3c9wo.jpg" }
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Quần Short Regular L.5.1601 có form dáng rộng rãi, dễ mặc, mang lại cảm giác thoải mái và linh hoạt cho mọi hoạt động hàng ngày.",
@@ -166,8 +166,8 @@
     "type": "quan-dai",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777988674/quan-ni-staright-L.2.1843-black-M_qubby6.jpg",
     "colors": [
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777988674/quan-ni-staright-L.2.1843-black-M_qubby6.jpg"},
-      { "name": "gray", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777988662/quan-ni-straight-L.2.1843-gray-M_yqd1um.jpg" }
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777988674/quan-ni-staright-L.2.1843-black-M_qubby6.jpg"},
+      { "name": "Xám", "code": "#b3b1b1", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777988662/quan-ni-straight-L.2.1843-gray-M_yqd1um.jpg" }
     ],
     "sizes": ["S", "M", "L", "XL"],
     "description": "Quần nỉ L.2.1843 form loose thoải mái, chất liệu mềm mại, giữ ấm tốt, phù hợp cho phong cách năng động hằng ngày.",
@@ -181,7 +181,7 @@
     "type": "tui-balo",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621931/T%C3%BAi_Ch%C3%A9o-1.9356-black_cknfok.jpg",
     "colors": [
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621931/T%C3%BAi_Ch%C3%A9o-1.9356-black_cknfok.jpg" }
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621931/T%C3%BAi_Ch%C3%A9o-1.9356-black_cknfok.jpg" }
     ],
     "sizes": [],
     "description": "Túi chéo 1.9356 mang kiểu dáng hiện đại, gọn nhẹ, dễ phối đồ.",
@@ -195,7 +195,7 @@
     "type": "tui-balo",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621740/T%C3%BAi_Ch%C3%A9o-1.9357-black_qwppoi.jpg",
     "colors": [
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621740/T%C3%BAi_Ch%C3%A9o-1.9357-black_qwppoi.jpg" }
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621740/T%C3%BAi_Ch%C3%A9o-1.9357-black_qwppoi.jpg" }
     ],
     "sizes": [],
     "description": "Túi chéo 1.9357 gọn nhẹ, hiện đại, tiện mang theo mọi lúc.",
@@ -209,7 +209,7 @@
     "type": "tui-balo",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621343/T%C3%BAi_Ch%C3%A9o-1.9358-black_kghhot.jpg",
     "colors": [
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621343/T%C3%BAi_Ch%C3%A9o-1.9358-black_kghhot.jpg" }
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621343/T%C3%BAi_Ch%C3%A9o-1.9358-black_kghhot.jpg" }
     ],
     "sizes": [],
     "description": "Túi chéo 1.9358 gọn nhẹ, hiện đại, tiện mang theo mọi lúc.",
@@ -223,8 +223,8 @@
     "type": "tui-balo",
     "thumbnail": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777622015/T%C3%BAi_Ch%C3%A9o-2.9353-brown_yomw6s.jpg",
     "colors": [
-      { "name": "black", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621999/T%C3%BAi_Ch%C3%A9o-2.9353-black_uzdzwq.jpg" },
-      { "name": "brown", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777622015/T%C3%BAi_Ch%C3%A9o-2.9353-brown_yomw6s.jpg" }
+      { "name": "Đen", "code": "#000000", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777621999/T%C3%BAi_Ch%C3%A9o-2.9353-black_uzdzwq.jpg" },
+      { "name": "Nâu", "code": "#a65114", "image": "https://res.cloudinary.com/dpfuldx4d/image/upload/v1777622015/T%C3%BAi_Ch%C3%A9o-2.9353-brown_yomw6s.jpg" }
     ],
     "sizes": [],
     "description": "Túi chéo 2.9353 thiết kế gọn gàng, hiện đại, tiện dụng cho nhu cầu mang theo vật dụng cá nhân khi di chuyển.",
