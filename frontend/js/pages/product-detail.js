@@ -1,10 +1,11 @@
 import { getProducts } from "../services/product.js";
+import { addToCart, renderCart, openCart} from "../utils/cart.js";
 
 let currentProduct = null;
+let selectedColor = "";
 
 export async function initProductDetail(path) {
-  console.log("INIT PRODUCT DETAIL:", path);
-
+  
   const id = path.split("/product/")[1];
 
   try {
@@ -42,13 +43,14 @@ function renderProduct() {
   document.getElementById("main-img").src =
     currentProduct.thumbnail;
 
-  // thumbnails
+  // thumbnails theo hàng dọc
   const thumbs = document.getElementById("thumbs");
   thumbs.innerHTML = currentProduct.colors.map(c => `
-    <img src="${c.image}" data-image="${c.image}" />
+    <img src="${c.image}" 
+    data-image="${c.image}" />
   `).join("");
 
-  // colors
+  // render các nút màu bên phải
   const colors = document.getElementById("colors");
   const colorNameEl = document.getElementById("select-color");
 
@@ -57,7 +59,7 @@ function renderProduct() {
        class="color-item"
        style="background:${c.code}"
        data-image="${c.image}"
-       data-name="${c.name}"
+       data-name="${c.name}"       
     ></span>
       `).join("");
 
@@ -66,11 +68,13 @@ function renderProduct() {
      colorNameEl.textContent = currentProduct.colors[0].name;
   }
 
-  // click màu
+  // chọn màu sản phẩm 
   document.querySelectorAll(".color-item").forEach(item => {
      item.addEventListener("click", () => {
 
-     // hiện tên màu
+      selectedColor = item.dataset.name;
+
+     // hiện tên màu 
      colorNameEl.textContent = item.dataset.name;
 
      // đổi ảnh
@@ -91,7 +95,7 @@ function bindEvents() {
       color.dataset.image;
   };
 
-  // đổi ảnh (thumbs)
+  // đổi ảnh thumbnail
   document.getElementById("thumbs").onclick = (e) => {
     const img = e.target.closest("img");
     if (!img) return;
@@ -100,7 +104,7 @@ function bindEvents() {
       img.dataset.image;
   };
 
-  // size
+  // chọn size
   document.querySelectorAll(".sizes span").forEach(size => {
     size.onclick = () => {
       document.querySelectorAll(".sizes span")
@@ -109,7 +113,7 @@ function bindEvents() {
     };
   });
 
-  // quantity
+  // chọn số lượng
   const qty = document.getElementById("qty");
 
   document.getElementById("plus").onclick = () => {
@@ -122,12 +126,51 @@ function bindEvents() {
     }
   };
 
-  // add cart
-  document.querySelector(".add-cart").onclick = () => {
-    console.log(" Thêm giỏ:", currentProduct._id);
+  //lấy thông tin thêm vào giỏ hàng
+  document.getElementById("add-cart")
+  .onclick = () => {
+
+    const activeSize =
+      document.querySelector(".sizes span.active");
+
+    if (!activeSize) {
+      alert("Vui lòng chọn size");
+      return;
+    }
+
+    const quantity =
+      Number(document.getElementById("qty").value);
+
+    const mainImg =
+      document.getElementById("main-img").src;
+
+    const product = {
+
+      _id: currentProduct._id,
+
+      name: currentProduct.name,
+
+      price: currentProduct.price,
+
+      image: mainImg,
+
+      size: activeSize.innerText,
+
+      quantity,
+
+      color: selectedColor || "",
+
+    };
+
+    addToCart(product);
+
+    renderCart();
+
+    openCart();
+
   };
 
-  // buy now
+  // mua ngay
   document.querySelector(".buy-now").onclick = () => {
     console.log(" Mua ngay:", currentProduct._id);
   };

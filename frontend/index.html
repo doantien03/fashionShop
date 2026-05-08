@@ -7,7 +7,8 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="./css/components/header.css">
-  <link rel="stylesheet" href="./css/pages/product-modal.css"> 
+  <link rel="stylesheet" href="./css/pages/product-modal.css">
+  <link rel="stylesheet" href="./css/components/cart.css"> 
 
 </head>
 
@@ -56,6 +57,47 @@
       </div>
 
     </div>
+  </div>
+
+  <!-- CART SIDEBAR -->
+  <div class="cart-sidebar" id="cartSidebar">
+
+  <!-- overlay -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- content -->
+  <div class="cart-content">
+
+    <!-- header -->
+    <div class="cart-header">
+
+      <h3>GIỎ HÀNG</h3>
+
+      <button id="closeCart">✕</button>
+
+    </div>
+
+    <!-- items -->
+    <div class="cart-items" id="cartItems"></div>
+
+    <!-- footer -->
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>TỔNG TIỀN:</span>
+
+        <strong id="cartTotal">
+          0đ
+        </strong>
+
+      </div>
+
+      <button class="checkout-btn">
+        TIẾN HÀNH ĐẶT HÀNG
+      </button>
+    </div>
+   </div>
   </div>
 
   <!-- FOOTER -->

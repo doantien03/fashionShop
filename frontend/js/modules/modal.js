@@ -90,7 +90,7 @@ function renderModal() {
     currentProduct.colors.map(c => `
       <span
         class="color-item"
-        style="background:${c.name}"
+        style="background:${c.code}"
         data-image="${c.image}">
       </span>
     `).join("");
