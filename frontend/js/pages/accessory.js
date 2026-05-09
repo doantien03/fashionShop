@@ -143,7 +143,7 @@ async function loadProducts({ category, type } = {}) {
   }
 }
 
-export function init() {
+export function initAccessory() {
   bindEvents();
 }
 

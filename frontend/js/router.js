@@ -19,10 +19,8 @@ export function initRouter() {
   window.addEventListener("popstate", () => {
     renderRoute(window.location.pathname);
   });
-
   renderRoute(window.location.pathname);
 }
-
 
 async function renderRoute(path) {
   let page = "home";

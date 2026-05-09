@@ -35,7 +35,7 @@ function renderProducts(products, elementId) {
         </div>
       </div>
 
-      <div class="colors">
+      <div class="shirts-colors">
         ${p.colors.map(c => `
           <span 
             class="color-item"
@@ -143,7 +143,7 @@ async function loadProducts({ category, type } = {}) {
   }
 }
 
-export function init() {
+export function initShirt() {
   bindEvents();
 }
 

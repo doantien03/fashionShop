@@ -1,5 +1,5 @@
 import { getProducts } from "../services/product.js";
-import { addToCart, renderCart, openCart} from "../utils/cart.js";
+import { addToCart, renderCart, openCart} from "../modules/cart.js";
 
 let currentProduct = null;
 let selectedColor = "";

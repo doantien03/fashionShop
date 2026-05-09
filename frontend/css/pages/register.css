@@ -5,10 +5,6 @@
   box-sizing: border-box;
 }
 
-body {
-  padding-top: 60px; 
-}
-
 .register-container {
   display: flex;
   height: 60vh;
@@ -18,7 +14,6 @@ body {
   overflow: hidden;
   border-radius: 15px;
 }
-
 
 /*login left */
 .register-left {
@@ -95,12 +90,12 @@ body {
   border-bottom-left-radius: 200px;
 }
 
-.overlay {
+.register-overlay {
   text-align: center;
   color: white;
 }
 
-.overlay h2 {
+.register-overlay h2 {
   font-size: 30px;
   margin-bottom: 10px;
   color: #FFD700;
@@ -125,48 +120,6 @@ body {
 
 .signin:active {
   transform: scale(0.9); 
-}
-
-.footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 60px;
-  border-top: 1px solid #ddd;
-}
-
-/* LEFT */
-.footer-left {
-  max-width: 300px;
-}
-
-.footer-left p {
-  color: #777;
-  font-size: 14px;
-  margin-top: 10px;
-}
-
-/* CENTER */
-.footer-center {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footer-center h4 {
-  margin-bottom: 10px;
-}
-
-.footer-center a {
-  text-decoration: none;
-  color: #555;
-  font-size: 14px;
-}
-
-/* RIGHT */
-.footer-right p {
-  font-size: 14px;
-  color: #555;
-  margin-top: 5px;
 }
 
 #toast-container {

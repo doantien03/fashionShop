@@ -98,6 +98,15 @@
   margin-bottom: 5px;
 }
 
+.remove-cart {
+  margin-top: 8px;
+  border: none;
+  background: none;
+  color: red;
+  cursor: pointer;
+  font-size: 13px;
+}
+
 /* footer */
 .cart-footer {
   border-top: 1px solid #eee;

@@ -1,8 +1,8 @@
 import { renderHeader } from "./components/header.js";
 import { renderFooter } from "./components/footer.js";
-import { initRouter } from "./router.js";
+import { initRouter } from "./router/router.js";
 import { initModal } from "./modules/modal.js";
-import { initCart, renderCart , openCart } from "./utils/cart.js";
+import { initCart, renderCart , openCart } from "./modules/cart.js";
 
 
 renderHeader();
@@ -10,6 +10,8 @@ renderHeader();
 renderFooter();
 
 initRouter();
+
+initModal();
 
 initCart();
 

@@ -37,7 +37,7 @@ function renderProducts(products, elementId) {
         </div>
       </div>
 
-      <div class="colors">
+      <div class="btn-colors">
         ${p.colors.map(c => `
           <span 
             class="color-item"
@@ -189,7 +189,7 @@ async function loadProducts() {
   }
 }
 
-export function init() {
+export function initHome() {
   loadProducts();
   bindEvents();
   menuEvents();

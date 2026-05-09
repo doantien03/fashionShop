@@ -12,6 +12,10 @@
   display: block;
 }
 
+body {
+  padding-top: 60px; 
+}
+
 /* thanh menu */
 .title-menu {
   display: flex;
@@ -31,7 +35,7 @@
   gap: 30px; 
 }
 
-.menu span {
+.menu a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
@@ -40,11 +44,11 @@
   padding-bottom: 5px;
   transition: 0.3s;
 }
-.menu span:hover {
+.menu a:hover {
   color: black;
 }
 
-.menu span::after {
+.menu a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -55,11 +59,11 @@
   transition: 0.3s;
 }
 
-.menu span:hover::after {
+.menu a:hover::after {
   width: 100%;
 }
 
-.menu span.active::after {
+.menu a.active::after {
   width: 100%;
 }
 
@@ -143,12 +147,12 @@
   filter: brightness(0) invert(1);
 }
 
-/* đổi màu khi click titlt màu */
-.btn-colors {
+/* màu */
+.pants-colors {
   margin: 10px 0;
 }
 
-.btn-colors span {
+.pants-colors span {
   display: inline-block;
   width: 15px;
   height: 15px;

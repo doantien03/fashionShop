@@ -8,7 +8,15 @@
   <!-- CSS -->
   <link rel="stylesheet" href="./css/components/header.css">
   <link rel="stylesheet" href="./css/pages/product-modal.css">
-  <link rel="stylesheet" href="./css/components/cart.css"> 
+  <link rel="stylesheet" href="./css/components/cart.css">
+  <link rel="stylesheet" href="./css/pages/home.css">
+  <link rel="stylesheet" href="./css/components/footer.css">
+  <link rel="stylesheet" href="./css/components/toast.css">
+  <link rel="stylesheet" href="./css/pages/register.css">
+  <link rel="stylesheet" href="./css/pages/login.css">
+  <link rel="stylesheet" href="./css/pages/shirts.css">
+  <link rel="stylesheet" href="./css/pages/product-detail.css">
+  <link rel="stylesheet" href="./css/pages/pants.css">
 
 </head>
 
@@ -26,7 +34,6 @@
 
     <div class="modal-content">
       
-      <!-- LEFT -->
       <div class="modal-left">
         <div class="thumbs" id="modal-thumbs"></div>
         <div class="main-image">
@@ -34,9 +41,8 @@
         </div>
       </div>
 
-      <!-- RIGHT -->
       <div class="modal-right">
-        <button class="close-modal" id="closeModal">✕</button>
+        <button class="close-modal" id="closeModal"> ✕ </button>
 
         <h3 id="modal-name"></h3>
         <p class="status">Còn hàng</p>
@@ -59,25 +65,15 @@
     </div>
   </div>
 
-  <!-- CART SIDEBAR -->
+  <!-- Sidebar Cart-->
   <div class="cart-sidebar" id="cartSidebar">
-
-  <!-- overlay -->
   <div class="cart-overlay" id="cartOverlay"></div>
-
-  <!-- content -->
   <div class="cart-content">
-
-    <!-- header -->
     <div class="cart-header">
 
       <h3>GIỎ HÀNG</h3>
-
-      <button id="closeCart">✕</button>
-
+      <button id="closeCart"> ✕ </button>
     </div>
-
-    <!-- items -->
     <div class="cart-items" id="cartItems"></div>
 
     <!-- footer -->
