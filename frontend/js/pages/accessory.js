@@ -35,7 +35,7 @@ function renderProducts(products, elementId) {
         </div>
       </div>
 
-      <div class="colors">
+      <div class="accessory-colors">
         ${p.colors.map(c => `
           <span 
             class="color-item"
@@ -143,8 +143,8 @@ async function loadProducts({ category, type } = {}) {
   }
 }
 
-export function initAccessory() {
+export function initAccessory(options) {
   bindEvents();
+  renderAccessory(options);
 }
 
-window.renderAccessory = renderAccessory;

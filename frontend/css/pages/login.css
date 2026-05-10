@@ -5,11 +5,7 @@
   box-sizing: border-box;
 }
 
-body {
-  padding-top: 60px; 
-}
-
-.login-container {
+.login .login-container {
   display: flex;
   height: 60vh;
   width: 50%;
@@ -21,33 +17,33 @@ body {
 
 
 /*login left */
-.login-left {
+.login .login-left {
   width: 55%;
   padding: 60px;
   background: #f5efe6;
 }
 
-.login-left h2 {
+.login .login-left h2 {
   margin: 20px 0;
   text-align: center;
   font-weight: bold;
 
 }
 
-.login-left input {
+.login .login-left input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
   border-radius: 20px;
 }
 
-.login-options {
+.login .login-options {
   text-align: right;
   padding-right: 15px;
   font-size: 12px;
 }
 
-.login-left button  {
+.login .login-left button  {
   width: 100%;
   padding: 10px;
   background: #6c63ff;
@@ -59,18 +55,18 @@ body {
   transition: 0.3s;
 }
 
-.login-left button:hover {
+.login .login-left button:hover {
   background: #8a84ff;
   color: white;
 }
 
-.login-left button:active {
+.login .login-left button:active {
   transform: scale(0.9); 
 }
 
 /* login right */
 
-.login-right {
+.login .login-right {
   width: 45%;
   background: linear-gradient(135deg, #5f6cff, #7b4dff);
   display: flex;
@@ -80,18 +76,18 @@ body {
   border-bottom-left-radius: 200px;
 }
 
-.login-overlay {
+.login .login-overlay {
   text-align: center;
   color: white;
 }
 
-.login-overlay h2 {
+.login .login-overlay h2 {
   font-size: 30px;
   margin-bottom: 10px;
   color: #FFD700;
 }
 
-.signup {
+.login .signup {
   margin-top: 15px;
   padding: 10px 20px;
   border: 1px solid white;
@@ -103,12 +99,12 @@ body {
   transition: 0.3s;
 }
 
-.signup:hover {
+.login .signup:hover {
   background: #8a84ff;
   color: white;
 }
 
-.signup:active {
+.login .signup:active {
   transform: scale(0.9); 
 }
 

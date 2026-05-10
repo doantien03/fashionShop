@@ -49,7 +49,7 @@ export function handleCategory(path) {
     type = "day-lung";
   }
   
-//   return { category, type };
+  return { category, type };
 
   //  gọi sang trang pages js
   if (path.startsWith("/ao")) {

@@ -97,7 +97,6 @@ function bindEvents() {
     const buyBtn = e.target.closest(".btn-buy");
     if (buyBtn) {
       e.stopPropagation();
-
       const product = buyBtn.closest(".product");
       const id = product.dataset.id;
 

@@ -1,5 +1,8 @@
 import { handleCategory } from "./handleCategory.js";
 import { initHome } from "../pages/home.js";
+import { initShirt } from "../pages/shirts.js";
+import { initPants } from "../pages/pants.js";
+import { initAccessory } from "../pages/accessory.js";
 
 export function initPage(path) {
   if ( path === "/" || path === "/home") {
@@ -15,7 +18,16 @@ export function initPage(path) {
     window.initProductDetail?.(path);
   }
   // category
-  if (path.startsWith("/ao") || path.startsWith("/quan") || path.startsWith("/phu-kien")) {
-    handleCategory(path);
+  if (path.startsWith("/ao")) {
+    const options = handleCategory(path);
+    initShirt(options);
+  }
+  if (path.startsWith("/quan")) {
+    const options = handleCategory(path);
+    initPants(options);
+  }
+  if (path.startsWith("/phu-kien")) {
+    const options = handleCategory(path);
+    initAccessory(options);
   }
 }

@@ -109,7 +109,6 @@ function bindEvents() {
       handleColorClick(e);
       return;
     }
-
     if (e.target.closest(".product")) {
       handleCardClick(e);
     }
@@ -142,8 +141,9 @@ async function loadProducts({ category, type } = {}) {
   }
 }
 
-export function initPants() {
+export function initPants(options) {
   bindEvents();
+  renderPants(options);
 }
 
-window.renderPants = renderPants;
+
