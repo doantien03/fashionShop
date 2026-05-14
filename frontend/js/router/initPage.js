@@ -3,6 +3,7 @@ import { initHome } from "../pages/home.js";
 import { initShirt } from "../pages/shirts.js";
 import { initPants } from "../pages/pants.js";
 import { initAccessory } from "../pages/accessory.js";
+import { initCartPage } from "../pages/cart.js";
 
 export function initPage(path) {
   if ( path === "/" || path === "/home") {
@@ -13,6 +14,9 @@ export function initPage(path) {
   }
   if (path === "/login") {
     window.initLogin?.();
+  }
+  if (path === "/cart") {
+    initCartPage();
   }
   if (path.startsWith("/product/")) {
     window.initProductDetail?.(path);

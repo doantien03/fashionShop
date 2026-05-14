@@ -19,10 +19,10 @@ export function renderHeader() {
             Tài khoản
           </a>
 
-          <span class="cart">
+          <a href="/cart" class="account-link">
             <img src="../assets/icons/cart.svg" class="icon-top" />
             Giỏ hàng (<span id="cart-count">0</span>)
-          </span>
+          </a>
         </div>
       </div>
       

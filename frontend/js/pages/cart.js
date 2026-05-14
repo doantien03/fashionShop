@@ -1,14 +1,11 @@
-import {  getCart, removeCartItem } from "../modules/cart.js";
+import { getCart,removeCartItem } from "../modules/cart.js";
 
-export function renderCartPage() {
+function CartPage() {
   const cart = getCart();
 
-  const cartList =
-    document.getElementById("cart-list");
+  const cartList = document.querySelector(".page-items");
 
-  const cartTotal =
-    document.getElementById("cart-total");
-
+  const cartTotal = document.querySelector(".page-total");
   // cart rỗng
   if (cart.length === 0) {
 
@@ -54,7 +51,7 @@ export function renderCartPage() {
 
   // tổng tiền
   const total = cart.reduce((sum, item) => {
-    return sum + ( item.price * item.quantit );
+    return sum + ( item.price * item.quantity );
     }, 0);
 
   cartTotal.innerText =
@@ -71,7 +68,11 @@ export function renderCartPage() {
           button.dataset.size,
           button.dataset.color
         );
-        renderCartPage();
+        CartPage();
       };
   });
+}
+
+export function initCartPage() {
+  CartPage();
 }

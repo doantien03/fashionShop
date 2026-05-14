@@ -4,7 +4,6 @@ import { initRouter } from "./router/router.js";
 import { initModal } from "./modules/modal.js";
 import { initCart, renderCart} from "./modules/cart.js";
 
-
 renderHeader();
 
 renderFooter();
