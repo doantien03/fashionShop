@@ -15,7 +15,7 @@ export function showToast(message, type = "success") {
   toast.className = "toast " + type;
 
   toast.innerHTML = `
-    <span class="icon">${icons[type] || "ℹ"}</span>
+    <span class="toast-icon">${icons[type] || "ℹ"}</span>
     <span class="message">${message}</span>
   `;
 
