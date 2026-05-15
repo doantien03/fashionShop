@@ -10,4 +10,6 @@ export const routes = {
 
   "/cart": "cart",
 
+  "/checkout": "checkout",
+
 };

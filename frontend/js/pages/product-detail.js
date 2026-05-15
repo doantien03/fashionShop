@@ -5,7 +5,6 @@ let currentProduct = null;
 let selectedColor = "";
 
 export async function initProductDetail(path) {
-  
   const id = path.split("/product/")[1];
 
   try {
@@ -15,7 +14,6 @@ export async function initProductDetail(path) {
       document.body.innerHTML = "<h2>Lỗi tải sản phẩm</h2>";
       return;
     }
-
     currentProduct = res.data.products.find(p => p._id === id);
 
     if (!currentProduct) {
@@ -130,8 +128,7 @@ function bindEvents() {
   document.getElementById("add-cart")
   .onclick = () => {
 
-    const activeSize =
-      document.querySelector(".sizes span.active");
+    const activeSize = document.querySelector(".sizes span.active");
 
     if (!activeSize) {
       alert("Vui lòng chọn size");
