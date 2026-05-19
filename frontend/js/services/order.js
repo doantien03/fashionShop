@@ -5,11 +5,8 @@ export async function createOrder(data){
   const response = await fetch(ENDPOINTS.orders.create,
     {
       method:"POST",
-      headers:
-      getHeaders(),
-
-      body:
-      JSON.stringify(data)
+      headers:getHeaders(true),
+      body:JSON.stringify(data)
     }
   );
   return response.json();

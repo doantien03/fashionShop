@@ -14,6 +14,7 @@ export function renderHeader() {
         </div>
 
         <div class="right">
+        
           <a href="/register" class="account-link">
             <img src="../assets/icons/user.svg" class="icon-top" />
             Tài khoản

@@ -2,6 +2,7 @@ import { loadPage } from "../utils/loadPage.js";
 import { setActiveLink } from "../utils/setActiveLink.js";
 import { routes } from "./routes.js";
 import { initPage } from "./initPage.js";
+import { requireAuth } from "./guard.js";
 
 export function initRouter() {
   document.addEventListener("click",handleNavigation);
@@ -23,6 +24,13 @@ function handleNavigation(e) {
 }
 
 async function renderRoute(path) {
+  const protectedRoutes = ["/checkout","/orders"];
+  if(protectedRoutes.includes(path)){
+    if(!requireAuth()){
+      return;
+      }
+    }
+   
   document.querySelector(".cart-sidebar")?.classList.remove("active");
   let page = routes[path];
   // category pages
