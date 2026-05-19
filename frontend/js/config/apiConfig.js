@@ -21,6 +21,9 @@ export const ENDPOINTS = {
     create: `${API}/orders`,
     getAll: `${API}/orders`,
     getById: (id) => `${API}/orders/${id}`,
+    updateStatus: (id) => `${API}/orders/${id}/status`,
+    delete: (id) => `${API}/orders/${id}`,
+    // getMyOrders: `${API}/orders/my`
   }
 };
 

@@ -44,14 +44,15 @@ exports.login = async (req, res) => {
       return res.status(400).json({ message: "Sai mật khẩu" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-
-    res.json({
-      message: "Đăng nhập thành công",
-      token
-    });
-
-  } catch (err) {
-    res.status(500).json({ message: "Lỗi server" });
-  }
-};
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {expiresIn:"30d"});
+    res.json({message: "Đăng nhập thành công",
+              token,
+              user:{ _id:user._id,
+                     name:user.name,
+                     email:user.email,
+                     role:user.role}
+                    });
+                    } catch (err) {
+                       res.status(500).json({ message: "Lỗi server" });
+                    }
+                 };

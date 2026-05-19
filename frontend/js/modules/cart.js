@@ -74,7 +74,7 @@ function updateCart(id,size,color,type) {
   saveCart(cart);
 }
 
-// Hiển thị tổng sản phẩm ỏ thanh cart header
+// Hiển thị tổng sản phẩm ở thanh cart header
 function updateCount() {
   const cart = getCart();
   const countEl = document.getElementById("cart-count");
@@ -87,6 +87,43 @@ function updateCount() {
     0
   );
   countEl.innerText = total;
+}
+
+// lấy tổng tiền của cart
+function getCartTotal() {
+  const cart = getCart();
+  return cart.reduce(
+    (sum,item) => { return sum +(item.price * item.quantity); 
+    }, 0
+  );
+}
+
+// trả về thông tin sản phẩm ở trang checkout
+function Checkout() {
+  const cart = getCart();
+  const container = document.getElementById("checkout-products");
+  container.innerHTML = cart.map(item => `
+    <div class="checkout-product">
+      <img src="${item.image}" />
+      <div>
+        <h4>${item.name}</h4>
+        <p>Màu: ${item.color}</p>
+        <p>Size: ${item.size}</p>
+        <p>Giá: ${item.price.toLocaleString("vi-VN")}đ × ${item.quantity}</p>
+
+        <button
+           class="remove-cart"
+           data-id="${item._id}"
+           data-size="${item.size}"
+           data-color="${item.color}"> Xóa
+        </button>
+      </div>
+    </div>
+  `).join("");
+
+  const total = getCartTotal();
+  document.getElementById("checkout-subtotal").innerText = total.toLocaleString("vi-VN") + "đ";
+  document.getElementById("checkout-total").innerText = total.toLocaleString("vi-VN") + "đ";
 }
 
 // render giỏ hàng
@@ -104,11 +141,7 @@ function renderCart() {
         <h4>${item.name}</h4>
         <p>Màu: ${item.color}</p>
         <p>Size: ${item.size}</p>
-
-        <p>
-          ${item.price.toLocaleString("vi-VN")}đ
-          × ${item.quantity}
-        </p>
+        <p>Giá: ${item.price.toLocaleString("vi-VN")}đ × ${item.quantity}</p>
 
         <button
            class="remove-cart"
@@ -135,11 +168,8 @@ function renderCart() {
   });
 
   // tính tổng tiền
-  const total = cart.reduce((sum, item) => {
-    return sum + item.price * item.quantity;  }, 0);
-
-  cartTotal.innerText =
-    total.toLocaleString("vi-VN") + "đ"; 
+  const total = getCartTotal();
+  cartTotal.innerText =total.toLocaleString("vi-VN") + "đ"; 
 }
 
 // mở sidebar cart
@@ -178,5 +208,7 @@ export {
   closeCart,
   initCart,
   updateCart,
-  updateCount
+  updateCount,
+  getCartTotal,
+  Checkout,
 };

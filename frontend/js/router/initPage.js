@@ -4,6 +4,7 @@ import { initShirt } from "../pages/shirts.js";
 import { initPants } from "../pages/pants.js";
 import { initAccessory } from "../pages/accessory.js";
 import { initCartPage } from "../pages/cart.js";
+import { initCheckout } from "../pages/checkout.js";
 
 export function initPage(path) {
   if ( path === "/" || path === "/home") {
@@ -17,6 +18,9 @@ export function initPage(path) {
   }
   if (path === "/cart") {
     initCartPage();
+  }
+  if (path === "/checkout") {
+    initCheckout();
   }
   if (path.startsWith("/product/")) {
     window.initProductDetail?.(path);

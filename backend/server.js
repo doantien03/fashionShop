@@ -10,19 +10,19 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+
 app.use(cors());
 app.use(express.json());
 
 //route
 app.use("/api/auth", require("./routes/userRoute"));
 app.use("/api/products", require("./routes/productRoute"));
+app.use("/api/orders", require("./routes/orderRoute"));
 
 app.use(express.static(path.join(__dirname, "../frontend")));
-
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
-
 
 // test route
 app.get("/", (req, res) => {

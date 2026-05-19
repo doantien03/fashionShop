@@ -4,20 +4,11 @@ import { routes } from "./routes.js";
 import { initPage } from "./initPage.js";
 
 export function initRouter() {
-  document.addEventListener(
-    "click",
-    handleNavigation
-  );
-  window.addEventListener(
-    "popstate",
-    () => {
-      renderRoute(
-        window.location.pathname
-      );
+  document.addEventListener("click",handleNavigation);
+  window.addEventListener("popstate",() => {
+      renderRoute(window.location.pathname);
   });
-  renderRoute(
-    window.location.pathname
-  );
+  renderRoute(window.location.pathname);
 }
 
 function handleNavigation(e) {
@@ -27,14 +18,12 @@ function handleNavigation(e) {
   
   if (!href || !href.startsWith("/")) return;
   e.preventDefault();
-  history.pushState(
-    {},
-    "",href
-  );
+  history.pushState({},"",href);
   renderRoute(href);
 }
 
 async function renderRoute(path) {
+  document.querySelector(".cart-sidebar")?.classList.remove("active");
   let page = routes[path];
   // category pages
   if (path.startsWith("/ao")) {
@@ -53,6 +42,12 @@ async function renderRoute(path) {
   ) {
     page = "product-detail";
   }
+  else if (
+    path === "/checkout"
+  ) {
+    page = "checkout";
+  }
+  
   // fallback
   if (!page) {
     page = "home";

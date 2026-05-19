@@ -5,7 +5,7 @@
 
     <div class="checkout-breadcrumb">
       <a href="/cart">Giỏ hàng</a>
-      <span>›</span>
+      <span> › </span>
       <span>Thanh toán</span>
     </div>
 
@@ -16,6 +16,7 @@
     <form class="checkout-form">
 
       <input
+        id="customerName"
         type="text"
         placeholder="Họ tên"
       />
@@ -23,11 +24,13 @@
       <div class="checkout-row">
 
         <input
+          id="email"
           type="email"
           placeholder="Email"
         />
 
         <input
+          id="phone"
           type="text"
           placeholder="Số điện thoại"
         />
@@ -35,33 +38,58 @@
       </div>
 
       <input
+        id="address"
         type="text"
         placeholder="Địa chỉ"
       />
 
       <div class="checkout-row">
 
-        <select>
-          <option>Tỉnh / Thành phố</option>
-        </select>
+        <input
+          id="city"
+          type="text"
+          placeholder="Tỉnh / Thành phố"
+        />
 
-        <select>
-          <option>Quận / Huyện</option>
-        </select>
+        <input
+          id="district"
+          type="text"
+          placeholder="Quận / Huyện"
+        />
 
       </div>
 
-      <select>
-        <option>Phường / Xã</option>
-      </select>
+      <input
+        id="ward"
+        type="text"
+        placeholder="Phường / Xã"
+      />
 
       <textarea
+        id="note"
         placeholder="Ghi chú"
       ></textarea>
+
+      <select id="paymentMethod">
+
+        <option value="COD">
+          Thanh toán khi nhận hàng
+        </option>
+
+        <option value="MOMO">
+          MOMO
+        </option>
+
+        <option value="VNPAY">
+          VNPAY
+        </option>
+
+      </select>
 
     </form>
 
   </section>
+
 
   <!-- RIGHT -->
   <aside class="checkout-right">
@@ -72,6 +100,7 @@
 
       <div class="summary-row">
         <span>Tạm tính</span>
+
         <strong id="checkout-subtotal">
           0đ
         </strong>
@@ -83,15 +112,21 @@
       </div>
 
       <div class="summary-row total">
+
         <span>Tổng cộng</span>
 
         <strong id="checkout-total">
           0đ
         </strong>
+
       </div>
 
-      <button class="checkout-order-btn">
+      <button
+        id="placeOrderBtn"
+        class="checkout-order-btn">
+
         ĐẶT HÀNG
+
       </button>
 
     </div>

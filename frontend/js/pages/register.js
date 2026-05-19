@@ -1,11 +1,18 @@
 import { registerAPI } from "../services/auth.js";
 import { showToast } from "../utils/toast.js";
 import { validateEmail, validatePassword } from "../utils/validator.js";
+import { getToken } from "../utils/storage.js";
 
 async function handleRegister() {
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
+  
+  // đã login
+  // if(getToken()){
+  //   showToast("Bạn đã đăng nhập","info");
+  //   return;
+  // }
 
   // validate
   if (!name || !email || !password) {
