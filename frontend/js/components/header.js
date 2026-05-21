@@ -1,9 +1,14 @@
+import { getUser, removeUser, removeToken } from "../utils/storage.js";
+
 let isScroll = false;
 
 export function renderHeader() {
   const header = document.getElementById("header");
   if (!header) return; 
-
+  
+  // lấy thông tin user đã login
+  const user = getUser();
+  
   header.innerHTML = ` 
     <header class="header">
 
@@ -15,11 +20,26 @@ export function renderHeader() {
 
         <div class="right">
         
-          <a href="/register" class="account-link">
-            <img src="../assets/icons/user.svg" class="icon-top" />
-            Tài khoản
-          </a>
+          ${
+            user
+              ? `
+              <a href="/profile" class="account-link">
+                <img src="../assets/icons/user.svg" class="icon-top" />
+                ${user.name}
+              </a>
 
+              <a href="#" id="logout-btn" class="account-link">
+                <img src="../assets/icons/user.svg" class="icon-top" />
+                Đăng xuất
+              </a>
+            `
+              : `
+              <a href="/login" class="account-link">
+                <img src="../assets/icons/user.svg" class="icon-top" />
+                Tài khoản
+              </a>
+            `
+          }
           <a href="/cart" class="account-link">
             <img src="../assets/icons/cart.svg" class="icon-top" />
             Giỏ hàng (<span id="cart-count">0</span>)
@@ -71,7 +91,20 @@ export function renderHeader() {
     </header>
   `;
 
-  
+  // xử lý logout
+  const logoutBtn = document.getElementById("logout-btn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      removeUser();
+      removeToken();
+      renderHeader();
+      
+      history.pushState({}, "", "/home");
+      window.renderRoute("/home");
+    });
+  }
+
   if (!isScroll) {
     const headerEl = document.querySelector(".header");
 

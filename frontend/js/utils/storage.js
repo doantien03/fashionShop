@@ -14,9 +14,14 @@ export function saveUser(user){
   localStorage.setItem("user",JSON.stringify(user));
 }
 
-export function getUser(){
-  return JSON.parse(localStorage.getItem("user")
-  );
+export function getUser() {
+  const user = localStorage.getItem("user");
+
+  try {
+    return user ? JSON.parse(user) : null;
+  } catch {
+    return null;
+  }
 }
 
 export function removeUser(){

@@ -2,6 +2,7 @@ import { loginAPI } from "../services/auth.js";
 import { showToast } from "../utils/toast.js";
 import { validateEmail, validatePassword } from "../utils/validator.js";
 import { saveToken,saveUser } from "../utils/storage.js";
+import { renderHeader } from "../components/header.js";
 
 async function handleLogin() {
   const email = document.getElementById("email").value.trim();
@@ -31,6 +32,7 @@ async function handleLogin() {
       saveToken(data.token);
       saveUser(data.user);
       setTimeout(() => {
+        renderHeader();
         history.pushState({}, "", "/home");
           window.renderRoute("/home");
       }, 1000);
