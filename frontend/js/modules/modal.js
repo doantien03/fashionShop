@@ -2,61 +2,38 @@ import { getProducts } from "../services/product.js";
 
 let currentProduct = null;
 
-// ================= OPEN MODAL =================
+// mở modal 
 export async function openModal(id) {
-
   const res = await getProducts();
-
   currentProduct = res.data.products.find(
     p => p._id === id
   );
-
   if (!currentProduct) return;
-
-  const modal =
-    document.getElementById("productModal");
-
+  const modal = document.getElementById("productModal");
   modal.classList.add("active");
 
   // khóa scroll nền
   document.body.classList.add("no-scroll");
-
   renderModal();
 }
 
-// ================= RENDER =================
+// render modal
 function renderModal() {
 
-  // ===== ELEMENTS =====
-  const modalName =
-    document.getElementById("modal-name");
+  const modalName = document.getElementById("modal-name");
+  const modalPrice = document.getElementById("modal-price");
+  const mainImg = document.getElementById("modal-main-img");
+  const thumbs = document.getElementById("modal-thumbs");
+  const colors = document.getElementById("modal-colors");
 
-  const modalPrice =
-    document.getElementById("modal-price");
+  modalName.innerText = currentProduct.name;
+  modalPrice.innerText = currentProduct.price.toLocaleString("vi-VN") + "đ";
 
-  const mainImg =
-    document.getElementById("modal-main-img");
+  //  MAIN IMAGE
+  mainImg.src = currentProduct.thumbnail;
 
-  const thumbs =
-    document.getElementById("modal-thumbs");
-
-  const colors =
-    document.getElementById("modal-colors");
-
-  // ===== INFO =====
-  modalName.innerText =
-    currentProduct.name;
-
-  modalPrice.innerText =
-    currentProduct.price.toLocaleString("vi-VN") + "đ";
-
-  // ===== MAIN IMAGE =====
-  mainImg.src =
-    currentProduct.thumbnail;
-
-  // ===== THUMBNAILS =====
-  thumbs.innerHTML =
-    currentProduct.colors.map((c, index) => `
+  //  THUMBNAILS 
+  thumbs.innerHTML = currentProduct.colors.map((c, index) => `
       <img
         src="${c.image}"
         data-image="${c.image}"
@@ -67,25 +44,20 @@ function renderModal() {
   // click thumbnail
   thumbs.onclick = (e) => {
 
-    const img =
-      e.target.closest(".thumb-item");
+    const img = e.target.closest(".thumb-item");
 
     if (!img) return;
-
     // đổi ảnh
-    mainImg.src =
-      img.dataset.image;
+    mainImg.src = img.dataset.image;
 
     // active
-    document.querySelectorAll(".thumb-item")
-      .forEach(t =>
+    document.querySelectorAll(".thumb-item").forEach(t =>
         t.classList.remove("active")
       );
-
     img.classList.add("active");
   };
 
-  // ===== COLORS =====
+  //  COLORS 
   colors.innerHTML =
     currentProduct.colors.map(c => `
       <span
@@ -97,32 +69,21 @@ function renderModal() {
 
   // click color
   colors.onclick = (e) => {
-
-    const color =
-      e.target.closest(".color-item");
+    const color = e.target.closest(".color-item");
 
     if (!color) return;
-
-    mainImg.src =
-      color.dataset.image;
+    mainImg.src = color.dataset.image;
   };
 }
 
-// ================= INIT =================
+// INIT 
 export function initModal() {
-
-  document.getElementById("closeModal")
-    .onclick = closeModal;
-
-  document.querySelector(".modal-overlay")
-    .onclick = closeModal;
+  document.getElementById("closeModal").onclick = closeModal;
+  document.querySelector(".modal-overlay").onclick = closeModal;
 }
 
-// ================= CLOSE =================
+// CLOSE 
 function closeModal() {
-
-  document.getElementById("productModal")
-    .classList.remove("active");
-
+  document.getElementById("productModal").classList.remove("active");
   document.body.classList.remove("no-scroll");
 }

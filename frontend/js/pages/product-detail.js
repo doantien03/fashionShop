@@ -38,7 +38,7 @@ function renderProduct() {
   document.getElementById("price").innerText =
     currentProduct.price.toLocaleString("vi-VN") + "đ";
 
-  document.getElementById("main-img").src =
+  document.getElementById("main-image").src =
     currentProduct.thumbnail;
 
   // thumbnails theo hàng dọc
@@ -52,45 +52,41 @@ function renderProduct() {
   const colors = document.getElementById("colors");
   const colorNameEl = document.getElementById("select-color");
 
-  colors.innerHTML = currentProduct.colors.map(c => `
-    <span 
-       class="color-item"
-       style="background:${c.code}"
-       data-image="${c.image}"
-       data-name="${c.name}"       
-    ></span>
-      `).join("");
+  colors.innerHTML = currentProduct.colors.map((c, index) => `
+  <div 
+    class="color-item"
+    data-image="${c.image}"
+    data-name="${c.name}"
+  >
+    <img src="${c.image}" alt="${c.name}">
+  </div>
+    `).join("");
 
   // mặc định hiện màu đầu tiên
   if (currentProduct.colors.length > 0) {
      colorNameEl.textContent = currentProduct.colors[0].name;
   }
-
-  // chọn màu sản phẩm 
-  document.querySelectorAll(".color-item").forEach(item => {
-     item.addEventListener("click", () => {
-
-      selectedColor = item.dataset.name;
-
-     // hiện tên màu 
-     colorNameEl.textContent = item.dataset.name;
-
-     // đổi ảnh
-     const newImage = item.dataset.image;
-     document.getElementById("main-image").src = newImage;
-    });
-   });
 }
 
 function bindEvents() {
 
-  // đổi ảnh (colors)
+  // chọn màu
   document.getElementById("colors").onclick = (e) => {
     const color = e.target.closest(".color-item");
     if (!color) return;
 
-    document.getElementById("main-img").src =
-      color.dataset.image;
+    // đổi ảnh + lưu màu
+    document.getElementById("main-image").src = color.dataset.image;
+    selectedColor = color.dataset.name;
+
+    // hiển thị tên màu
+    document.getElementById("select-color").textContent = color.dataset.name;
+
+    // active UI (viền đen)
+    document.querySelectorAll(".color-item").forEach(el => {
+      el.classList.remove("active");
+    });
+    color.classList.add("active");
   };
 
   // đổi ảnh thumbnail
@@ -98,7 +94,7 @@ function bindEvents() {
     const img = e.target.closest("img");
     if (!img) return;
 
-    document.getElementById("main-img").src =
+    document.getElementById("main-image").src =
       img.dataset.image;
   };
 
@@ -124,47 +120,43 @@ function bindEvents() {
     }
   };
 
+function showMessage(text){
+  const msg = document.getElementById("product-message");
+  msg.innerText = text;
+  msg.classList.add("show");
+
+  setTimeout(()=>{
+    msg.classList.remove(
+      "show"
+    );
+    msg.innerText = "";
+  },3000);
+}
+
   //lấy thông tin thêm vào giỏ hàng
-  document.getElementById("add-cart")
-  .onclick = () => {
-
+  document.getElementById("add-cart").onclick = () => {
     const activeSize = document.querySelector(".sizes span.active");
+    if (!selectedColor || !activeSize) {
+    showMessage("Vui lòng chọn màu sắc và kích cỡ");
+    return;
+  }
 
-    if (!activeSize) {
-      alert("Vui lòng chọn size");
-      return;
-    }
-
-    const quantity =
-      Number(document.getElementById("qty").value);
-
-    const mainImg =
-      document.getElementById("main-img").src;
-
+    const quantity = Number(document.getElementById("qty").value);
+    const mainImg = document.getElementById("main-image").src;
     const product = {
 
       _id: currentProduct._id,
-
       name: currentProduct.name,
-
       price: currentProduct.price,
-
       image: mainImg,
-
       size: activeSize.innerText,
-
       quantity,
-
       color: selectedColor || "",
-
     };
 
     addToCart(product);
-
     renderCart();
-
     openCart();
-
   };
 
   // mua ngay

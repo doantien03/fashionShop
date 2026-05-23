@@ -1,175 +1,131 @@
-// lấy cart từ localStorage
-function getCart() {
-  return JSON.parse(
-    localStorage.getItem("cart")
-  ) || [];
-}
-
-// lưu cart vào localStorage
-function saveCart(cart) {
-  localStorage.setItem(
-    "cart",
-    JSON.stringify(cart)
-  );
-}
+import {getCart,addCart,removeCart,updateCart} from "../services/cart.js";
 
 // thêm sản phẩm vào cart
-function addToCart(product) {
-  const cart = getCart();
-  const existing = cart.find(item =>
-
-    item._id === product._id &&
-    item.size === product.size &&
-    item.color === product.color
+async function addToCart(product){
+  await addCart(
+    product._id,
+    product.color,
+    product.size,
+    product.quantity
   );
-  // sản phẩm tồn tại thì +1 ở SL
-  if (existing) {
-
-    existing.quantity += product.quantity;
-
-  }
-  // chưa có thì thêm mới
-  else {
-    cart.push(product);
-  }
-  saveCart(cart);
-  renderCart();
-  updateCount();
+  await renderCart();
 }
 
 // xóa sản phẩm khỏi giỏ hàng
-function removeCartItem(id,size,color) {
-  let cart = getCart();
-  cart = cart.filter(item => {
-
-    return !(
-      item._id === id &&
-      item.size === size &&
-      item.color === color
-    );
-
-  });
-  saveCart(cart);
-  renderCart();
+async function removeCartItem(productId,size,color){
+  await removeCart(productId,size,color);
+  await renderCart();
+  await updateCount();
 }
 
-// Tăng giảm số lượng trong cart
-function updateCart(id,size,color,type) {
-  const cart = getCart();
 
-  const item = cart.find(item =>
-    item._id === id &&
-    item.size === size &&
-    item.color === color
-  );
-  if (!item) return;
-  if (type === "increase") {
-    item.quantity += 1;
-  }
-  if (type === "decrease") {
-    if (item.quantity > 1) {
-      item.quantity -= 1;
-    }
-  }
-  saveCart(cart);
+// tăng giảm số lượng
+async function updateToCart(productId,size,color,type){
+  await updateCart(productId,size,color,type);
+  await renderCart();
+  await updateCount();
 }
 
 // Hiển thị tổng sản phẩm ở thanh cart header
-function updateCount() {
-  const cart = getCart();
+async function updateCount(){
+  const data = await getCart();
+  const cart = data.items || [];
   const countEl = document.getElementById("cart-count");
-  if (!countEl) return;
 
-  const total = cart.reduce(
-    (sum, item) => {
-      return sum + item.quantity;
-    },
-    0
-  );
+  if(!countEl) return;
+  const total = cart.reduce((sum,item)=> sum + item.quantity,0);
   countEl.innerText = total;
 }
 
 // lấy tổng tiền của cart
-function getCartTotal() {
-  const cart = getCart();
-  return cart.reduce(
-    (sum,item) => { return sum +(item.price * item.quantity); 
-    }, 0
-  );
+async function getCartTotal(){
+  const data = await getCart();
+  const cart = data.items || [];
+  return cart.reduce((sum,item)=> sum + (item.productId.price * item.quantity),0);
 }
 
 // trả về thông tin sản phẩm ở trang checkout
-function Checkout() {
-  const cart = getCart();
+async function Checkout(){
+  const data = await getCart();
+  const cart = data.items || [];
   const container = document.getElementById("checkout-products");
-  container.innerHTML = cart.map(item => `
-    <div class="checkout-product">
-      <img src="${item.image}" />
-      <div>
-        <h4>${item.name}</h4>
-        <p>Màu: ${item.color}</p>
-        <p>Size: ${item.size}</p>
-        <p>Giá: ${item.price.toLocaleString("vi-VN")}đ × ${item.quantity}</p>
 
-        <button
-           class="remove-cart"
-           data-id="${item._id}"
-           data-size="${item.size}"
-           data-color="${item.color}"> Xóa
-        </button>
+  container.innerHTML = cart.map(item=>{
+    const selectedColor = item.productId.colors.find(
+      c => c.name === item.color
+    );
+
+  const image = selectedColor?.image || item.productId.thumbnail;
+  
+  return `
+      <div class="checkout-product">
+        <img src="${image}" />
+        <div>
+          <h4>${item.productId.name}</h4>
+          <p>Màu: ${item.color}</p>
+          <p>Size: ${item.size}</p>
+          <p>Giá: ${item.productId.price.toLocaleString("vi-VN")}đ × ${item.quantity}</p>
+        </div>
       </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 
-  const total = getCartTotal();
+  // tổng tiền sản phẩm trang checkout
+  const total = await getCartTotal();
   document.getElementById("checkout-subtotal").innerText = total.toLocaleString("vi-VN") + "đ";
   document.getElementById("checkout-total").innerText = total.toLocaleString("vi-VN") + "đ";
 }
+  
 
 // render giỏ hàng
-function renderCart() {
-  const cart = getCart();
-  const cartItems =document.getElementById("cartItems");
+async function renderCart(){
+  const data = await getCart();
+  const cart = data.items || [];
+  const cartItems = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
 
-  const cartTotal =document.getElementById("cartTotal");
+  if(!cartItems) return;
+  cartItems.innerHTML = cart.map(item=>{
 
-  // trả về item trong giỏ hàng
-  cartItems.innerHTML = cart.map(item => `
+  const selectedColor = item.productId.colors.find(
+      c => c.name === item.color
+    );
 
-    <div class="cart-item"><img src="${item.image}" />
-       <div class="cart-info">
-        <h4>${item.name}</h4>
+  const image = selectedColor?.image || item.productId.thumbnail;
+    
+    return`
+    <div class="cart-item">
+      <img src="${image}" />
+      <div class="cart-info">
+        <h4> ${item.productId.name} </h4>
         <p>Màu: ${item.color}</p>
         <p>Size: ${item.size}</p>
-        <p>Giá: ${item.price.toLocaleString("vi-VN")}đ × ${item.quantity}</p>
-
+        <p>Giá: ${item.productId.price.toLocaleString("vi-VN")}đ × ${item.quantity}</p>
+        
         <button
-           class="remove-cart"
-           data-id="${item._id}"
-           data-size="${item.size}"
-           data-color="${item.color}"> Xóa
+          class="remove-cart"
+          data-id="${item.productId._id}"
+          data-size="${item.size}"
+          data-color="${item.color}"
+        >
+          Xóa
         </button>
       </div>
     </div>
+   `;
+  }).join("");
 
-  `).join("");
-
-  // xóa sản phẩm trong giỏ hàng onclick 
-  document.querySelectorAll(".remove-cart")
-  .forEach(button => {
-
-    button.onclick = () => {
-      removeCartItem(
-        button.dataset.id,
-        button.dataset.size,
-        button.dataset.color
-      );
-    };
-  });
-
-  // tính tổng tiền
-  const total = getCartTotal();
-  cartTotal.innerText =total.toLocaleString("vi-VN") + "đ"; 
+  document.querySelectorAll(".remove-cart").forEach(button=>{
+      button.onclick=()=>{
+        removeCartItem(
+          button.dataset.id,
+          button.dataset.size,
+          button.dataset.color
+        );
+      };
+    });
+  const total = await getCartTotal();
+  cartTotal.innerText = total.toLocaleString("vi-VN") + "đ";
 }
 
 // mở sidebar cart
@@ -180,14 +136,12 @@ function openCart() {
   document.body.classList.add("no-scroll");
 }
 
-
 // đóng sidebar cart
 function closeCart() {
   document.getElementById("cartSidebar")
     .classList.remove("active");
   document.body.classList.remove("no-scroll");
 }
-
 
 // khởi tạo event cart
 function initCart() {
@@ -199,16 +153,16 @@ function initCart() {
 }
 
 export {
-  getCart,
-  saveCart,
+
   addToCart,
   removeCartItem,
   renderCart,
   openCart,
   closeCart,
   initCart,
-  updateCart,
+  updateToCart,
   updateCount,
   getCartTotal,
-  Checkout,
+  Checkout
+
 };

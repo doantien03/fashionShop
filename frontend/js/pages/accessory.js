@@ -1,6 +1,6 @@
 import { getProducts } from "../services/product.js";
 
-let isEventsBound = false;
+let isBound = false;
 
 function renderProducts(products, elementId) {
   const container = document.getElementById(elementId);
@@ -79,41 +79,68 @@ function handleColorClick(e) {
   e.stopPropagation(); 
 
   const product = color.closest(".product");
+  if (!product) {
+    console.log("Không tìm thấy product");
+    return;
+  }
   const id = product.dataset.id;
   const newImage = color.dataset.image;
-
   const img = document.getElementById(`img-${id}`);
-  if (img) img.src = newImage;
-
+  if (img){ 
+    img.src = newImage;
+  }
   product.querySelectorAll(".color-item")
-    .forEach(c => c.classList.remove("active"));
+         .forEach(c => c.classList.remove("active"));
 
   color.classList.add("active");
 }
 
-function handleCardClick(e) {
-  const card = e.target.closest(".product");
-  if (!card) return;
-
+function handleCardClick(card) {
   const id = card.dataset.id;
-  window.location.href = `product-detail.html?id=${id}`;
+  history.pushState({}, "", `/product/${id}`);
+  window.renderRoute(`/product/${id}`);
 }
 
-//scoped event
+// chọn vùng sự kiện click
 function bindEvents() {
-  const container = document.getElementById("product-accessory");
-  if (!container) return;
+  if (isBound) return;
+  isBound = true;
+  const container = document.getElementById("app");
 
   container.addEventListener("click", (e) => {
-
-    if (e.target.closest(".color-item")) {
+    const color = e.target.closest(".color-item");
+    if (color) {
       handleColorClick(e);
       return;
     }
 
-    if (e.target.closest(".product")) {
-      handleCardClick(e);
+    // click "Mua nhanh"
+    const buyBtn = e.target.closest(".btn-buy");
+    if (buyBtn) {
+      e.stopPropagation();
+      const product = buyBtn.closest(".product");
+      const id = product.dataset.id;
+
+      openModal(id);
+      return;
     }
+  
+    // click "Xem chi tiết"
+    const detailBtn = e.target.closest(".btn-detail");
+    if (detailBtn) {
+      e.stopPropagation();
+
+      const product = detailBtn.closest(".product");
+      handleCardClick(product);
+      return;
+    }
+
+    // click cả card
+    const card = e.target.closest(".product");
+    if (card) {
+      handleCardClick(card);
+    }
+
   });
 }
 

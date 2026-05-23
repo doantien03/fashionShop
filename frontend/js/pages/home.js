@@ -43,6 +43,7 @@ function renderProducts(products, elementId) {
             class="color-item"
             style="background-color: ${c.code}"
             data-image="${c.image}"
+            data-name="${c.name}"
             title="${c.name}">
           </span>
         `).join("")}
@@ -62,14 +63,18 @@ function handleColorClick(e) {
   e.stopPropagation(); 
 
   const product = color.closest(".product");
+  if (!product) {
+    console.log("Không tìm thấy product");
+    return;
+  }
   const id = product.dataset.id;
   const newImage = color.dataset.image;
-
   const img = document.getElementById(`img-${id}`);
-  if (img) img.src = newImage;
-
+  if (img){ 
+    img.src = newImage;
+  }
   product.querySelectorAll(".color-item")
-    .forEach(c => c.classList.remove("active"));
+         .forEach(c => c.classList.remove("active"));
 
   color.classList.add("active");
 }
