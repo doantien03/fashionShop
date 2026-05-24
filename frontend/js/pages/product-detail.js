@@ -160,7 +160,41 @@ function showMessage(text){
   };
 
   // mua ngay
-  document.querySelector(".buy-now").onclick = () => {
-    console.log(" Mua ngay:", currentProduct._id);
-  };
+  document.querySelector(".buy-now").onclick = async () => {
+  const buyBtn = document.querySelector(".buy-now");
+
+  // đang xử lý thì không cho bấm tiếp
+  if (buyBtn.disabled) return;
+  const activeSize = document.querySelector(".sizes span.active");
+  if (!selectedColor || !activeSize) {
+    showMessage("Vui lòng chọn màu sắc và kích cỡ");
+    return;
+  }
+  try {
+    // khóa nút
+    buyBtn.disabled = true;
+    buyBtn.innerText = "Đang xử lý...";
+    const quantity = Number(document.getElementById("qty").value);
+    const product = {
+      _id: currentProduct._id,
+      name: currentProduct.name,
+      price: currentProduct.price,
+      image: document.getElementById("main-image").src,
+      size: activeSize.innerText,
+      quantity,
+      color: selectedColor
+    };
+    await addToCart(product);
+    history.pushState({},"","/checkout");
+    window.renderRoute("/checkout");
+  }
+  catch(error){
+    console.log(error);
+    showMessage("Có lỗi xảy ra");
+  }
+  finally{
+    buyBtn.disabled = false;
+    buyBtn.innerText = "MUA NGAY";
+  }
+};
 }
