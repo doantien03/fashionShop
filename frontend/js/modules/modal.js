@@ -1,6 +1,21 @@
 import { getProducts } from "../services/product.js";
+import { addToCart, renderCart, openCart} from "../modules/cart.js";
 
 let currentProduct = null;
+let selectedColor = "";
+
+// thông báo
+function showMessage(text){
+
+  const msg = document.getElementById("product-message");
+  msg.innerText = text;
+  msg.classList.add("show");
+  setTimeout(() => {
+    msg.classList.remove("show");
+    msg.innerText = "";
+  },3000);
+
+}
 
 // mở modal 
 export async function openModal(id) {
@@ -25,9 +40,24 @@ function renderModal() {
   const mainImg = document.getElementById("modal-main-img");
   const thumbs = document.getElementById("modal-thumbs");
   const colors = document.getElementById("modal-colors");
+  const selectColor = document.getElementById("select-color");
+  const qty = document.getElementById("qty");
 
   modalName.innerText = currentProduct.name;
   modalPrice.innerText = currentProduct.price.toLocaleString("vi-VN") + "đ";
+
+  // reset
+  selectedColor = null;
+  qty.value = 1;
+
+  document.querySelectorAll(".sizes span")
+    .forEach(size=>{
+      size.classList.remove("active");
+    });
+
+  selectColor.textContent =
+    "Vui lòng chọn màu";
+
 
   //  MAIN IMAGE
   mainImg.src = currentProduct.thumbnail;
@@ -57,22 +87,78 @@ function renderModal() {
     img.classList.add("active");
   };
 
-  //  COLORS 
+  // COLORS
+  colors.className="colors";
+
   colors.innerHTML =
-    currentProduct.colors.map(c => `
+    currentProduct.colors.map(c=>`
       <span
         class="color-item"
-        style="background:${c.code}"
-        data-image="${c.image}">
+        data-image="${c.image}"
+        data-name="${c.name}"
+      >
+        <img
+          src="${c.image}"
+          alt="${c.name}"
+        >
       </span>
     `).join("");
 
-  // click color
-  colors.onclick = (e) => {
+  colors.onclick=(e)=>{
     const color = e.target.closest(".color-item");
-
-    if (!color) return;
+    if(!color) return;
     mainImg.src = color.dataset.image;
+    selectedColor = color.dataset.name;
+    selectColor.textContent = selectedColor;
+    document.querySelectorAll(".color-item").forEach(el=>{ el.classList.remove(
+          "active"
+        );
+      });
+    color.classList.add("active");
+  };
+
+  // SIZE
+  document.querySelectorAll(".sizes span").forEach(size=>{
+    size.onclick=()=>{
+      document.querySelectorAll(".sizes span").forEach(s=>{s.classList.remove(
+          "active"
+        );
+      });
+      size.classList.add("active");
+    };
+  });
+
+  // QUANTITY
+  document.getElementById("plus").onclick=()=>{
+    qty.value = Number(qty.value)+1;
+  };
+
+  document.getElementById("minus").onclick=()=>{
+    if(qty.value>1){
+      qty.value = Number(qty.value)-1;
+    }
+  };
+
+  // ADD CART
+  document.getElementById("add-cart").onclick=()=>{
+    const activeSize = document.querySelector(".sizes span.active");
+    if(!selectedColor || !activeSize){
+      showMessage("Vui lòng chọn màu sắc và kích thước");
+      return;
+    }
+    const product={
+      _id:currentProduct._id,
+      name:currentProduct.name,
+      price:currentProduct.price,
+      image:mainImg.src,
+      color:selectedColor,
+      size:activeSize.innerText,
+      quantity:Number(qty.value)
+    };
+    addToCart(product);
+    renderCart();
+    openCart();
+    closeModal();
   };
 }
 

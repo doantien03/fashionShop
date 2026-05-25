@@ -51,7 +51,11 @@
         <p class="status">Còn hàng</p>
         <p class="price" id="modal-price"></p>
 
+        <!-- thông báo lỗi -->
+        <p id="product-message"></p>
+        
         <h4>MÀU SẮC</h4>
+        <p id="select-color">Vui lòng chọn màu</p>
         <div id="modal-colors"></div>
 
         <h4>KÍCH THƯỚC</h4>
@@ -62,7 +66,13 @@
           <span>2XL</span>
         </div>
 
-        <button href="/checkout" class="buy-btn">SỞ HỮU NGAY</button>
+        <div class="quantity">
+          <button id="minus">-</button>
+          <input id="qty" value="1">
+          <button id="plus">+</button>
+        </div>
+
+        <button id="add-cart" class="buy-btn">SỞ HỮU NGAY</button>
       </div>
 
     </div>
