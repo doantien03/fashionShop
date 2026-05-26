@@ -39,8 +39,15 @@
       
       <div class="modal-left">
         <div class="thumbs" id="modal-thumbs"></div>
+
         <div class="main-image">
-           <img id="modal-main-img" />
+         <button class="nav-btn prev" id="prevImg">
+         ❮
+         </button>
+        <img id="modal-main-img"/>
+         <button class="nav-btn next" id="nextImg">
+         ❯
+         </button>
         </div>
       </div>
 
@@ -51,11 +58,7 @@
         <p class="status">Còn hàng</p>
         <p class="price" id="modal-price"></p>
 
-        <!-- thông báo lỗi -->
-        <p id="product-message"></p>
-        
-        <h4>MÀU SẮC</h4>
-        <p id="select-color">Vui lòng chọn màu</p>
+        <h4>MÀU SẮC <span id="select-color"></span></h4>
         <div id="modal-colors"></div>
 
         <h4>KÍCH THƯỚC</h4>
@@ -72,6 +75,8 @@
           <button id="plus">+</button>
         </div>
 
+        <!-- thông báo lỗi -->
+        <p id="product-message"></p>
         <button id="add-cart" class="buy-btn">SỞ HỮU NGAY</button>
       </div>
 

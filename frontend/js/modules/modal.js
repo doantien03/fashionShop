@@ -3,10 +3,10 @@ import { addToCart, renderCart, openCart} from "../modules/cart.js";
 
 let currentProduct = null;
 let selectedColor = "";
+let currentIndex = 0;
 
 // thông báo
 function showMessage(text){
-
   const msg = document.getElementById("product-message");
   msg.innerText = text;
   msg.classList.add("show");
@@ -55,12 +55,92 @@ function renderModal() {
       size.classList.remove("active");
     });
 
-  selectColor.textContent =
-    "Vui lòng chọn màu";
-
-
   //  MAIN IMAGE
   mainImg.src = currentProduct.thumbnail;
+  currentIndex = 0;
+
+  function updateImage(index){
+
+  currentIndex = index;
+
+  const selected =
+    currentProduct.colors[index];
+
+  // đổi ảnh lớn
+  mainImg.src = selected.image;
+
+  // lưu màu
+  selectedColor = selected.name;
+
+  // hiện tên màu
+  selectColor.textContent =
+    selected.name;
+
+
+  // thumbnail active
+  document
+    .querySelectorAll(".thumb-item")
+    .forEach((img, i) => {
+
+      img.classList.toggle(
+        "active",
+        i === index
+      );
+
+    });
+
+
+  // màu active
+  const colorItems =
+    document.querySelectorAll(
+      "#modal-colors .color-item"
+    );
+
+  colorItems.forEach((item, i) => {
+
+    item.classList.toggle(
+      "active",
+      i === index
+    );
+
+  });
+
+    selectedColor=
+      selected.name;
+
+    document.getElementById(
+      "select-color"
+    ).textContent=
+      selected.name;
+
+}
+  
+  document.getElementById("nextImg").onclick=()=>{
+
+    let next=currentIndex+1;
+
+    if(
+      next>=currentProduct.colors.length
+    ){
+        next=0;
+    }
+
+    updateImage(next);
+
+};
+
+document.getElementById("prevImg").onclick=()=>{
+
+    let prev=currentIndex-1;
+
+    if(prev<0){
+        prev=
+        currentProduct.colors.length-1;
+    }
+
+    updateImage(prev);
+
+};
 
   //  THUMBNAILS 
   thumbs.innerHTML = currentProduct.colors.map((c, index) => `
@@ -74,18 +154,17 @@ function renderModal() {
   // click thumbnail
   thumbs.onclick = (e) => {
 
-    const img = e.target.closest(".thumb-item");
+  const img = e.target.closest(".thumb-item");
 
-    if (!img) return;
-    // đổi ảnh
-    mainImg.src = img.dataset.image;
+  if (!img) return;
 
-    // active
-    document.querySelectorAll(".thumb-item").forEach(t =>
-        t.classList.remove("active")
-      );
-    img.classList.add("active");
-  };
+  const index = Array.from(
+    thumbs.children
+  ).indexOf(img);
+
+  updateImage(index);
+
+};
 
   // COLORS
   colors.className="colors";
@@ -104,18 +183,20 @@ function renderModal() {
       </span>
     `).join("");
 
-  colors.onclick=(e)=>{
-    const color = e.target.closest(".color-item");
-    if(!color) return;
-    mainImg.src = color.dataset.image;
-    selectedColor = color.dataset.name;
-    selectColor.textContent = selectedColor;
-    document.querySelectorAll(".color-item").forEach(el=>{ el.classList.remove(
-          "active"
-        );
-      });
-    color.classList.add("active");
-  };
+  colors.onclick = (e) => {
+
+  const color =
+    e.target.closest(".color-item");
+
+  if (!color) return;
+
+  const index = Array.from(
+    colors.children
+  ).indexOf(color);
+
+  updateImage(index);
+
+};
 
   // SIZE
   document.querySelectorAll(".sizes span").forEach(size=>{
