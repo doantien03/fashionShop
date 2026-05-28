@@ -120,10 +120,11 @@ function bindEvents() {
     }
 
     // click cả card
-    const card = e.target.closest(".product");
-    if (card) {
-      handleCardClick(card);
-    }
+    const productImg = e.target.closest(".product-img");
+    if (productImg) {
+       const product = productImg.closest(".product");
+       handleCardClick(product);
+}
 
   });
 }

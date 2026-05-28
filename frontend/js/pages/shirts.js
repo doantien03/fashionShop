@@ -1,4 +1,5 @@
 import { getProducts } from "../services/product.js";
+import { openModal } from "../modules/modal.js";
 
 let isBound = false;
 
@@ -21,14 +22,14 @@ function renderProducts(products, elementId) {
           loading="lazy"
         />
         <div class="overlay">
-          <button>
+          <button class="btn-buy">
           <img src="../assets/icons/cart.svg" class="icon" />
           Mua nhanh
           </button>
           
           <div class="divider"></div>
 
-          <button>
+          <button class="btn-detail">
           <img src="../assets/icons/eye.svg" class="icon" />
           Xem chi tiết
           </button>
@@ -162,10 +163,11 @@ function bindEvents() {
     }
 
     // click cả card
-    const card = e.target.closest(".product");
-    if (card) {
-      handleCardClick(card);
-    }
+    const productImg = e.target.closest(".product-img");
+    if (productImg) {
+       const product = productImg.closest(".product");
+       handleCardClick(product);
+   }
 
   });
 }

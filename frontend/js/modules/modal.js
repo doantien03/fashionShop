@@ -14,7 +14,6 @@ function showMessage(text){
     msg.classList.remove("show");
     msg.innerText = "";
   },3000);
-
 }
 
 // mở modal 
@@ -49,99 +48,49 @@ function renderModal() {
   // reset
   selectedColor = null;
   qty.value = 1;
-
-  document.querySelectorAll(".sizes span")
-    .forEach(size=>{
-      size.classList.remove("active");
-    });
+  document.querySelectorAll(".sizes span").forEach(size=>{size.classList.remove("active");});
 
   //  MAIN IMAGE
   mainImg.src = currentProduct.thumbnail;
   currentIndex = 0;
 
   function updateImage(index){
-
   currentIndex = index;
 
-  const selected =
-    currentProduct.colors[index];
+  const selected = currentProduct.colors[index];
 
-  // đổi ảnh lớn
   mainImg.src = selected.image;
-
-  // lưu màu
   selectedColor = selected.name;
-
   // hiện tên màu
-  selectColor.textContent =
-    selected.name;
-
-
+  selectColor.textContent = selected.name;
   // thumbnail active
-  document
-    .querySelectorAll(".thumb-item")
-    .forEach((img, i) => {
-
-      img.classList.toggle(
-        "active",
-        i === index
-      );
-
+  document.querySelectorAll(".thumb-item").forEach((img, i) => {
+      img.classList.toggle("active",i === index);
     });
-
-
   // màu active
-  const colorItems =
-    document.querySelectorAll(
-      "#modal-colors .color-item"
-    );
-
+  const colorItems = document.querySelectorAll("#modal-colors .color-item");
   colorItems.forEach((item, i) => {
-
-    item.classList.toggle(
-      "active",
-      i === index
-    );
-
+    item.classList.toggle("active",i === index);
   });
+    selectedColor = selected.name;
+    document.getElementById("select-color").textContent = selected.name;
+  }
 
-    selectedColor=
-      selected.name;
-
-    document.getElementById(
-      "select-color"
-    ).textContent=
-      selected.name;
-
-}
-  
   document.getElementById("nextImg").onclick=()=>{
-
-    let next=currentIndex+1;
-
-    if(
-      next>=currentProduct.colors.length
-    ){
+    let next = currentIndex+1;
+    if(next>=currentProduct.colors.length){
         next=0;
     }
-
     updateImage(next);
-
-};
+  };
 
 document.getElementById("prevImg").onclick=()=>{
-
-    let prev=currentIndex-1;
-
+    let prev = currentIndex-1;
     if(prev<0){
-        prev=
-        currentProduct.colors.length-1;
+        prev = currentProduct.colors.length-1;
     }
-
     updateImage(prev);
-
 };
-
   //  THUMBNAILS 
   thumbs.innerHTML = currentProduct.colors.map((c, index) => `
       <img
@@ -153,22 +102,14 @@ document.getElementById("prevImg").onclick=()=>{
 
   // click thumbnail
   thumbs.onclick = (e) => {
-
   const img = e.target.closest(".thumb-item");
-
   if (!img) return;
-
-  const index = Array.from(
-    thumbs.children
-  ).indexOf(img);
-
+  const index = Array.from(thumbs.children).indexOf(img);
   updateImage(index);
-
-};
+  };
 
   // COLORS
   colors.className="colors";
-
   colors.innerHTML =
     currentProduct.colors.map(c=>`
       <span
@@ -184,19 +125,11 @@ document.getElementById("prevImg").onclick=()=>{
     `).join("");
 
   colors.onclick = (e) => {
-
-  const color =
-    e.target.closest(".color-item");
-
+  const color = e.target.closest(".color-item");
   if (!color) return;
-
-  const index = Array.from(
-    colors.children
-  ).indexOf(color);
-
+  const index = Array.from(colors.children).indexOf(color);
   updateImage(index);
-
-};
+  };
 
   // SIZE
   document.querySelectorAll(".sizes span").forEach(size=>{
