@@ -5,6 +5,7 @@ import { initPants } from "../pages/pants.js";
 import { initAccessory } from "../pages/accessory.js";
 import { initCartPage } from "../pages/cart.js";
 import { initCheckout } from "../pages/checkout.js";
+import { initNews } from "../pages/news.js";
 
 export function initPage(path) {
   if ( path === "/" || path === "/home") {
@@ -21,6 +22,9 @@ export function initPage(path) {
   }
   if (path === "/checkout") {
     initCheckout();
+  }
+  else if(path === "/thong-tin"){
+    initNews();
   }
   if (path.startsWith("/product/")) {
     window.initProductDetail?.(path);

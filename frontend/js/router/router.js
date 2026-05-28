@@ -55,6 +55,11 @@ async function renderRoute(path) {
   ) {
     page = "checkout";
   }
+  else if (
+    path === "/thong-tin"
+  ) {
+    page = "news";
+  }
   
   // fallback
   if (!page) {

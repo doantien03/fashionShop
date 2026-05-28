@@ -12,4 +12,6 @@ export const routes = {
 
   "/checkout": "checkout",
 
+  "/thong-tin": "news"
+
 };
