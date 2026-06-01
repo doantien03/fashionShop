@@ -19,6 +19,7 @@ app.use("/api/auth", require("./routes/userRoute"));
 app.use("/api/products", require("./routes/productRoute"));
 app.use("/api/orders", require("./routes/orderRoute"));
 app.use("/api/cart", require("./routes/cartRoute"));
+app.use("/api/news", require("./routes/newsRoute"));
 
 app.use(express.static(path.join(__dirname, "../frontend")));
 app.use((req, res) => {
