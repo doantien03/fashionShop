@@ -23,6 +23,17 @@ export async function getOrders(){
   return response.json();
 }
 
+// lấy đơn hàng theo user
+export async function getMyOrders(){
+  const res = await fetch(
+    ENDPOINTS.orders.myOrders,
+    {
+      headers:getHeaders(true)
+    }
+  );
+  return await res.json();
+}
+
 // GET BY ID
 export async function getOrderById(id){
   const response = await fetch(ENDPOINTS.orders.getById(id),

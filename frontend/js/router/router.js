@@ -60,7 +60,15 @@ async function renderRoute(path) {
   ) {
     page = "news";
   }
-  
+  else if (
+  path.startsWith("/thong-tin/")
+  ) {
+  page = "news-detail";
+  }
+  else if(path === "/my-orders"){
+  page = "my-orders";
+  }
+
   // fallback
   if (!page) {
     page = "home";

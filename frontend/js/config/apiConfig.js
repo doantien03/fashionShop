@@ -20,10 +20,14 @@ export const ENDPOINTS = {
   orders: {
     create: `${API}/orders`,
     getAll: `${API}/orders`,
+    myOrders:`${API}/orders/my-orders`,
     getById: (id) => `${API}/orders/${id}`,
     updateStatus: (id) => `${API}/orders/${id}/status`,
     delete: (id) => `${API}/orders/${id}`,
-    // getMyOrders: `${API}/orders/my`
+  },
+  news: {
+    getAll: `${API}/news`,
+    getBySlug: (slug) => `${API}/news/${slug}`
   }
 };
 

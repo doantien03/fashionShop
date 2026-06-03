@@ -23,7 +23,7 @@ export function renderHeader() {
           ${
             user
               ? `
-              <a href="/profile" class="account-link">
+              <a href="/my-orders" class="account-link">
                 <img src="../assets/icons/user.svg" class="icon-top" />
                 ${user.name}
               </a>

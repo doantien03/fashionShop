@@ -3,7 +3,8 @@ const Order = require("../models/order");
 // tạo đơn hàng
 exports.createOrder = async (req, res) => {
   try {
-    const {user,customerName,email,phone,city,district,ward,address,note,items,paymentMethod} = req.body;
+    const {customerName,email,phone,city,district,ward,address,note,items,paymentMethod} = req.body;
+    const user = req.user.id;
 
     if (!items || items.length === 0) {
       return res.status(400).json({
@@ -90,6 +91,29 @@ exports.getOrderById = async(req,res)=>{
   }
 };
 
+// lấy đơn hàng của user đang đăng nhập
+exports.getMyOrders = async(req,res)=>{
+  try{
+    const orders = await Order.find({
+      user:req.user.id
+    })
+    .sort({
+      createdAt:-1
+    });
+
+    res.json({
+      success:true,
+      orders
+    });
+
+  }
+  catch(error){
+    res.status(500).json({
+      success:false,
+      message:"Lỗi server"
+    });
+  }
+};
 
 // trạng thái cập nhật
 exports.orderStatus = async(req,res)=>{

@@ -12,6 +12,8 @@ export const routes = {
 
   "/checkout": "checkout",
 
+  "/my-orders": "my-orders",
+
   "/thong-tin": "news"
 
 };

@@ -7,24 +7,94 @@ export const newsData = [
   bannerImage:"/assets/images/news-shop.jpg",
   summary:"Fashion Shop được thành lập với mong muốn mang đến cho khách hàng những sản phẩm thời trang hiện đại, chất lượng...",
   content:`
+    SỨ MỆNH – THƯƠNG HIỆU FASHION SHOP
 
-    <h2>Sứ Mệnh Thương Hiệu</h2>
-    <p>
-      Fashion Shop được thành lập với mong muốn mang đến cho khách hàng
-      những sản phẩm thời trang hiện đại, chất lượng và phù hợp với xu hướng.
-    </p>
+    <h3>HÀNH TRÌNH PHÁT TRIỂN</h3>
 
-    <img
-      src="/assets/images/news-shop.jpg"
-      class="article-image"
-    >
+  <p>
+  Fashion Shop được thành lập với mong muốn mang đến cho khách hàng những sản phẩm thời trang hiện đại,
+  chất lượng và phù hợp với xu hướng mới nhất. Từ những ngày đầu xây dựng thương hiệu, Fashion Shop
+  luôn đặt khách hàng làm trung tâm của mọi hoạt động và không ngừng hoàn thiện để tạo nên những trải
+  nghiệm mua sắm tốt nhất.
+  </p>
 
-    <p>
-      Chúng tôi không ngừng cải tiến chất lượng sản phẩm,
-      dịch vụ và trải nghiệm mua sắm.
-    </p>
+  <p>
+  Trải qua quá trình phát triển, Fashion Shop từng bước mở rộng hệ thống kinh doanh, đa dạng hóa sản phẩm
+  và xây dựng nền tảng bán hàng trực tuyến chuyên nghiệp. Chúng tôi hướng đến mục tiêu trở thành thương
+  hiệu thời trang được khách hàng tin tưởng và lựa chọn hàng đầu tại Việt Nam.
+  </p>
 
-  `
+  <h3>NIỀM TIN CỦA FASHION SHOP</h3>
+
+  <ul>
+  <li>Khách hàng là nền tảng cho sự phát triển bền vững của doanh nghiệp.</li>
+  <li>Mỗi sản phẩm bán ra không chỉ là một món hàng mà còn là sự cam kết về chất lượng và uy tín.</li>
+  <li>Sự hài lòng của khách hàng chính là thước đo thành công lớn nhất.</li>
+  <li>Đội ngũ nhân viên là tài sản quý giá, cùng nhau xây dựng môi trường làm việc tích cực và chuyên nghiệp.</li>
+  <li>Không ngừng học hỏi, đổi mới và sáng tạo để mang đến những giá trị tốt hơn mỗi ngày.</li>
+  </ul>
+
+  <h3>SỨ MỆNH CỦA FASHION SHOP</h3>
+
+  <blockquote>
+  "Mang đến những sản phẩm thời trang chất lượng, giá trị thực và trải nghiệm mua sắm vượt mong đợi cho mọi khách hàng."
+  </blockquote>
+
+  <p>
+  Chúng tôi mong muốn giúp khách hàng tự tin thể hiện phong cách riêng thông qua những sản phẩm được lựa
+  chọn kỹ lưỡng về chất liệu, thiết kế và độ bền.
+  </p>
+
+  <p>
+  Fashion Shop không chỉ cung cấp quần áo, mà còn lan tỏa phong cách sống hiện đại, năng động và tích cực.
+  Chúng tôi cam kết luôn đặt chất lượng sản phẩm, dịch vụ tận tâm và sự hài lòng của khách hàng lên hàng đầu.
+  </p>
+
+  <h3>GIÁ TRỊ CỐT LÕI</h3>
+
+  <ol>
+  <li><strong>Khách hàng là trung tâm</strong></li>
+  <li><strong>Chất lượng là ưu tiên hàng đầu</strong></li>
+  <li><strong>Trung thực và trách nhiệm</strong></li>
+  <li><strong>Sáng tạo và đổi mới</strong></li>
+  <li><strong>Đồng hành và phát triển</strong></li>
+  </ol>
+
+  <h3>TẦM NHÌN CỦA FASHION SHOP</h3>
+
+  <h4>Tầm nhìn đến năm 2035</h4>
+
+  <ul>
+  <li>Trở thành thương hiệu thời trang uy tín trên toàn quốc.</li>
+  <li>Mở rộng hệ thống cửa hàng tại nhiều tỉnh thành Việt Nam.</li>
+  <li>Xây dựng hệ sinh thái mua sắm trực tuyến hiện đại và tiện lợi.</li>
+  <li>Mang đến trải nghiệm thời trang chất lượng cho hàng triệu khách hàng.</li>
+  <li>Tạo môi trường làm việc chuyên nghiệp, hạnh phúc và phát triển cho nhân viên.</li>
+  </ul>
+
+  <h4>Tầm nhìn giai đoạn 2026 – 2030</h4>
+
+  <ul>
+  <li>Hoàn thiện hệ thống bán hàng đa kênh.</li>
+  <li>Mở rộng danh mục sản phẩm thời trang nam, nữ và phụ kiện.</li>
+  <li>Nâng cao chất lượng dịch vụ chăm sóc khách hàng.</li>
+  <li>Khẳng định vị thế thương hiệu thời trang Việt Nam.</li>
+  </ul>
+
+  <h3>CAM KẾT CỦA CHÚNG TÔI</h3>
+
+  <ul class="check-list">
+  <li>Sản phẩm chất lượng với giá thành hợp lý.</li>
+  <li>Dịch vụ tận tâm và chuyên nghiệp.</li>
+  <li>Chính sách mua sắm minh bạch, thuận tiện.</li>
+  <li>Trải nghiệm khách hàng ngày càng hoàn thiện.</li>
+  <li>Giá trị bền vững cho cộng đồng và xã hội.</li>
+  </ul>
+
+  <p class="brand-slogan">
+  Fashion Shop – Nâng tầm phong cách, khẳng định giá trị bản thân.
+  </p>
+`
 },
 
 {
