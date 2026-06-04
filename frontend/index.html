@@ -39,24 +39,24 @@
     <div class="modal-overlay"></div>
 
     <div class="modal-content">
-      
+      <button class="close-modal" id="closeModal"> 
+      <img src="./assets/icons/x-solid.svg" alt="close"> </button>
+
       <div class="modal-left">
         <div class="thumbs" id="modal-thumbs"></div>
 
         <div class="main-image">
          <button class="nav-btn prev" id="prevImg">
-         ❮
+         <img src="./assets/icons/chevron-left.svg" />
          </button>
         <img id="modal-main-img"/>
          <button class="nav-btn next" id="nextImg">
-         ❯
+         <img src="./assets/icons/chevron-right.svg" />
          </button>
         </div>
       </div>
 
       <div class="modal-right">
-        <button class="close-modal" id="closeModal"> ✕ </button>
-
         <h3 id="modal-name"></h3>
         <p class="status">Còn hàng</p>
         <p class="price" id="modal-price"></p>
@@ -81,6 +81,7 @@
         <!-- thông báo lỗi -->
         <p id="product-message"></p>
         <button id="add-cart" class="buy-btn">SỞ HỮU NGAY</button>
+        <a id="view-detail" class="detail-link" href="#">Xem chi tiết sản phẩm</a>
       </div>
 
     </div>

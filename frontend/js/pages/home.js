@@ -4,6 +4,47 @@ import { openModal } from "../modules/modal.js";
 let isBound = false;
 let allProducts = [];
 
+function initBanner() {
+  const slides = document.querySelectorAll(".banner-slide");
+  const dotsContainer = document.getElementById("banner-dots");
+  let current = 0;
+
+  // tạo dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement("span");
+    if(index === 0){
+      dot.classList.add("active");
+    }
+    dot.onclick = () => {
+      showSlide(index);
+    };
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll("span");
+  function showSlide(index){
+    slides.forEach(slide =>
+      slide.classList.remove("active")
+    );
+    dots.forEach(dot =>
+      dot.classList.remove("active")
+    );
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+    current = index;
+  }
+  document.getElementById("next-banner").onclick = () => {
+      let next = (current + 1) % slides.length;
+      showSlide(next);
+  };
+  document.getElementById("prev-banner")
+    .onclick = () => {
+      let prev = (current - 1 + slides.length) % slides.length;
+      showSlide(prev);
+  };
+
+}
+
 function renderProducts(products, elementId) {
   const container = document.getElementById(elementId);
 
@@ -198,4 +239,5 @@ export function initHome() {
   loadProducts();
   bindEvents();
   menuEvents();
+  initBanner()
 }

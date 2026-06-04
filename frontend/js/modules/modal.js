@@ -42,8 +42,15 @@ function renderModal() {
   const selectColor = document.getElementById("select-color");
   const qty = document.getElementById("qty");
 
+  document.getElementById("view-detail").onclick = (e) => { e.preventDefault();
+  closeModal();
+  history.pushState({},"",`/product/${currentProduct._id}`);
+  window.renderRoute(`/product/${currentProduct._id}`);
+  };
+
   modalName.innerText = currentProduct.name;
   modalPrice.innerText = currentProduct.price.toLocaleString("vi-VN") + "đ";
+
 
   // reset
   selectedColor = null;
