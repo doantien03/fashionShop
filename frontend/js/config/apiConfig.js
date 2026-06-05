@@ -16,6 +16,7 @@ export const ENDPOINTS = {
     add: `${API}/cart/add`,
     update: `${API}/cart/update`,
     remove: `${API}/cart/remove`,
+    clear: `${API}/cart/clear`,
   },
   orders: {
     create: `${API}/orders`,

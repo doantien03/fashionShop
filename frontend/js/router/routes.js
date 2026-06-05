@@ -14,6 +14,8 @@ export const routes = {
 
   "/my-orders": "my-orders",
 
-  "/thong-tin": "news"
+  "/thong-tin": "news",
+
+  "/order-success": "order-success"
 
 };

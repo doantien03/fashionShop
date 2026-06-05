@@ -54,3 +54,15 @@ export async function updateCart(productId,size,color,type){
  );
  return await res.json();
 }
+
+export async function clearCart(){
+
+  const res = await fetch(ENDPOINTS.cart.clear,
+    {
+      method:"DELETE",
+      headers:getHeaders(true)
+    }
+  );
+
+  return await res.json();
+}

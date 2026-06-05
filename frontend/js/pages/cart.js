@@ -59,7 +59,6 @@ async function CartPage(){
 
   // tổng tiền
   const total = cart.reduce((sum,item)=> sum + ( item.productId.price * item.quantity),0 );
-
   cartTotal.innerText = total.toLocaleString("vi-VN") + "đ";
 
   // remove

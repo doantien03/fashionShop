@@ -68,6 +68,9 @@ async function renderRoute(path) {
   else if(path === "/my-orders"){
   page = "my-orders";
   }
+  else if(path.startsWith("/order-success/")){
+  page = "order-success";
+  }
 
   // fallback
   if (!page) {

@@ -8,6 +8,7 @@ import { initCheckout } from "../pages/checkout.js";
 import { initNews } from "../pages/news.js";
 import { initNewsDetail } from "../pages/news-detail.js";
 import { initMyOrders } from "../pages/my-orders.js";
+import { initOrderSuccess } from "../pages/order-success.js";
 
 export function initPage(path) {
   if ( path === "/" || path === "/home") {
@@ -33,6 +34,9 @@ export function initPage(path) {
   }
   else if (path.startsWith("/thong-tin/")) {
   initNewsDetail(path);
+  }
+  if(path.startsWith("/order-success")){
+  initOrderSuccess();
   }
   if (path.startsWith("/product/")) {
     window.initProductDetail?.(path);
