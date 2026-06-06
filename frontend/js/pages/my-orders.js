@@ -2,59 +2,93 @@ import { getMyOrders } from "../services/order.js";
 
 async function renderOrders(){
 
-  const result = await getMyOrders();
-  const container = document.getElementById("orders-list");
-  const orders = result.orders || [];
+  const data = await getMyOrders();
+
+  const orders = data.orders || [];
+
+  const container =
+    document.getElementById("orders-list");
 
   if(!orders.length){
+
     container.innerHTML = `
-      <p>
+      <div class="empty-orders">
         Bạn chưa có đơn hàng nào
-      </p>
+      </div>
     `;
 
     return;
   }
 
-  container.innerHTML =
-    orders.map(order=>`
+  container.innerHTML = orders.map(order=>`
 
-      <div class="order-card">
+    <div class="order-card">
+
+      <div class="order-top">
 
         <h3>
-          Mã đơn:
-          ${order._id}
+          #${order._id.slice(-8).toUpperCase()}
         </h3>
 
-        <p>
-          Người nhận:
-          ${order.customerName}
-        </p>
-
-        <p>
-          SĐT:
-          ${order.phone}
-        </p>
-
-        <p>
-          Thanh toán:
-          ${order.paymentMethod}
-        </p>
-
-        <p>
-          Tổng tiền:
-          ${order.totalPrice
-            .toLocaleString("vi-VN")}đ
-        </p>
+        <span class="status ${order.status}">
+          ${order.status}
+        </span>
 
       </div>
 
+      <p>
+        Ngày đặt:
+        ${new Date(order.createdAt)
+          .toLocaleDateString("vi-VN")}
+      </p>
+
+      <p>
+        Tổng tiền:
+        ${order.totalPrice.toLocaleString("vi-VN")}đ
+      </p>
+
+      <button
+        class="view-order-btn"
+        data-id="${order._id}"
+      >
+        Xem chi tiết
+      </button>
+
+    </div>
+
   `).join("");
+
+  bindEvents();
+}
+
+function bindEvents(){
+
+  document
+    .querySelectorAll(".view-order-btn")
+    .forEach(btn=>{
+
+      btn.onclick=()=>{
+
+        const id = btn.dataset.id;
+
+        history.pushState(
+          {},
+          "",
+          `/my-orders/${id}`
+        );
+
+        window.renderRoute(
+          `/my-orders/${id}`
+        );
+
+      };
+
+    });
 
 }
 
-export function initMyOrders(){
+export async function initMyOrders(){
 
-  renderOrders();
+  await renderOrders();
 
 }

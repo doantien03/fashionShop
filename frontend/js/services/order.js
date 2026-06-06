@@ -34,12 +34,22 @@ export async function getMyOrders(){
   return await res.json();
 }
 
+// user hủy đơn hàng
+export async function cancelOrder(id){
+  const res = await fetch(ENDPOINTS.orders.cancel(id),
+    {
+      method:"PUT",
+      headers:getHeaders(true)
+    }
+  );
+  return await res.json();
+}
+
 // GET BY ID
 export async function getOrderById(id){
   const response = await fetch(ENDPOINTS.orders.getById(id),
     {
-      headers:
-      getHeaders(true)
+      headers:getHeaders(true)
     }
   );
   return response.json();

@@ -145,8 +145,45 @@ exports.orderStatus = async(req,res)=>{
   }
 };
 
+// user hủy đơn
+exports.cancelOrder = async(req,res)=>{
+  try{
+    const order = await Order.findById(req.params.id);
+    if(!order){
+      return res.status(404).json({
+        success:false,
+        message:"Không tìm thấy đơn hàng"
+      });
+    }
+    if(order.user.toString() !== req.user.id){
+      return res.status(403).json({
+        success:false,
+        message:"Không có quyền"
+      });
+    }
+    if(order.status !== "pending"){
+      return res.status(400).json({
+        success:false,
+        message:"Không thể hủy"
+      });
+    }
+    order.status = "cancelled";
+    await order.save();
+    res.json({
+      success:true,
+      message:"Đã hủy đơn hàng"
+    });
 
-// xóa đơn hàng
+  }
+  catch(error){
+    res.status(500).json({
+      success:false,
+      message:"Lỗi server"
+    });
+  }
+};
+
+// admin xóa đơn hàng
 exports.deleteOrder = async(req,res)=>{
   try{
     const order = await Order.findByIdAndDelete(

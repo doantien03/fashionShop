@@ -9,6 +9,7 @@ import { initNews } from "../pages/news.js";
 import { initNewsDetail } from "../pages/news-detail.js";
 import { initMyOrders } from "../pages/my-orders.js";
 import { initOrderSuccess } from "../pages/order-success.js";
+import { initOrderDetail } from "../pages/order-detail.js";
 
 export function initPage(path) {
   if ( path === "/" || path === "/home") {
@@ -28,6 +29,9 @@ export function initPage(path) {
   }
   if(path === "/my-orders"){
     initMyOrders();
+  }
+  if(path.startsWith("/my-orders/")){
+  initOrderDetail(path);
   }
   if(path === "/thong-tin"){
     initNews();

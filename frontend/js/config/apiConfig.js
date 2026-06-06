@@ -25,6 +25,7 @@ export const ENDPOINTS = {
     getById: (id) => `${API}/orders/${id}`,
     updateStatus: (id) => `${API}/orders/${id}/status`,
     delete: (id) => `${API}/orders/${id}`,
+    cancel: (id) => `${API}/orders/${id}/cancel`,
   },
   news: {
     getAll: `${API}/news`,
