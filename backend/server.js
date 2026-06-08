@@ -21,8 +21,24 @@ app.use("/api/orders", require("./routes/orderRoute"));
 app.use("/api/cart", require("./routes/cartRoute"));
 app.use("/api/news", require("./routes/newsRoute"));
 
+// static
+app.use("/admin", express.static(path.join(__dirname, "../admin")));
 app.use(express.static(path.join(__dirname, "../frontend")));
-app.use((req, res) => {
+
+// SPA fallback
+app.use("/admin", (req, res, next) => {
+  const ext = path.extname(req.path);
+  if (ext) return res.status(404).end();
+  res.sendFile(path.join(__dirname, "../admin/index.html"));
+});
+
+app.use((req, res, next) => {
+  const ext = path.extname(req.path);
+
+  if (req.path.startsWith("/api")) return next();
+  if (req.path.startsWith("/admin")) return next();
+  if (ext) return res.status(404).end();
+
   res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 

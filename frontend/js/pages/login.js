@@ -32,9 +32,15 @@ async function handleLogin() {
       saveToken(data.token);
       saveUser(data.user);
       setTimeout(() => {
+        // admin
+        if (data.user &&data.user.role === "admin") {
+          window.location.href = "/admin";
+          return;
+        }
+        // user
         renderHeader();
-        history.pushState({}, "", "/home");
-          window.renderRoute("/home");
+        history.pushState({},"","/home");
+        window.renderRoute("/home");
       }, 1000);
     } else {
       showToast(data.message || "Đăng nhập thất bại", "error");

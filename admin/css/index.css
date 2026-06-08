@@ -1,0 +1,45 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY LAYOUT */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f9;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #1e1e2f;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* LINK SIDEBAR */
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: 0.2s;
+}
+
+/* HOVER */
+.sidebar a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* MAIN CONTENT */
+#app {
+  flex: 1;
+  padding: 20px;
+}

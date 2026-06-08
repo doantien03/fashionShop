@@ -31,7 +31,7 @@ async function renderOrders(){
         </h3>
 
         <span class="status ${order.status}">
-          ${order.status}
+          ${formatStatus(order.status)}
         </span>
 
       </div>
@@ -85,6 +85,21 @@ function bindEvents(){
 
     });
 
+}
+
+function formatStatus(status) {
+  switch (status) {
+    case "pending":
+      return "Chờ xử lý";
+    case "shipping":
+      return "Đang giao";
+    case "completed":
+      return "Hoàn thành";
+    case "cancelled":
+      return "Đã hủy";
+    default:
+      return status;
+  }
 }
 
 export async function initMyOrders(){
