@@ -12,6 +12,32 @@
   width: 100%;
 }
 
+.checkout-cart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #111;
+
+}
+
+.checkout-cart a {
+  color: #1d616d;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.checkout-cart a:hover {
+  color: #6ddcf0;
+}
+
+.checkout-cart span:last-child {
+  color: #111;
+  font-weight: 600;
+}
+
 .checkout-title {
   font-size: 32px;
   margin-bottom: 30px;
@@ -56,6 +82,7 @@
   display: flex;
   gap: 14px;
   margin-bottom: 20px;
+  margin-top: 15px;
 }
 
 .checkout-product img {

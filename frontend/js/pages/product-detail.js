@@ -3,28 +3,28 @@ import { addToCart, renderCart, openCart} from "../modules/cart.js";
 
 let currentProduct = null;
 let selectedColor = "";
+let currentIndex = 0;
 
 export async function initProductDetail(path) {
   const id = path.split("/product/")[1];
-
   try {
     const res = await getProducts();
-
     if (!res.ok) {
       document.body.innerHTML = "<h2>Lỗi tải sản phẩm</h2>";
       return;
     }
     currentProduct = res.data.products.find(p => p._id === id);
-
     if (!currentProduct) {
       document.body.innerHTML = "<h2>Không tìm thấy sản phẩm</h2>";
       return;
     }
 
     renderProduct();
+    updateImage(0);
     bindEvents();
 
-  } catch (err) {
+  } 
+  catch (err) {
     console.error(err);
     document.body.innerHTML = "<h2>Lỗi server</h2>";
   }
@@ -33,69 +33,78 @@ export async function initProductDetail(path) {
 window.initProductDetail = initProductDetail;
 
 function renderProduct() {
-  document.getElementById("name").innerText = currentProduct.name;
-
-  document.getElementById("price").innerText =
-    currentProduct.price.toLocaleString("vi-VN") + "đ";
-
-  document.getElementById("main-image").src =
-    currentProduct.thumbnail;
+  document.getElementById("name").innerText = currentProduct.name; // tên sp
+  document.getElementById("price").innerText = currentProduct.price.toLocaleString("vi-VN") + "đ"; // giá sp
+  document.getElementById("main-image").src = currentProduct.thumbnail; // ảnh
 
   // thumbnails theo hàng dọc
   const thumbs = document.getElementById("thumbs");
-  thumbs.innerHTML = currentProduct.colors.map(c => `
-    <img src="${c.image}" 
-    data-image="${c.image}" />
+  thumbs.innerHTML = currentProduct.colors.map((c,index)=>`
+    <img
+      src="${c.image}"
+      class="thumb-item ${index === 0 ? "active" : ""}"
+      data-index="${index}"
+    />
   `).join("");
 
   // render các nút màu bên phải
   const colors = document.getElementById("colors");
   const colorNameEl = document.getElementById("select-color");
 
-  colors.innerHTML = currentProduct.colors.map((c, index) => `
-  <div 
-    class="color-item"
-    data-image="${c.image}"
-    data-name="${c.name}"
-  >
-    <img src="${c.image}" alt="${c.name}">
-  </div>
-    `).join("");
+  colors.innerHTML = currentProduct.colors.map((c,index)=>`
+    <div
+      class="color-item ${index === 0 ? "active" : ""}"
+      data-index="${index}"
+    >
+      <img
+        src="${c.image}"
+        alt="${c.name}"
+      >
+    </div>
+  `).join("");
 
   // mặc định hiện màu đầu tiên
   if (currentProduct.colors.length > 0) {
-     colorNameEl.textContent = currentProduct.colors[0].name;
+     updateImage(0);
   }
 }
+
 
 function bindEvents() {
 
   // chọn màu
   document.getElementById("colors").onclick = (e) => {
-    const color = e.target.closest(".color-item");
-    if (!color) return;
-
-    // đổi ảnh + lưu màu
-    document.getElementById("main-image").src = color.dataset.image;
-    selectedColor = color.dataset.name;
-
-    // hiển thị tên màu
-    document.getElementById("select-color").textContent = color.dataset.name;
-
-    // active UI (viền đen)
-    document.querySelectorAll(".color-item").forEach(el => {
-      el.classList.remove("active");
-    });
-    color.classList.add("active");
+  const color = e.target.closest(".color-item");
+  if (!color) return;
+  updateImage(
+    Number(color.dataset.index)
+    );
   };
 
   // đổi ảnh thumbnail
   document.getElementById("thumbs").onclick = (e) => {
-    const img = e.target.closest("img");
-    if (!img) return;
-
-    document.getElementById("main-image").src =
-      img.dataset.image;
+  const img = e.target.closest(".thumb-item");
+  if (!img) return;
+  updateImage(
+    Number(img.dataset.index)
+    );
+  };
+  
+  // nút next
+  document.getElementById("nextImg").onclick = () => {
+  let next = currentIndex + 1;
+  if ( next >= currentProduct.colors.length) {
+    next = 0;
+    }
+  updateImage(next);
+  };
+  
+  // nút prev
+  document.getElementById("prevImg").onclick = () => {
+  let prev = currentIndex - 1;
+  if (prev < 0) { prev = currentProduct.colors.length - 1;
+    }
+  updateImage(prev);
   };
 
   // chọn size
@@ -109,7 +118,6 @@ function bindEvents() {
 
   // chọn số lượng
   const qty = document.getElementById("qty");
-
   document.getElementById("plus").onclick = () => {
     qty.value = Number(qty.value) + 1;
   };
@@ -119,19 +127,6 @@ function bindEvents() {
       qty.value = Number(qty.value) - 1;
     }
   };
-
-function showMessage(text){
-  const msg = document.getElementById("product-message");
-  msg.innerText = text;
-  msg.classList.add("show");
-
-  setTimeout(()=>{
-    msg.classList.remove(
-      "show"
-    );
-    msg.innerText = "";
-  },3000);
-}
 
   //lấy thông tin thêm vào giỏ hàng
   document.getElementById("add-cart").onclick = () => {
@@ -197,4 +192,44 @@ function showMessage(text){
     buyBtn.innerText = "MUA NGAY";
   }
 };
+}
+
+// hàm thông báo khi chọn thiếu color or size
+function showMessage(text){
+  const msg = document.getElementById("product-message");
+  msg.innerText = text;
+  msg.classList.add("show");
+
+  setTimeout(()=>{
+    msg.classList.remove(
+      "show"
+    );
+    msg.innerText = "";
+  },3000);
+}
+
+// cập nhật ảnh
+function updateImage(index) {
+  currentIndex = index;
+  const selected = currentProduct.colors[index];
+  if (!selected) return;
+
+  document.getElementById("main-image").src = selected.image;
+  selectedColor = selected.name;
+  document.getElementById("select-color").textContent =selected.name;
+  document.querySelectorAll(".thumb-item")
+    .forEach((item, i) => {
+      item.classList.toggle(
+        "active",
+        i === index
+      );
+    });
+
+  document.querySelectorAll(".color-item")
+    .forEach((item, i) => {
+      item.classList.toggle(
+        "active",
+        i === index
+      );
+    });
 }

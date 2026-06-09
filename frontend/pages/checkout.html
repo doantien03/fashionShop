@@ -2,10 +2,9 @@
 
   <!-- LEFT -->
   <section class="checkout-left">
-
-    <div class="checkout-breadcrumb">
+    <div class="checkout-cart">
       <a href="/cart">Giỏ hàng</a>
-      <span> › </span>
+      <span> > </span>
       <span>Thanh toán</span>
     </div>
 
@@ -14,7 +13,6 @@
     </h2>
 
     <form class="checkout-form">
-
       <input
         id="customerName"
         type="text"
@@ -22,7 +20,6 @@
       />
 
       <div class="checkout-row">
-
         <input
           id="email"
           type="email"
@@ -34,17 +31,15 @@
           type="text"
           placeholder="Số điện thoại"
         />
-
       </div>
 
       <input
         id="address"
         type="text"
-        placeholder="Địa chỉ"
+        placeholder="Số nhà "
       />
 
       <div class="checkout-row">
-
         <input
           id="city"
           type="text"
@@ -54,15 +49,14 @@
         <input
           id="district"
           type="text"
-          placeholder="Quận / Huyện"
+          placeholder="Phường / Xã"
         />
-
       </div>
 
       <input
         id="ward"
         type="text"
-        placeholder="Phường / Xã"
+        placeholder="Ngõ / Ngách"
       />
 
       <textarea
@@ -71,39 +65,22 @@
       ></textarea>
 
       <select id="paymentMethod">
-
-        <option value="COD">
-          Thanh toán khi nhận hàng
-        </option>
-
-        <option value="MOMO">
-          MOMO
-        </option>
-
-        <option value="VNPAY">
-          VNPAY
-        </option>
-
+        <option value="COD">Thanh toán khi nhận hàng</option>
+        <option value="MOMO">MOMO</option>
+        <option value="VNPAY">VNPAY</option>
       </select>
-
     </form>
-
   </section>
 
 
   <!-- RIGHT -->
   <aside class="checkout-right">
-
     <div id="checkout-products"></div>
 
     <div class="checkout-summary">
-
       <div class="summary-row">
         <span>Tạm tính</span>
-
-        <strong id="checkout-subtotal">
-          0đ
-        </strong>
+        <strong id="checkout-subtotal"> 0đ </strong>
       </div>
 
       <div class="summary-row">
@@ -112,27 +89,13 @@
       </div>
 
       <div class="summary-row total">
-
         <span>Tổng cộng</span>
-
-        <strong id="checkout-total">
-          0đ
-        </strong>
-
+        <strong id="checkout-total">0đ</strong>
       </div>
 
-      <button
-        id="placeOrderBtn"
-        class="checkout-order-btn">
-
-        ĐẶT HÀNG
-
-      </button>
-
+      <button id="placeOrderBtn" class="checkout-order-btn">ĐẶT HÀNG</button>
     </div>
-
   </aside>
-
 </main>
 
 <div id="toast-container"></div>

@@ -19,10 +19,10 @@ async function CartPage(){
     <div class="cart-item">
       <img src="${item.productId.thumbnail}" />
       <div class="cart-info">
-        <h3> ${item.productId.name}</h3>
-        <p> Màu:${item.color}</p>
-        <p> Size:${item.size}</p>
-        <p> Giá:${item.productId.price.toLocaleString("vi-VN")}đ</p>
+        <h3 class="item-name"> ${item.productId.name}</h3>
+        <p class="item-color"> Màu:${item.color}</p>
+        <p class="item-size"> Size:${item.size}</p>
+        <p class="item-price"> Giá:${item.productId.price.toLocaleString("vi-VN")}đ</p>
 
         <div class="quantity-box">
           <button

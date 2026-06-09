@@ -16,6 +16,7 @@ body {
   flex-direction: column;
   gap: 12px;
   align-items: center;
+  margin-top: 15px;
 }
 
 .thumbs img {
@@ -35,6 +36,7 @@ body {
 
 /* ===== MAIN IMAGE ===== */
 .main-image {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +48,38 @@ body {
   object-fit: cover;
 }
 
-/* ===== RIGHT INFO ===== */
+.nav-btn{
+  position:absolute;
+  width:40px;
+  height:40px;
+  border:none;
+  background:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+  z-index:5;
+}
+
+.nav-btn img{
+  width:18px;
+  height:18px;
+}
+
+.prev{
+  left:1px;
+}
+.next{
+  right:5px;
+}
+
+.nav-btn:hover{
+  transform:scale(1.05);
+}
+
+/* Right:thông tin */
 .info {
   background: #fff;
   padding: 20px;
@@ -69,22 +102,24 @@ body {
   margin-bottom: 25px;
 }
 
-/* ===== COLORS ===== */
+/* Màu sắc */
 .info h4 {
   display: flex;
-  align-items: center;
-  gap: 30px;
-
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-size:13px;
+  font-weight:600;
+  margin:15px 0 8px;
+  color:#333;
 }
 
-#select-color {
-  font-size: 13px;
-  font-weight: 400;
-  color: #666;
-  text-transform: none;
+/* Tên màu */
+#select-color{
+  margin-left:20px;
+  font-size:13px;
+  color:#666;
+  margin-bottom:10px;
+}
+#select-color:empty{
+  display:none;
 }
 
 .colors {
@@ -125,7 +160,7 @@ body {
   padding: 3px;
 }
 
-/* ===== SIZE ===== */
+/* size */
 .sizes {
   display: flex;
   gap: 10px;
@@ -148,7 +183,7 @@ body {
   color: #fff;
 }
 
-/* ===== QUANTITY ===== */
+/* Số Lượng */
 .quantity {
   display: flex;
   align-items: center;
@@ -187,7 +222,7 @@ body {
   opacity:1;
 }
 
-/* ===== BUTTONS ===== */
+/* button */
 .actions {
   display: flex;
   gap: 12px;
@@ -221,35 +256,18 @@ body {
   opacity: 0.85;
 }
 
-/* ===== FAVORITE ===== */
-.favorite {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  background: #fff;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.favorite:hover {
-  border-color: #000;
-}
-
-/* ===== RESPONSIVE ===== */
+/*  RESPONSIVE  */
 @media (max-width: 1024px) {
   .product-detail {
     grid-template-columns: 1fr;
   }
-
   .thumbs {
     flex-direction: row;
     justify-content: center;
   }
-
   .main-image img {
     max-width: 400px;
   }
-
   .info {
     padding: 10px;
   }

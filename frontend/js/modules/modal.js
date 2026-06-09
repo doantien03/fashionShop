@@ -74,6 +74,7 @@ function renderModal() {
   document.querySelectorAll(".thumb-item").forEach((img, i) => {
       img.classList.toggle("active",i === index);
     });
+    
   // màu active
   const colorItems = document.querySelectorAll("#modal-colors .color-item");
   colorItems.forEach((item, i) => {

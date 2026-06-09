@@ -21,25 +21,37 @@ export function renderHeader() {
         <div class="right">
         
           ${
-            user
-              ? `
-              <a href="/my-orders" class="account-link">
-                <img src="../assets/icons/user.svg" class="icon-top" />
-                ${user.name}
-              </a>
+           user
+           ? `
+           <div class="user-menu">
 
-              <a href="#" id="logout-btn" class="account-link">
-                <img src="../assets/icons/user.svg" class="icon-top" />
-                Đăng xuất
-              </a>
-            `
-              : `
-              <a href="/login" class="account-link">
-                <img src="../assets/icons/user.svg" class="icon-top" />
-                Tài khoản
-              </a>
-            `
-          }
+            <div class="user-trigger">
+            <img src="../assets/icons/user.svg" class="icon-top" />
+            <span>${user.name}</span>
+            </div>
+
+           <div class="user-dropdown">
+            <a href="/my-orders" class="dropdown-item">
+            <img src="../assets/icons/orders.svg" class="dropdown-icon">
+            Đơn hàng của tôi
+           </a>
+
+           <a href="#" id="logout-btn" class="dropdown-item">
+           <img src="../assets/icons/logout.svg" class="dropdown-icon">
+            Đăng xuất
+           </a>
+          </div>
+          </div>
+       `
+
+       : `
+           <a href="/login" class="account-link">
+           <img src="../assets/icons/user.svg" class="icon-top" />
+           Tài khoản
+           </a>
+        `
+       }
+
           <a href="/cart" class="account-link">
             <img src="../assets/icons/cart.svg" class="icon-top" />
             Giỏ hàng (<span id="cart-count">0</span>)
