@@ -1,11 +1,11 @@
 .news-detail-container{
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px 80px;
+  padding: 60px 20px 40px;
 }
 
 .article-content{
-  max-width: 900px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px 0;
   color: #333;
@@ -14,8 +14,8 @@
 
 /* Tiêu đề chính */
 .article-content h2{
-  font-size: 38px;
-  font-weight: 700;
+  font-size: 34px;
+  font-weight: 600;
   text-align: center;
   color: #111;
   margin: 40px 0;

@@ -40,3 +40,60 @@ exports.getProductsByCategory = async (req, res) => {
     res.status(500).json({ message: "Lỗi server" });
   }
 };
+
+// admin (CRUD Sản phẩm)
+exports.createProduct = async(req,res)=>{
+  try{
+    const product = await Product.create(req.body);
+    res.status(201).json({
+      success:true,
+      product
+    });
+  }
+  catch(error){
+    res.status(500).json({
+      success:false,
+      message:error.message
+    });
+  }
+};
+
+exports.updateProduct = async(req,res)=>{
+  try{
+    const product = await Product.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+          new:true
+        }
+      );
+    res.json({
+      success:true,
+      product
+    });
+  }
+  catch(error){
+    res.status(500).json({
+      success:false,
+      message:error.message
+    });
+  }
+};
+
+exports.deleteProduct = async(req,res)=>{
+  try{
+    await Product.findByIdAndDelete(
+      req.params.id
+    );
+    res.json({
+      success:true,
+      message:"Xóa thành công"
+    });
+  }
+  catch(error){
+    res.status(500).json({
+      success:false,
+      message:error.message
+    });
+  }
+};

@@ -7,8 +7,13 @@ export const ENDPOINTS = {
   profile: `${API}/auth/profile`,
 
   // products
-  products: `${API}/products`,
-  productById: (id) => `${API}/products/${id}`,
+  products: {
+  getALL: `${API}/products`,
+  getById: (id) => `${API}/products/${id}`,
+  create: `${API}/products`,
+  update: (id) => `${API}/products/${id}`,
+  delete: (id) => `${API}/products/${id}`,
+  },
 
   // orders
   orders: `${API}/orders`,
@@ -18,6 +23,10 @@ export const ENDPOINTS = {
   // users 
   users: `${API}/users`,
   userById: (id) => `${API}/users/${id}`,
+
+  dashboard:{
+  stats:`${API}/dashboard/stats`,
+  }
 };
 
 export function getHeaders(requireAuth = false) {

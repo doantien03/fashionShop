@@ -22,11 +22,12 @@ export function renderFooter() {
 
       <div class="footer-right">
         <h4>HỖ TRỢ KHÁCH HÀNG</h4>
-        <p>Hướng dẫn mua hàng</p>
-        <p>Hướng dẫn chọn size</p>
-        <p>Phương thức thanh toán</p>
-        <p>Chính sách vận chuyển</p>
-        <p>Chính sách bảo mật</p>
+        <a href="/thong-tin/thuong-hieu">Sứ mệnh - thương hiệu Fashion</a>
+        <a href="/thong-tin/he-thong-cua-hang">Hệ thống cửa hàng</a>
+        <a href="/thong-tin/chinh-sach-bao-mat">Chính sách bảo mật thông tin</a>
+        <a href="/thong-tin/huong-dan-mua-hang">Hướng dẫn mua hàng</a>
+        <a href="/thong-tin/chinh-sach-doi-hang">Chính sách đổi hàng</a>
+        <a href="/thong-tin/chinh-sach-van-chuyen">Chính sách vận chuyển</a>
       </div>
     </footer>
   `;

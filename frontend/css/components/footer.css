@@ -33,6 +33,10 @@
   line-height: 1.7;
 }
 
+.footer-left p:hover {
+  color: #000;
+}
+
 /* CENTER */
 .footer-center {
   display: flex;
@@ -56,35 +60,34 @@
 
 .footer-center a:hover {
   color: #000;
-  letter-spacing: 1px;
+  padding-left: 5px;
 }
 
 /* RIGHT */
+.footer-right {
+  display: flex;
+  flex-direction: column;
+}
+
 .footer-right h4 {
   font-size: 16px;
   letter-spacing: 2px;
   color: #333;
+  margin-bottom: 15px;
 }
 
-.footer-right p {
+.footer-right a {
+  display: block;
   font-size: 15px;
   color: #555;
-  margin-top: 10px;
-  transition: 0.25s;
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: all 0.25s ease;
 }
 
-.footer-right p:hover {
+.footer-right a:hover {
   color: #000;
-}
-
-.footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 100px;
-  right: 100px;
-  height: 1px;
-  background: #ddd;
+  padding-left: 5px;
 }
 
 @media (max-width: 768px) {
