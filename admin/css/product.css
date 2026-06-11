@@ -2,50 +2,116 @@
   padding:30px;
 }
 
+/* HEADER */
+
 .page-header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:20px;
+  margin-bottom:24px;
+}
+
+.page-header h1{
+  font-size:28px;
+  font-weight:700;
+  color:#222;
 }
 
 .page-header button{
-  padding:10px 18px;
+  padding:12px 20px;
+  background:#111;
+  color:#fff;
   border:none;
+  border-radius:8px;
   cursor:pointer;
+  font-weight:600;
+  transition:.25s;
 }
+
+.page-header button:hover{
+  background:#333;
+}
+
+/* TABLE */
 
 .admin-table{
   width:100%;
   border-collapse:collapse;
   background:#fff;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:
+    0 2px 12px rgba(0,0,0,.08);
 }
 
-.admin-table th,
-.admin-table td{
-  padding:14px;
-  border-bottom:1px solid #eee;
+.admin-table thead{
+  background:#f8f8f8;
 }
+
+.admin-table th{
+  padding:16px;
+  text-align:left;
+  font-weight:600;
+  color:#333;
+}
+
+.admin-table td{
+  padding:16px;
+  border-top:1px solid #eee;
+}
+
+.admin-table tr:hover{
+  background:#fafafa;
+}
+
+/* PRODUCT IMAGE */
 
 .product-thumb{
   width:70px;
   height:70px;
   object-fit:cover;
+  border-radius:8px;
+  border:1px solid #eee;
 }
 
+/* ACTION BUTTONS */
+
+.edit-btn{
+  background:#111;
+  color:#fff;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-right:8px;
+}
+
+.delete-btn{
+  background:#e53935;
+  color:#fff;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+.edit-btn:hover{
+  opacity:.85;
+}
+
+.delete-btn:hover{
+  opacity:.85;
+}
+
+/* MODAL */
+
 .modal{
-
   position:fixed;
-
   inset:0;
-
-  background:
-  rgba(0,0,0,.5);
+  background:rgba(0,0,0,.55);
 
   display:flex;
-
   justify-content:center;
-
   align-items:center;
 
   z-index:999;
@@ -56,54 +122,189 @@
 }
 
 .modal-content{
+  background:#fff;
 
-  background:white;
-
-  width:800px;
+  width:900px;
+  max-width:95%;
 
   max-height:90vh;
+  overflow-y:auto;
 
-  overflow:auto;
+  padding:28px;
 
-  padding:25px;
+  border-radius:16px;
 
-  border-radius:10px;
+  box-shadow:
+    0 10px 40px rgba(0,0,0,.15);
+}
 
+.modal-content h2{
+  margin-bottom:20px;
+  color:#222;
 }
 
 .close{
-
   float:right;
-
-  font-size:30px;
-
+  font-size:32px;
   cursor:pointer;
-
+  color:#666;
 }
 
+.close:hover{
+  color:#000;
+}
+
+/* FORM */
+
 .modal-content input,
-.modal-content textarea{
+.modal-content textarea,
+.modal-content select{
 
   width:100%;
 
-  padding:10px;
+  padding:12px;
 
-  margin-bottom:12px;
+  border:1px solid #ddd;
 
+  border-radius:8px;
+
+  margin-bottom:14px;
+
+  font-size:14px;
 }
+
+.modal-content textarea{
+  min-height:120px;
+  resize:vertical;
+}
+
+.modal-content h3{
+  margin:20px 0 12px;
+  color:#222;
+}
+
+/* THUMBNAIL */
+
+.thumbnail-preview{
+  width:140px;
+  height:140px;
+
+  object-fit:cover;
+
+  border-radius:10px;
+
+  border:1px solid #ddd;
+
+  margin-bottom:15px;
+}
+
+/* SIZE */
+
+.sizes-box{
+  display:flex;
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.sizes-box label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+/* COLOR */
 
 .color-row{
 
   display:grid;
 
   grid-template-columns:
+  180px
+  140px
   1fr
-  1fr
-  2fr
+  90px
   auto;
 
-  gap:10px;
+  gap:12px;
 
-  margin-bottom:10px;
+  align-items:center;
 
+  margin-bottom:12px;
+
+}
+
+.color-preview{
+
+  width:70px;
+  height:70px;
+
+  object-fit:cover;
+
+  border-radius:8px;
+
+  border:1px solid #ddd;
+}
+
+.remove-color{
+
+  background:#e53935;
+
+  color:white;
+
+  border:none;
+
+  width:40px;
+  height:40px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+}
+
+.remove-color:hover{
+  opacity:.85;
+}
+
+/* BUTTONS */
+
+#add-color-btn{
+
+  background:#111;
+
+  color:white;
+
+  border:none;
+
+  padding:10px 18px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+}
+
+#product-form button[type="submit"]{
+
+  background:#111;
+
+  color:white;
+
+  border:none;
+
+  padding:14px 20px;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  width:100%;
+
+  font-size:15px;
+
+  font-weight:600;
+
+  margin-top:10px;
+}
+
+#product-form button[type="submit"]:hover{
+  background:#333;
 }

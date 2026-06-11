@@ -21,6 +21,7 @@ app.use("/api/orders", require("./routes/orderRoute"));
 app.use("/api/cart", require("./routes/cartRoute"));
 app.use("/api/news", require("./routes/newsRoute"));
 app.use("/api/dashboard",require("./routes/dashboardRoute"));
+app.use("/api/upload",require("./routes/uploadRoute"));
 
 // static
 app.use("/admin", express.static(path.join(__dirname, "../admin")));

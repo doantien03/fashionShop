@@ -26,7 +26,13 @@ export const ENDPOINTS = {
 
   dashboard:{
   stats:`${API}/dashboard/stats`,
-  }
+  },
+  
+  upload: {
+    image: `${API}/upload/image`,
+  },
+
+
 };
 
 export function getHeaders(requireAuth = false) {
