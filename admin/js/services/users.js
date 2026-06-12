@@ -3,7 +3,7 @@ import { ENDPOINTS, getHeaders } from "../config/apiConfig.js";
 // Lấy danh sách users
 export async function getUsers() {
   try {
-    const res = await fetch(ENDPOINTS.users, {
+    const res = await fetch(ENDPOINTS.users.getAll, {
       method: "GET",
       headers: getHeaders(true),
     });
@@ -31,7 +31,7 @@ export async function getUsers() {
 // Lấy user theo ID
 export async function getUserById(id) {
   try {
-    const res = await fetch(`${ENDPOINTS.users}/${id}`, {
+    const res = await fetch(ENDPOINTS.users.getById(id) , {
       method: "GET",
       headers: getHeaders(true),
     });
@@ -57,7 +57,7 @@ export async function getUserById(id) {
 // Xoá user
 export async function deleteUser(id) {
   try {
-    const res = await fetch(`${ENDPOINTS.users}/${id}`, {
+    const res = await fetch(ENDPOINTS.users.delete(id) , {
       method: "DELETE",
       headers: getHeaders(true),
     });
@@ -76,7 +76,7 @@ export async function deleteUser(id) {
 // Cập nhật user (role, status,...)
 export async function updateUser(id, data) {
   try {
-    const res = await fetch(`${ENDPOINTS.users}/${id}`, {
+    const res = await fetch(ENDPOINTS.users.update(id), {
       method: "PUT",
       headers: getHeaders(true),
       body: JSON.stringify(data),

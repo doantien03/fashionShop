@@ -20,8 +20,10 @@ app.use("/api/products", require("./routes/productRoute"));
 app.use("/api/orders", require("./routes/orderRoute"));
 app.use("/api/cart", require("./routes/cartRoute"));
 app.use("/api/news", require("./routes/newsRoute"));
+
 app.use("/api/dashboard",require("./routes/dashboardRoute"));
 app.use("/api/upload",require("./routes/uploadRoute"));
+app.use("/api/users",require("./routes/userRoute"));
 
 // static
 app.use("/admin", express.static(path.join(__dirname, "../admin")));

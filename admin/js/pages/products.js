@@ -1,6 +1,7 @@
-import { getProducts } from "../services/products.js";
-import { createProduct }from "../services/products.js";
+import { getProducts,createProduct,deleteProduct } from "../services/products.js";
 import {uploadImage} from "../services/upload.js";
+
+let editingProductId = null;
 
 export function renderProducts(){
   return `
@@ -9,18 +10,16 @@ export function renderProducts(){
   <div class="page-header">
     <h1>Quản lý sản phẩm</h1>
     <button id="add-product-btn"> + Thêm sản phẩm </button>
-  </div>
+    </div>
 
   <div id="products-list"></div>
-</div>
+  </div>
 
-<div id="product-modal"
-     class="modal hidden">
+<div id="product-modal" class="modal hidden">
   <div class="modal-content">
-    <span
-      id="close-modal"
-      class="close">×</span>
-    <h2>Thêm sản phẩm</h2>
+    <span id="close-modal" class="close"> × </span>
+    <h2 id="modal-title"> Thêm sản phẩm </h2>
+
     <form id="product-form">
       <input
         id="name"
@@ -38,11 +37,12 @@ export function renderProducts(){
       <input
         id="type"
         placeholder="Loại">
-
+      
       <input
        type="file"
        id="thumbnail-file"
-       accept="image/*">
+       accept="image/*"
+       >
 
       <img
        id="thumbnail-preview"
@@ -57,40 +57,19 @@ export function renderProducts(){
         type="number"
         placeholder="Tồn kho">
 
-      <h3>Sizes</h3>
+      <h3>Size</h3>
       <div class="sizes-box">
-        <label>
-          <input
-            type="checkbox"
-            value="S"
-            class="size"> S </label>
-        <label>
-          <input
-            type="checkbox"
-            value="M"
-            class="size"> M </label>
-
-        <label>
-          <input
-            type="checkbox"
-            value="L"
-            class="size"> L </label>
-
-        <label>
-          <input
-            type="checkbox"
-            value="XL"
-            class="size"> XL </label>
+        <label> <input type="checkbox" value="S" class="size"> <span> S </span> </label>
+        <label> <input type="checkbox" value="M" class="size"> <span> M </span> </label>
+        <label> <input type="checkbox" value="L" class="size"> <span> L </span> </label>
+        <label> <input type="checkbox" value="XL" class="size"> <span> XL </span> </label>
       </div>
 
       <h3>Màu sắc</h3>
       <div id="colors-container">
       </div>
 
-      <button
-        type="button"
-        id="add-color-btn">  + Thêm màu </button>
-      <br><br>
+      <button type="button" id="add-color-btn">  + Thêm màu </button>
 
       <button
         type="submit"> Lưu sản phẩm </button>
@@ -102,12 +81,15 @@ export function renderProducts(){
 
 export async function initProducts(){
   const data = await getProducts();
+  const products = data.products || data;
 
-  renderProductsTable(data.products || data);
+  renderProductsTable(products);
   bindModal();
   bindColors();
   bindThumbnailPreview();
-  bindCreateProduct();
+  bindSaveProduct();
+  bindDeleteProduct();
+  bindEditProduct(products);
 }
 
 function renderProductsTable(products){
@@ -154,9 +136,24 @@ function renderProductsTable(products){
 
 function bindModal(){
   const modal = document.getElementById("product-modal");
+  const form = document.getElementById("product-form");
   document.getElementById("add-product-btn").addEventListener("click",
-    () => { modal.classList.remove(
-        "hidden");
+    () =>{
+      // reset trạng thái edit
+      editingProductId = null;
+      // reset form
+      form.reset();
+      // reset colors
+      document.getElementById("colors-container").innerHTML = "";
+      // reset thumbnail preview
+      const preview = document.getElementById("thumbnail-preview");
+      if(preview){
+        preview.src = "";
+      }
+      // đổi tiêu đề modal
+      document.getElementById("modal-title").textContent = "Thêm sản phẩm";
+      // mở modal
+      modal.classList.remove("hidden");
     }
   );
 
@@ -167,53 +164,67 @@ function bindModal(){
   );
 }
 
-function bindColors(){
-  document.getElementById("add-color-btn").addEventListener("click",
-    () => { const container = document.getElementById("colors-container");
+function bindColors() {
+
+    const container = document.getElementById("colors-container");
+    const addColorBtn = document.getElementById("add-color-btn");
+
+    // Thêm màu
+    addColorBtn.addEventListener("click", () => {
       const row = document.createElement("div");
-      row.className ="color-row";
-
+      row.className = "color-row";
       row.innerHTML = `
-      
       <input
-      class="color-name"
-      placeholder="Tên màu">
+        class="color-name"
+        placeholder="Tên màu">
 
       <input
-      class="color-code"
-      placeholder="#ffffff">
+        class="color-code"
+        placeholder="#ffffff">
 
       <input
-      type="file"
-      class="color-file"
-      accept="image/*">
+        type="file"
+        class="color-file"
+        accept="image/*">
 
       <img
-      class="color-preview"
-      width="80">
+        class="color-preview">
 
       <button
-      type="button"
-      class="remove-color"> X </button>
+        type="button"
+        class="remove-color">
+        Xóa
+      </button>
       `;
       container.appendChild(row);
+    });
 
-      const fileInput =row.querySelector(".color-file");
-            fileInput.addEventListener("change",
-              e=>{
-                const file = e.target.files[0];
-                if(!file){
-                  return;
-                }
+    // Preview ảnh
+    container.addEventListener("change", (e) => {
+    if (!e.target.classList.contains("color-file")) {
+      return;
+    }
+    const file = e.target.files[0];
+    if (!file) {
+      return;
+    }
+    const row = e.target.closest(".color-row");
+    row.querySelector(".color-preview").src = URL.createObjectURL(file);
+    });
 
-            row.querySelector(".color-preview").src = URL.createObjectURL(file);
-          }
-        );
-      }
-    );
-  }
+    // Xóa màu
+    container.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("remove-color")) {
+      return;
+    }
+    const row = e.target.closest(".color-row");
+    if (row) {
+      row.remove();
+    }
+   });
+ }
 
-function bindCreateProduct(){
+function bindSaveProduct(){
   document.getElementById("product-form").addEventListener("submit",
     async e=>{
       e.preventDefault();
@@ -270,8 +281,20 @@ function bindCreateProduct(){
         isActive:true
       };
 
-      const result = await createProduct(product);
-      console.log(result);
+      let result;
+      if(editingProductId){
+        result = await updateProduct( editingProductId,product);
+      }
+      else{
+        result = await createProduct(product);
+      }
+      
+      // khi lưu thành công
+      if(result.success){
+        editingProductId = null;
+        document.getElementById("product-modal").classList.add("hidden");
+        initProducts();
+      }
     }
   );
 }
@@ -291,4 +314,68 @@ function bindThumbnailPreview(){
       document.getElementById("thumbnail-preview").src = URL.createObjectURL(file);
     }
   );
+}
+
+// xóa sản phẩm
+function bindDeleteProduct(){
+  document.addEventListener("click",
+    async e =>{
+      const btn = e.target.closest(".delete-btn");
+      if(!btn){
+        return;
+      }
+
+      const id = btn.dataset.id;
+      const confirmDelete = confirm("Xóa sản phẩm?");
+      if(!confirmDelete){
+        return;
+      }
+      const result = await deleteProduct(id);
+      if(result.success){
+        initProducts();
+      }
+    }
+  );
+}
+
+// edit sản phẩm
+function bindEditProduct(products){
+  document.addEventListener("click",
+    e=>{
+      const btn = e.target.closest(".edit-btn");
+      if(!btn){
+        return;
+      }
+
+      const product = products.find(
+          p => p._id === btn.dataset.id
+        );
+      if(!product){
+        return;
+      }
+      openEditModal(product);
+    }
+  );
+}
+
+// thêm dữ liệu vào modal
+function openEditModal(product){
+
+  editingProductId = product._id;
+
+  document.getElementById("name").value = product.name;
+
+  document.getElementById("price").value =product.price;
+
+  document.getElementById("category").value = product.category;
+
+  document.getElementById("type").value = product.type;
+
+  document.getElementById("description").value = product.description;
+
+  document.getElementById("stock").value = product.stock;
+
+  document.getElementById("product-modal").classList.remove("hidden");
+
+  document.getElementById("modal-title").textContent = "Cập nhật sản phẩm";
 }

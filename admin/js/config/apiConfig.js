@@ -21,15 +21,20 @@ export const ENDPOINTS = {
   updateStatus: (id) => `${API}/orders/${id}/status`,
 
   // users 
-  users: `${API}/users`,
-  userById: (id) => `${API}/users/${id}`,
+  users: {
+  getAll: `${API}/users`,
+  getById: (id) => `${API}/users/${id}`,
+  create: `${API}/users`,
+  update: (id) => `${API}/users/${id}`,
+  delete: (id) => `${API}/users/${id}`,
+  },
 
   dashboard:{
   stats:`${API}/dashboard/stats`,
   },
   
   upload: {
-    image: `${API}/upload/image`,
+  image: `${API}/upload/image`,
   },
 
 
