@@ -1,7 +1,9 @@
-import { getProducts,createProduct,deleteProduct } from "../services/products.js";
+import { getProducts,createProduct,deleteProduct,updateProduct } from "../services/products.js";
 import {uploadImage} from "../services/upload.js";
+import { showToast } from "../utils/toast.js";
 
 let editingProductId = null;
+let isDelete = false;
 
 export function renderProducts(){
   return `
@@ -72,7 +74,9 @@ export function renderProducts(){
       <button type="button" id="add-color-btn">  + Thêm màu </button>
 
       <button
-        type="submit"> Lưu sản phẩm </button>
+        type="submit"
+        id="save-product-btn"> Lưu sản phẩm  <span class="btn-loader hidden"></span>
+      </button>
     </form>
   </div>
 </div>
@@ -224,19 +228,58 @@ function bindColors() {
    });
  }
 
+// render các button color trong trang edit sản phẩm
+function renderColors(colors = []) {
+    const container = document.getElementById("colors-container");
+    // clear UI cũ
+    container.innerHTML = "";
+
+    colors.forEach(color => {
+    const row = document.createElement("div");
+    row.className = "color-row";
+
+    row.innerHTML = `
+      <input class="color-name" placeholder="Tên màu" value="${color.name || ""}">
+      <input class="color-code" placeholder="#ffffff" value="${color.code || ""}">
+      <input type="file" class="color-file" accept="image/*">
+      <img class="color-preview" src="${color.image || ""}" >
+      <button type="button" class="remove-color"> Xóa </button>
+    `;
+    container.appendChild(row);
+  });
+}
+
+
 function bindSaveProduct(){
-  document.getElementById("product-form").addEventListener("submit",
+  document.getElementById("product-form").onsubmit =
     async e=>{
       e.preventDefault();
-      const sizes = [...document.querySelectorAll(".size:checked")]
-        .map(s=>s.value);
+      
+      // kiểm tra điền dữ liệu
+      const name = document.getElementById("name").value.trim();
+      const price = document.getElementById("price").value;
+      const category = document.getElementById("category").value.trim();
+      if(!name || !price || !category){
+        showToast("Vui lòng nhập đầy đủ thông tin","warning");
+        return;  
+      } 
 
+      // nút loading
+      const saveBtn = document.getElementById("save-product-btn");
+      const loader = saveBtn.querySelector(".btn-loader");
+      saveBtn.disabled = true;
+      loader.classList.remove("hidden");
+      
+    try{
+      const sizes = [...document.querySelectorAll(".size:checked")].map( s=> s.value);
+      const category = document.getElementById("category").value;
       const colorRows = document.querySelectorAll(".color-row");
+
       const colors = [];
       for(const row of colorRows){
 
       const file = row.querySelector(".color-file").files[0];
-      let image = "";
+      let image = row.querySelector(".color-preview")?.src || ""; // giữ màu khi vào edit mà không sửa
       if(file){
         const uploadResult = await uploadImage(file,category);
           image = uploadResult.url;
@@ -248,11 +291,10 @@ function bindSaveProduct(){
         });
       }
     
-      const category = document.getElementById("category").value;
       const file = document.getElementById("thumbnail-file").files[0];
-      let thumbnail = "";
+      let thumbnail = document.getElementById("thumbnail-preview")?.src || ""; // giữ ảnh khi vào edit mà không sửa
       if(file){
-      const uploadResult =await uploadImage(file,category);
+      const uploadResult = await uploadImage(file,category);
 
       if(uploadResult.success){
         thumbnail = uploadResult.url;
@@ -261,23 +303,14 @@ function bindSaveProduct(){
 
       const product = {
         name: document.getElementById("name").value,
-
         price: Number(document.getElementById("price").value),
-
         category: document.getElementById("category").value,
-
         type: document.getElementById("type").value,
-
         thumbnail,
-
         description: document.getElementById("description").value,
-
         stock: Number(document.getElementById("stock").value),
-
         sizes,
-
         colors,
-
         isActive:true
       };
 
@@ -288,16 +321,30 @@ function bindSaveProduct(){
       else{
         result = await createProduct(product);
       }
-      
+    
       // khi lưu thành công
       if(result.success){
+        showToast(editingProductId ? "Cập nhật sản phẩm thành công" : "Thêm sản phẩm thành công","success");
+        loader.classList.add("hidden");
+        saveBtn.disabled = false;
+
         editingProductId = null;
         document.getElementById("product-modal").classList.add("hidden");
         initProducts();
+      } else{
+          showToast( result.message || "Lưu sản phẩm thất bại","error");
+        }
+      }
+    catch(error){
+        console.error("Lỗi lưu sản phẩm:",error);
+        showToast("Lỗi xảy ra khi lưu sản phẩm", "error");
+      }
+    finally{
+        loader.classList.add("hidden");
+        saveBtn.disabled = false;
       }
     }
-  );
-}
+  };
 
 function bindThumbnailPreview(){
   const input =document.getElementById("thumbnail-file");
@@ -317,25 +364,21 @@ function bindThumbnailPreview(){
 }
 
 // xóa sản phẩm
-function bindDeleteProduct(){
-  document.addEventListener("click",
-    async e =>{
-      const btn = e.target.closest(".delete-btn");
-      if(!btn){
-        return;
-      }
+function bindDeleteProduct() {
+    if (isDelete) return;
+    isDelete = true;
 
-      const id = btn.dataset.id;
-      const confirmDelete = confirm("Xóa sản phẩm?");
-      if(!confirmDelete){
-        return;
-      }
-      const result = await deleteProduct(id);
-      if(result.success){
-        initProducts();
-      }
+    document.addEventListener("click", async e => {
+      const btn = e.target.closest(".delete-btn");
+      if (!btn) return;
+
+    const id = btn.dataset.id;
+    if (!confirm("Xóa sản phẩm?")) return;
+    const result = await deleteProduct(id);
+    if (result.success) {
+      initProducts();
     }
-  );
+  });
 }
 
 // edit sản phẩm
@@ -360,22 +403,26 @@ function bindEditProduct(products){
 
 // thêm dữ liệu vào modal
 function openEditModal(product){
-
   editingProductId = product._id;
-
   document.getElementById("name").value = product.name;
-
   document.getElementById("price").value =product.price;
-
   document.getElementById("category").value = product.category;
-
   document.getElementById("type").value = product.type;
-
   document.getElementById("description").value = product.description;
-
   document.getElementById("stock").value = product.stock;
+  document.querySelectorAll(".size").forEach(cb => {
+    cb.checked = product.sizes?.includes(cb.value);
+  });
 
+  const thumbPreview = document.getElementById("thumbnail-preview");
+  if (thumbPreview) {
+  thumbPreview.src = product.thumbnail || "/default.png";
+  }
+
+  renderColors(product.colors);
+  document.querySelectorAll(".size").forEach(cb => {
+    cb.checked = product.sizes?.includes(cb.value);
+  });
   document.getElementById("product-modal").classList.remove("hidden");
-
   document.getElementById("modal-title").textContent = "Cập nhật sản phẩm";
 }

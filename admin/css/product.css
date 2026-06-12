@@ -248,12 +248,12 @@
 }
 
 .color-preview{
-  width:70px;
-  height:70px;
+  width:47px;
+  height:47px;
   object-fit:cover;
   border-radius:8px;
   border:1px solid #ddd;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .remove-color{
@@ -312,4 +312,35 @@
 
 #product-form button[type="submit"]:hover{
   background:#333;
+}
+
+#save-product-btn{
+  position: relative;
+}
+
+.btn-loader{
+
+  width: 16px;
+  height: 16px;
+
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+
+  border-radius: 50%;
+
+  display: inline-block;
+
+  margin-left: 8px;
+
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.hidden{
+  display: none !important;
 }
