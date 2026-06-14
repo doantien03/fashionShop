@@ -1,26 +1,14 @@
 export function requireAdmin(){
 
-  const token =
-    localStorage.getItem("token");
-
-  const user =
-    JSON.parse(
-      localStorage.getItem("user")
-    );
-
+  const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user"));
   if(!token){
-
-    location.href =
-      "http://localhost:5500/login";
-
+    location.href = "http://localhost:5500/login";
     return false;
   }
 
   if(user?.role !== "admin"){
-
-    location.href =
-      "http://localhost:5500/home";
-
+    location.href = "http://localhost:5500/home";
     return false;
   }
 

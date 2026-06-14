@@ -1,5 +1,13 @@
 const Order = require("../models/order");
 
+// state machine
+const ORDER_FLOW = {
+  pending: ["confirmed", "cancelled"],
+  confirmed: ["shipping", "cancelled"],
+  shipping: ["completed", "cancelled"],
+  completed: [],
+  cancelled: []
+};
 // tạo đơn hàng
 exports.createOrder = async (req, res) => {
   try {
@@ -115,32 +123,61 @@ exports.getMyOrders = async(req,res)=>{
   }
 };
 
-// trạng thái cập nhật
-exports.orderStatus = async(req,res)=>{
-
-  try{
-    const {status} = req.body;
-    const order = await Order.findByIdAndUpdate(
-      req.params.id,
-      { status },
-      { new:true }
-    );
-    if(!order){
+// admin cập nhật trạng thái đơn
+exports.orderStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
+    const order = await Order.findById(req.params.id);
+    if (!order) {
       return res.status(404).json({
-        success:false,
-        message:"Không tìm thấy đơn"
+        success: false,
+        message: "Không tìm thấy đơn"
       });
     }
+
+    if (order.status === "completed" || order.status === "cancelled") {
+      return res.status(400).json({
+        success: false,
+        message: "Đơn đã đóng, không thể thay đổi"
+      });
+    }
+
+    const allowed = ORDER_FLOW[order.status] || [];
+    if (!allowed.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: `Không thể chuyển từ ${order.status} sang ${status}`
+      });
+    }
+
+    //stock handling
+    if (status === "cancelled") {
+      for (const item of order.items) {
+        await Product.findByIdAndUpdate(item.product, {
+          $inc: { stock: item.quantity }
+        });
+      }
+    }
+
+    order.status = status;
+    order.statusHistory = order.statusHistory || [];
+    order.statusHistory.push({
+      status,
+      changedAt: new Date()
+    });
+
+    await order.save();
     res.json({
-      success:true,
-      message:"Cập nhật thành công",
+      success: true,
+      message: "Cập nhật thành công",
       order
     });
-  }
-  catch(error){
+
+  } catch (error) {
+    console.error(error);
     res.status(500).json({
-      success:false,
-      message:"Lỗi server"
+      success: false,
+      message: "Lỗi server"
     });
   }
 };

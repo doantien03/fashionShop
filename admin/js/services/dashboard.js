@@ -1,15 +1,7 @@
-import {
-  ENDPOINTS,
-  getHeaders
-}
-from "../config/apiConfig.js";
+import { ENDPOINTS,getHeaders } from "../config/apiConfig.js";
 
-export async function
-getDashboardStats(){
-
-  const res =
-    await fetch(
-      ENDPOINTS.dashboard.stats,
+export async function getDashboard(){
+  const res = await fetch(ENDPOINTS.dashboard.stats,
       {
         headers:
           getHeaders(true)

@@ -1,232 +1,170 @@
-import { getDashboardStats }
-from "../services/dashboard.js";
+import { getDashboard } from "../services/dashboard.js";
 
 export function renderDashboard() {
-
   return `
-
     <div class="dashboard">
 
       <div class="dashboard-header">
-
         <h1>Dashboard</h1>
-
-        <p>
-          Chào mừng trở lại Admin 👋
-        </p>
-
-      </div>
-
+        <p> Chào mừng trở lại Admin 👋</p>
+        </div>
       <div class="stats-grid">
-
         <div class="stat-card">
 
           <div class="stat-info">
-
             <h4>Đơn hàng</h4>
-
-            <span id="total-orders">
-              ...
-            </span>
-
+            <span id="total-orders"> ...</span>
           </div>
 
-          <div class="stat-icon">
-            📦
-          </div>
-
+          <div class="stat-icon">📦</div>
         </div>
 
         <div class="stat-card">
-
           <div class="stat-info">
-
             <h4>Doanh thu</h4>
-
-            <span id="total-revenue">
-              ...
-            </span>
-
+            <span id="total-revenue">...</span>
           </div>
 
-          <div class="stat-icon">
-            💰
-          </div>
-
+          <div class="stat-icon">💰</div>
         </div>
 
         <div class="stat-card">
-
           <div class="stat-info">
-
             <h4>Sản phẩm</h4>
-
-            <span id="total-products">
-              ...
-            </span>
-
+            <span id="total-products">...</span>
           </div>
 
-          <div class="stat-icon">
-            👕
-          </div>
-
+          <div class="stat-icon">👕</div>
         </div>
 
         <div class="stat-card">
-
           <div class="stat-info">
-
             <h4>Người dùng</h4>
-
-            <span id="total-users">
-              ...
-            </span>
-
+            <span id="total-users">...</span>
           </div>
 
-          <div class="stat-icon">
-            👥
-          </div>
+          <div class="stat-icon">👥</div>
+        </div>
+      </div>
 
+      <!-- trạng thái đon -->
+      <div class="order-stats">
+
+        <div class="mini-card">
+          <h4>Chờ xử lý</h4>
+          <span id="pending-orders">...</span>
+        </div>
+
+        <div class="mini-card">
+          <h4>Đang giao</h4>
+          <span id="shipping-orders">...</span>
+        </div>
+
+        <div class="mini-card">
+          <h4>Hoàn thành</h4>
+          <span id="completed-orders">...</span>
+        </div>
+
+        <div class="mini-card">
+          <h4>Đã hủy</h4>
+          <span id="cancelled-orders">...</span>
         </div>
 
       </div>
 
+      <!-- doanh thu -->
+      <div class="revenue-grid">
+
+        <div class="revenue-card">
+          <h4>Doanh thu hôm nay</h4>
+          <span id="today-revenue">...</span>
+        </div>
+
+        <div class="revenue-card">
+          <h4>Doanh thu tháng này</h4>
+          <span id="month-revenue">...</span>
+        </div>
+
+      </div>
+
+      <!-- đơn hàng mới -->
       <div class="dashboard-section">
-
-        <h2>
-          Đơn hàng mới nhất
-        </h2>
-
+        <h2>Đơn hàng mới nhất</h2>
         <div id="latest-orders">
-
-          <p>
-            Đang tải...
-          </p>
-
+          <p>Đang tải...</p>
         </div>
-
       </div>
-
     </div>
-
   `;
 }
 
 export async function initDashboard() {
 
   try {
-
-    const data =
-      await getDashboardStats();
-
+    const data = await getDashboard();
     if(!data.success){
       return;
     }
 
-    document.getElementById(
-      "total-orders"
-    ).innerText =
-      data.totalOrders;
+    document.getElementById("total-orders").innerText = data.totalOrders;
+    document.getElementById("total-products").innerText = data.totalProducts;
+    document.getElementById("total-users").innerText = data.totalUsers;
+    document.getElementById("total-revenue").innerText = (data.revenue || 0).toLocaleString("vi-VN") + "đ";
 
-    document.getElementById(
-      "total-products"
-    ).innerText =
-      data.totalProducts;
+    document.getElementById("pending-orders").innerText = data.pendingOrders;
+    document.getElementById("shipping-orders").innerText = data.shippingOrders;
+    document.getElementById("completed-orders").innerText = data.completedOrders;
+    document.getElementById("cancelled-orders").innerText = data.cancelledOrders;
 
-    document.getElementById(
-      "total-users"
-    ).innerText =
-      data.totalUsers;
+    document.getElementById("today-revenue").innerText = (data.todayRevenue || 0).toLocaleString("vi-VN")+"đ";
+    document.getElementById("month-revenue").innerText = (data.monthRevenue || 0).toLocaleString("vi-VN")+"đ";
 
-    document.getElementById(
-      "total-revenue"
-    ).innerText =
-      (data.revenue || 0)
-      .toLocaleString("vi-VN")
-      + "đ";
-
-    renderLatestOrders(
-      data.latestOrders || []
-    );
-
+    renderLatestOrders(data.latestOrders || [] );
   }
   catch(error){
-
     console.log(error);
-
   }
-
 }
 
-function renderLatestOrders(
-  orders
-){
+// Badge trạng thái
+function getStatusText(status){
+    const map={
+        pending:"Chờ xử lý",
+        shipping:"Đang giao",
+        completed:"Hoàn thành",
+        cancelled:"Đã hủy"
+    };
+    return map[status]||status;
+}
 
-  const container =
-    document.getElementById(
-      "latest-orders"
-    );
-
+function renderLatestOrders(orders){
+  const container =document.getElementById("latest-orders");
   if(!orders.length){
-
-    container.innerHTML =
-      "<p>Chưa có đơn hàng</p>";
-
+    container.innerHTML = "<p>Chưa có đơn hàng</p>";
     return;
   }
-
-  container.innerHTML = `
-
-    <table class="dashboard-table">
-
+  container.innerHTML = ` <table class="dashboard-table">
       <thead>
-
         <tr>
-
           <th>Mã đơn</th>
-
           <th>Khách hàng</th>
-
           <th>Trạng thái</th>
-
           <th>Tổng tiền</th>
-
         </tr>
-
       </thead>
-
       <tbody>
-
         ${orders.map(order=>`
-
           <tr>
-
-            <td>
-              ${order._id.slice(-6)}
-            </td>
-
-            <td>
-              ${order.customerName}
-            </td>
-
-            <td>
-              ${order.status}
-            </td>
-
-            <td>
-              ${(order.totalPrice || 0)
-                .toLocaleString("vi-VN")}đ
-            </td>
-
+            <td> ${order._id.slice(-6)} </td>
+            <td> ${order.customerName} </td>
+            <td> <span class="status ${order.status}"> ${getStatusText(order.status)}</span> </td>
+            <td> ${(order.totalPrice || 0).toLocaleString("vi-VN")}đ </td>
           </tr>
-
         `).join("")}
 
       </tbody>
-
     </table>
 
   `;
 }
+
