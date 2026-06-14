@@ -1,5 +1,7 @@
 import { getDashboard } from "../services/dashboard.js";
 
+let revenueChart = null;
+
 export function renderDashboard() {
   return `
     <div class="dashboard">
@@ -87,6 +89,11 @@ export function renderDashboard() {
 
       </div>
 
+      <div class="dashboard-chart">
+      <h2> Doanh thu 7 ngày gần nhất </h2>
+      <canvas id="revenueChart"></canvas>
+      </div>
+
       <!-- đơn hàng mới -->
       <div class="dashboard-section">
         <h2>Đơn hàng mới nhất</h2>
@@ -120,6 +127,7 @@ export async function initDashboard() {
     document.getElementById("month-revenue").innerText = (data.monthRevenue || 0).toLocaleString("vi-VN")+"đ";
 
     renderLatestOrders(data.latestOrders || [] );
+    renderRevenueChart(data.revenueChart || [] );
   }
   catch(error){
     console.log(error);
@@ -166,5 +174,77 @@ function renderLatestOrders(orders){
     </table>
 
   `;
+}
+
+function renderRevenueChart(data){
+
+    const canvas = document.getElementById("revenueChart");
+
+    if(!canvas){
+        return;
+    }
+
+    if(revenueChart){
+        revenueChart.destroy();
+    }
+
+    revenueChart = new Chart(canvas,{
+
+        type:"line",
+
+        data:{
+
+            labels:data.map(item=>item._id),
+
+            datasets:[{
+
+                label:"Doanh thu (VNĐ)",
+
+                data:data.map(item=>item.revenue),
+
+                borderWidth:3,
+
+                tension:0.35,
+
+                fill:true
+
+            }]
+
+        },
+
+        options:{
+
+            responsive:true,
+
+            maintainAspectRatio:false,
+
+            plugins:{
+
+                legend:{
+                    display:false
+                }
+
+            },
+
+            scales:{
+
+                y:{
+
+                    beginAtZero:true,
+
+                    ticks:{
+                        callback(value){
+                            return value.toLocaleString("vi-VN")+"đ";
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    });
+
 }
 

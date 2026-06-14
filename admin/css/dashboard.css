@@ -450,3 +450,26 @@
   }
 
 }
+
+.dashboard-chart{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:40px;
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
+
+    position: relative;
+    height: 450px;
+}
+
+.dashboard-chart h2{
+
+    margin-bottom:20px;
+
+}
+
+#revenueChart{
+    display:block;
+    width:100% !important;
+    height:100% !important;
+}

@@ -81,6 +81,41 @@ exports.getDashboard = async (req, res) => {
     const monthRevenue = monthRevenueResult[0]?.total || 0;
     // đơn mới
     const latestOrders = await Order.find().sort({createdAt: -1}).limit(5);
+    // chart
+    const today = new Date();
+    today.setHours(23,59,59,999);
+    const start = new Date();
+    start.setDate(today.getDate()-6);
+    start.setHours(0,0,0,0);
+    const revenueChart = await Order.aggregate([
+      {
+        $match:{
+            status:"completed",
+            createdAt:{
+                $gte:start,
+                $lte:today
+            }
+        }
+     },
+     {
+        $group:{
+            _id:{
+                $dateToString:{
+                    format:"%d/%m",
+                    date:"$createdAt"}
+            },
+            revenue:{
+                $sum:"$totalPrice"
+            }
+        }
+     },
+     {
+        $sort:{
+            _id:1
+        }
+      }
+    ]);
+
     res.json({
       success: true,
       totalOrders,
@@ -93,7 +128,8 @@ exports.getDashboard = async (req, res) => {
       revenue,
       todayRevenue,
       monthRevenue,
-      latestOrders
+      latestOrders,
+      revenueChart
     });
   }
   catch (error) {

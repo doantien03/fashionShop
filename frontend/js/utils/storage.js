@@ -24,6 +24,14 @@ export function getUser() {
   }
 }
 
+export function isAdmin(){
+    return getUser()?.role === "admin";
+}
+
+export function isUser(){
+    return getUser()?.role === "user";
+}
+
 export function removeUser(){
   localStorage.removeItem("user");
 }

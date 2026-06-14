@@ -1,9 +1,15 @@
 import { getProducts } from "../services/product.js";
 import { addToCart, renderCart, openCart} from "../modules/cart.js";
+import { isAdmin } from "../utils/storage.js";
 
 let currentProduct = null;
 let selectedColor = "";
 let currentIndex = 0;
+
+if(isAdmin()){
+    document.getElementById("add-cart-btn")?.remove();
+    document.getElementById("buy-now-btn")?.remove();
+}
 
 export async function initProductDetail(path) {
   const id = path.split("/product/")[1];

@@ -3,6 +3,14 @@ const Cart = require("../models/cart");
 // thêm sản phẩm cart
 const addToCart = async(req,res)=>{
   try{
+    // Chỉ user mới được thêm vào giỏ
+    if (req.user.role !== "user") {
+      return res.status(403).json({
+        success: false,
+        message: "Tài khoản admin không được phép thêm sản phẩm vào giỏ hàng"
+      });
+      }
+      
     const { productId,color,size,quantity=1 } = req.body;
     const userId = req.user.id;
     let cart = await Cart.findOne({

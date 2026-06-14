@@ -1,4 +1,5 @@
 const Order = require("../models/order");
+const Product = require("../models/product");
 
 // state machine
 const ORDER_FLOW = {
@@ -11,6 +12,14 @@ const ORDER_FLOW = {
 // tạo đơn hàng
 exports.createOrder = async (req, res) => {
   try {
+    // Chặn admin đặt hàng
+    if (req.user.role === "admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Tài khoản admin không được phép đặt hàng"
+      });
+    }
+    
     const {customerName,email,phone,city,district,ward,address,note,items,paymentMethod} = req.body;
     const user = req.user.id;
 
