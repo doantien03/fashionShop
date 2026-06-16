@@ -28,6 +28,10 @@
   background:#fff3cd;
 }
 
+.status.confirmed{
+  background:#e2e3ff;
+}
+
 .status.shipping{
   background:#d1ecf1;
 }

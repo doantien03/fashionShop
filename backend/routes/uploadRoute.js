@@ -1,4 +1,5 @@
 const express = require("express");
+const slugify = require("slugify");
 const router = express.Router();
 
 const multer = require("multer");
@@ -6,8 +7,8 @@ const cloudinary = require("../config/cloudinary");
 
 const upload = multer({storage: multer.memoryStorage()});
 
-router.post("/image",upload.single("image"),
-async (req, res) => {
+router.post("/image",upload.single("image"), async (req, res) => {
+  console.log("UPLOAD API CALLED");
 try {
   const file = req.file;
   if (!file) {
@@ -17,12 +18,19 @@ try {
     });
   }
   const category = req.body.category || "other";
+  const type = req.body.type || "other";
+  const name = req.body.name || "product";
+    const slug = slugify(name, {
+      lower: true,
+      strict: true
+    });
   const base64 = `data:${file.mimetype};base64,${
       file.buffer.toString("base64")
     }`;
+
   const result =await cloudinary.uploader.upload(base64,
       {
-        folder:`productsFashionS/${category}`
+        folder:`productsFashionS/products/${category}/${type}/${slug}`
       }
     );
   res.status(200).json({

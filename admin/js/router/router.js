@@ -4,10 +4,12 @@ import { setActiveMenu } from "../utils/setActive.js";
 
 export function router() {
   const path = window.location.pathname;
+  console.log(path);
+  console.log(routes);
   const app = document.getElementById("app");
 
   if (!isLogin()) {
-    window.location.href = "/admin/login.html";
+    window.location.href = "/login";
     return;
   }
 

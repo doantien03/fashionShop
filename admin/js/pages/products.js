@@ -1,5 +1,5 @@
 import { getProducts,createProduct,deleteProduct,updateProduct } from "../services/products.js";
-import {uploadImage} from "../services/upload.js";
+import { uploadImage } from "../services/upload.js";
 import { showToast } from "../utils/toast.js";
 
 let editingProductId = null;
@@ -242,7 +242,10 @@ function renderColors(colors = []) {
       <input class="color-name" placeholder="Tên màu" value="${color.name || ""}">
       <input class="color-code" placeholder="#ffffff" value="${color.code || ""}">
       <input type="file" class="color-file" accept="image/*">
-      <img class="color-preview" src="${color.image || ""}" >
+      <img class="color-preview"
+     src="${color.image || ""}"
+     data-old="${color.image || ""}"
+     alt="${color.name || ""}">
       <button type="button" class="remove-color"> Xóa </button>
     `;
     container.appendChild(row);
@@ -279,10 +282,17 @@ function bindSaveProduct(){
       for(const row of colorRows){
 
       const file = row.querySelector(".color-file").files[0];
-      let image = row.querySelector(".color-preview")?.src || ""; // giữ màu khi vào edit mà không sửa
-      if(file){
-        const uploadResult = await uploadImage(file,category);
+      const preview = row.querySelector(".color-preview");
+      let image = preview.dataset.old || ""; // giữ ảnh màu khi vào edit mà không sửa
+      if(file instanceof File && file.size > 0){
+        const uploadResult = await uploadImage(
+          file,
+          category,
+          document.getElementById("type").value,
+          document.getElementById("name").value.trim());
+
           image = uploadResult.url;
+        
         }
         colors.push({
           name: row.querySelector(".color-name").value,
@@ -292,11 +302,16 @@ function bindSaveProduct(){
       }
     
       const file = document.getElementById("thumbnail-file").files[0];
-      let thumbnail = document.getElementById("thumbnail-preview")?.src || ""; // giữ ảnh khi vào edit mà không sửa
-      if(file){
-      const uploadResult = await uploadImage(file,category);
+      const thumbPreview = document.getElementById("thumbnail-preview");
+      let thumbnail = thumbPreview.dataset.old ?? null; // giữ ảnh khi vào edit mà không sửa
+      if(file instanceof File && file.size > 0){
+        const uploadResult = await uploadImage(
+          file,
+          category,
+          document.getElementById("type").value,
+          document.getElementById("name").value.trim());
 
-      if(uploadResult.success){
+      if(uploadResult?.url){
         thumbnail = uploadResult.url;
         }
       }
@@ -315,6 +330,7 @@ function bindSaveProduct(){
       };
 
       let result;
+      console.log("editingProductId =", editingProductId);
       if(editingProductId){
         result = await updateProduct( editingProductId,product);
       }
@@ -404,6 +420,7 @@ function bindEditProduct(products){
 // thêm dữ liệu vào modal
 function openEditModal(product){
   editingProductId = product._id;
+  document.getElementById("thumbnail-file").value = "";
   document.getElementById("name").value = product.name;
   document.getElementById("price").value =product.price;
   document.getElementById("category").value = product.category;
@@ -415,14 +432,12 @@ function openEditModal(product){
   });
 
   const thumbPreview = document.getElementById("thumbnail-preview");
-  if (thumbPreview) {
-  thumbPreview.src = product.thumbnail || "/default.png";
-  }
+  const thumb = product.thumbnail || "";
+  thumbPreview.src = thumb;
+  thumbPreview.dataset.old = thumb;
+  thumbPreview.alt = product.name || "";
 
   renderColors(product.colors);
-  document.querySelectorAll(".size").forEach(cb => {
-    cb.checked = product.sizes?.includes(cb.value);
-  });
   document.getElementById("product-modal").classList.remove("hidden");
   document.getElementById("modal-title").textContent = "Cập nhật sản phẩm";
 }

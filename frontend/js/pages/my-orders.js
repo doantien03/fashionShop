@@ -91,6 +91,8 @@ function formatStatus(status) {
   switch (status) {
     case "pending":
       return "Chờ xử lý";
+    case "confirmed":
+      return "Đã xác nhận";
     case "shipping":
       return "Đang giao";
     case "completed":

@@ -51,6 +51,11 @@
   color: #856404;
 }
 
+.status.confirmed{
+  background:#e2e3ff;
+  color:#3b3b8f;
+}
+
 .order-status.shipping{
   background: #d1ecf1;
   color: #0c5460;

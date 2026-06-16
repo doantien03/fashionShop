@@ -74,22 +74,89 @@ export async function initOrders() {
 }
 
 function getStatusUI(order) {
-  if (order.status === "cancelled") {
-    return `<span class="order-status status-cancelled">Đã hủy</span>`;
-  }
-  if (order.status === "completed") {
-    return `<span class="order-status status-completed">Hoàn thành</span>`;
-  }
+  switch (order.status) {
 
-  return `
-    <select class="status-select" data-id="${order._id}">
-      <option value="pending" ${order.status === "pending" ? "selected" : ""}>Chờ xử lý</option>
-      <option value="confirmed" ${order.status === "confirmed" ? "selected" : ""}>Đã xác nhận</option>
-      <option value="shipping" ${order.status === "shipping" ? "selected" : ""}>Đang giao</option>
-      <option value="completed" ${order.status === "completed" ? "selected" : ""}>Hoàn thành</option>
-      <option value="cancelled" ${order.status === "cancelled" ? "selected" : ""}>Đã hủy</option>
-    </select>
-  `;
+    case "pending":
+      return `
+        <div class="status-box">
+          <span class="order-status status-pending">
+            Chờ xử lý
+          </span>
+
+          <div class="status-actions">
+            <button
+              class="status-btn confirm-btn"
+              data-id="${order._id}"
+              data-status="confirmed">
+              Xác nhận
+            </button>
+
+            <button
+              class="status-btn cancel-btn"
+              data-id="${order._id}"
+              data-status="cancelled">
+              Hủy
+            </button>
+          </div>
+      `;
+
+    case "confirmed":
+      return `
+        <div class="status-box">
+          <span class="order-status status-confirmed">
+            Đã xác nhận
+          </span>
+
+          <div class="status-actions">
+            <button
+              class="status-btn shipping-btn"
+              data-id="${order._id}"
+              data-status="shipping">
+              Giao hàng
+            </button>
+
+            <button
+              class="status-btn cancel-btn"
+              data-id="${order._id}"
+              data-status="cancelled">
+              Hủy
+            </button>
+          </div>
+      `;
+
+    case "shipping":
+      return `
+        <div class="status-box">
+          <span class="order-status status-shipping">
+            Đang giao
+          </span>
+
+          <div class="status-actions">
+            <button
+              class="status-btn completed-btn"
+              data-id="${order._id}"
+              data-status="completed">
+              Hoàn thành
+            </button>
+          </div>
+      `;
+
+    case "completed":
+      return `
+        <span class="order-status status-completed">
+          Hoàn thành
+        </span>
+      `;
+
+    case "cancelled":
+      return `
+        <span class="order-status status-cancelled">
+          Đã hủy
+        </span>
+      `;
+    default:
+      return "";
+  }
 }
 
 function bindEvents() {
@@ -97,19 +164,23 @@ function bindEvents() {
   isBound = true;
 
   /* thay đổi trạng thái */
-  document.addEventListener("change", async e => {
-    const select = e.target.closest(".status-select");
-    if (!select) return;
+  document.addEventListener("click", async e => {
+  const btn = e.target.closest(".status-btn");
+  if (!btn) return;
 
-    const id = select.dataset.id;
-    const status = select.value;
+  const id = btn.dataset.id;
+  const status = btn.dataset.status;
 
-    const res = await orderStatus(id, status);
-    if (!res?.success) {
-      alert(res.message || "Cập nhật thất bại");
-      return;
-    }
+  btn.disabled = true;
+  btn.innerText = "Đang xử lý...";
+  const res = await orderStatus(id, status);
+
+  if (!res.success) {
+    alert(res.message);
     await initOrders();
+    return;
+  }
+  await initOrders();
   });
 
   /* xóa đơn hàng */
