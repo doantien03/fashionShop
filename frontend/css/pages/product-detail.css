@@ -106,7 +106,24 @@ body {
 .price {
   font-size: 26px;
   font-weight: bold;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
+}
+
+/* Mô tả */
+.info .description-title{
+  display:block;
+  margin:15px 0 12px;
+  font-size:13px;
+  line-height:1.6;
+  color:#333;
+}
+
+.description-title #description{
+  font-size: 15px;
+  color:#333;
+  margin-left:4px;
+  margin-bottom: 10px;
+  text-transform:none;
 }
 
 /* Màu sắc */
@@ -122,7 +139,7 @@ body {
 #select-color{
   margin-left:20px;
   font-size:13px;
-  color:#666;
+  color:#333;
   margin-bottom:10px;
 }
 #select-color:empty{
@@ -280,10 +297,7 @@ body {
   }
 }
 
-/* ==========================
-   SHIPPING INFO
-========================== */
-
+/* SHIPPING INFO */
 .shipping-info{
   margin-top:30px;
   border-top:1px solid #e8e8e8;
@@ -294,9 +308,7 @@ body {
   display:flex;
   align-items:flex-start;
   gap:15px;
-
   padding:15px 0;
-
   border-bottom:1px solid #f1f1f1;
 }
 
@@ -304,43 +316,73 @@ body {
   border-bottom:none;
 }
 
+/* Khung icon */
 .shipping-icon{
   width:48px;
   height:48px;
-
-  border-radius:50%;
-
-  background:#f7f7f7;
 
   display:flex;
   justify-content:center;
   align-items:center;
 
-  font-size:22px;
-
+  background:#f7f7f7;
+  border-radius:50%;
   flex-shrink:0;
+}
+
+/* SVG icon */
+.shipping-icon-img{
+  width:28px;
+  height:28px;
+
+  object-fit:contain;
+  display:block;
+}
+
+.shipping-content{
+  flex:1;
 }
 
 .shipping-content h4{
   margin:0 0 6px;
-
   font-size:15px;
-
-  color:#111;
-
   font-weight:600;
+  color:#111;
 }
 
 .shipping-content p{
   margin:0;
-
-  color:#777;
-
   font-size:14px;
-
   line-height:1.6;
+  color:#777;
 }
 
 .shipping-content strong{
   color:#111;
+  font-weight:600;
+}
+
+.shipping-item{
+  display:flex;
+  align-items:flex-start;
+  gap:15px;
+  padding:15px 0;
+  border-bottom:1px solid #f1f1f1;
+  transition:.25s;
+}
+
+.shipping-item:hover .shipping-icon{
+  background:#111;
+}
+
+.shipping-item:hover .shipping-icon-img{
+  transform:scale(1.1);
+}
+
+.shipping-icon-img{
+  width:28px;
+  height:28px;
+  object-fit:contain;
+  display:block;
+  transition:.25s;
 }

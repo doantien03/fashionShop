@@ -40,6 +40,7 @@ window.initProductDetail = initProductDetail;
 function renderProduct() {
   document.getElementById("name").innerText = currentProduct.name; // tên sp
   document.getElementById("price").innerText = currentProduct.price.toLocaleString("vi-VN") + "đ"; // giá sp
+  document.getElementById("description").innerText = currentProduct.description || "";
   document.getElementById("main-image").src = currentProduct.thumbnail; // ảnh
 
   // thumbnails theo hàng dọc
