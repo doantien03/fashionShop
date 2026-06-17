@@ -1,4 +1,3 @@
-/* ===== OVERLAY ===== */
 
 .product-modal{
   position:fixed;
@@ -21,7 +20,7 @@
 }
 
 
-/* ===== MODAL BOX ===== */
+/*  MODAL BOX  */
 
 .modal-content{
   position:relative;
@@ -30,37 +29,28 @@
   height:90vh;
   margin:5vh auto;
   background:#fff;
-
   display:flex;
-
   border-radius:6px;
   overflow:hidden;
-
   box-shadow:
   0 10px 40px rgba(0,0,0,.2);
 }
 
 
-/* ===== LEFT ===== */
-
+/*  LEFT  */
 .modal-left{
   flex:1.2;
   display:flex;
   background:#f7f7f7;
 }
 
-
-/* thumbnails */
-
 #modal-thumbs{
   width:120px;
   display:flex;
   flex-direction:column;
   gap:10px;
-
   padding:10px;
   overflow-y:auto;
-
   background:#fff;
   border-right:1px solid #eee;
 }
@@ -69,10 +59,8 @@
   width:100%;
   height:90px;
   object-fit:cover;
-
   border:1px solid #ddd;
   cursor:pointer;
-
   transition:.2s;
 }
 
@@ -84,12 +72,9 @@
   border:2px solid #000;
 }
 
-
 /* main image */
-
 .main-image{
   flex:1;
-
   display:flex;
   justify-content:center;
   align-items:center;
@@ -98,16 +83,13 @@
 #modal-main-img{
   max-width:100%;
   max-height:100%;
-
   object-fit:contain;
   padding:30px;
 }
 
-/* vùng ảnh */
 .main-image{
     flex:1;
     position:relative;
-
     display:flex;
     justify-content:center;
     align-items:center;
@@ -116,19 +98,14 @@
 /* nút trái phải */
 .nav-btn{
     position:absolute;
-
     width:45px;
     height:45px;
-
     border:none;
     background:transparent;
-
     font-size:50px;
     color:#ccc;
-
     cursor:pointer;
     transition:.3s;
-
     z-index:2;
 }
 
@@ -143,8 +120,7 @@
     right:15px;
 }
 
-/* ===== RIGHT ===== */
-
+/*  RIGHT  */
 .modal-right{
   flex:1;
   padding:30px 35px;
@@ -175,34 +151,27 @@
 #modal-name{
   font-size:18px;
   font-weight:500;
-
   margin-bottom:10px;
-
   text-transform:uppercase;
   letter-spacing:.5px;
 }
 
-
 /* status */
-
-.status{
-  color:#2ecc71;
+.modal-right .status{
+  color: #666;
   font-size:13px;
   margin-bottom:10px;
+  padding-left:1px;
 }
 
-
 /* price */
-
 .price{
   font-size:24px;
   font-weight:bold;
   margin-bottom:20px;
 }
 
-
 /* heading */
-
 .modal-right h4{
   font-size:13px;
   font-weight:600;
@@ -211,8 +180,7 @@
 }
 
 
-/* ===== TÊN MÀU ===== */
-
+/* TÊN MÀU  */
 #select-color{
   margin-left:20px;
   font-size:13px;
@@ -225,7 +193,7 @@
 }
 
 
-/* ===== COLORS ===== */
+/* COLORS  */
 
 .colors{
   display:flex;
@@ -236,27 +204,20 @@
 .color-item{
   width:40px;
   height:40px;
-
   border-radius:50%;
   padding:4px;
-
   border:1px solid #ddd;
-
   cursor:pointer;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   background:#fff;
-
   transition:.25s;
 }
 
 .color-item img{
   width:100%;
   height:100%;
-
   border-radius:50%;
   object-fit:cover;
 }
@@ -271,7 +232,7 @@
 }
 
 
-/* ===== SIZE ===== */
+/*  SIZE  */
 
 .sizes{
   display:flex;
@@ -282,10 +243,8 @@
 .sizes span{
   border:1px solid #ddd;
   padding:10px 16px;
-
   font-size:13px;
   cursor:pointer;
-
   transition:.2s;
 }
 
@@ -297,13 +256,10 @@
   border:2px solid #111;
 }
 
-
-/* ===== QUANTITY ===== */
-
+/*  QUANTITY  */
 .quantity{
   display:flex;
   align-items:center;
-
   gap:10px;
   margin-bottom:25px;
 }
@@ -311,29 +267,25 @@
 .quantity button{
   width:35px;
   height:35px;
-
   border:1px solid #ddd;
   background:#fff;
-
   cursor:pointer;
 }
 
 .quantity input{
   width:50px;
   height:35px;
-
   text-align:center;
   border:1px solid #ddd;
 }
 
 
-/* ===== MESSAGE ===== */
+/*  MESSAGE  */
 
 #product-message{
   color:red;
   font-size:13px;
   margin-bottom:10px;
-
   opacity:0;
   transition:.3s;
 }
@@ -342,24 +294,17 @@
   opacity:1;
 }
 
-
-/* ===== BUTTON ===== */
-
+/*  BUTTON  */
 .buy-btn{
   width:100%;
   padding:14px;
-
   background:#000;
   color:#fff;
-
   border:none;
   cursor:pointer;
-
   font-size:13px;
-
   text-transform:uppercase;
   letter-spacing:1px;
-
   transition:.3s;
 }
 
@@ -371,11 +316,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: 100%;
   margin-top: 12px;
   padding: 14px 20px;
-
   border: 1px solid #111;
   border-radius: 4px;
 
@@ -385,7 +328,6 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-
   transition: all 0.3s ease;
 }
 

@@ -35,7 +35,6 @@ export async function initProductDetail(path) {
     document.body.innerHTML = "<h2>Lỗi server</h2>";
   }
 }
-
 window.initProductDetail = initProductDetail;
 
 function renderProduct() {
@@ -73,6 +72,21 @@ function renderProduct() {
   if (currentProduct.colors.length > 0) {
      updateImage(0);
   }
+
+  // render size
+  const sizeWrapper = document.getElementById("size-wrapper");
+  const sizeBox = document.querySelector(".sizes");
+
+  if (currentProduct.sizes && currentProduct.sizes.length > 0) {
+    sizeWrapper.style.display = "block";
+    sizeBox.innerHTML = currentProduct.sizes.map((size)=>`
+        <span>${size}</span>
+    `).join("");
+  } else {
+
+    sizeWrapper.style.display = "none";
+
+}
 }
 
 
@@ -114,11 +128,13 @@ function bindEvents() {
   };
 
   // chọn size
-  document.querySelectorAll(".sizes span").forEach(size => {
+  const sizes = document.querySelectorAll(".sizes span");
+  sizes.forEach(size => {
     size.onclick = () => {
-      document.querySelectorAll(".sizes span")
-        .forEach(s => s.classList.remove("active"));
-      size.classList.add("active");
+      sizes.forEach(s=>{
+            s.classList.remove("active");
+        });
+        size.classList.add("active");
     };
   });
 
@@ -136,9 +152,14 @@ function bindEvents() {
 
   //lấy thông tin thêm vào giỏ hàng
   document.getElementById("add-cart").onclick = () => {
-    const activeSize = document.querySelector(".sizes span.active");
-    if (!selectedColor || !activeSize) {
-    showMessage("Vui lòng chọn màu sắc và kích cỡ");
+  const hasSize = currentProduct.sizes && currentProduct.sizes.length > 0;
+  const activeSize = document.querySelector(".sizes span.active");
+  if (!selectedColor) {
+    showMessage("Vui lòng chọn màu sắc");
+    return;
+  }
+  if (hasSize && !activeSize) {
+    showMessage("Vui lòng chọn kích cỡ");
     return;
   }
 
@@ -150,7 +171,7 @@ function bindEvents() {
       name: currentProduct.name,
       price: currentProduct.price,
       image: mainImg,
-      size: activeSize.innerText,
+      size: hasSize ? activeSize.innerText : "",
       quantity,
       color: selectedColor || "",
     };
@@ -166,9 +187,14 @@ function bindEvents() {
 
   // đang xử lý thì không cho bấm tiếp
   if (buyBtn.disabled) return;
+  const hasSize = currentProduct.sizes && currentProduct.sizes.length > 0;
   const activeSize = document.querySelector(".sizes span.active");
-  if (!selectedColor || !activeSize) {
-    showMessage("Vui lòng chọn màu sắc và kích cỡ");
+  if (!selectedColor) {
+    showMessage("Vui lòng chọn màu sắc");
+    return;
+  }
+  if (hasSize && !activeSize) {
+    showMessage("Vui lòng chọn kích cỡ");
     return;
   }
   try {
@@ -181,7 +207,7 @@ function bindEvents() {
       name: currentProduct.name,
       price: currentProduct.price,
       image: document.getElementById("main-image").src,
-      size: activeSize.innerText,
+      size: hasSize ? activeSize.innerText : "",
       quantity,
       color: selectedColor
     };

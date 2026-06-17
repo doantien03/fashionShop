@@ -11,7 +11,7 @@ const addToCart = async(req,res)=>{
       });
       }
       
-    const { productId,color,size,quantity=1 } = req.body;
+    const { productId,color,size = "",quantity = 1} = req.body;
     const userId = req.user.id;
     let cart = await Cart.findOne({
       user:userId
@@ -74,7 +74,7 @@ const getCart = async(req,res)=>{
 // xóa sản phẩm
 const removeCartItem = async(req,res)=>{
   try{
-    const { productId,size,color } = req.body;
+    const { productId,color,size = "" } = req.body;
     const cart = await Cart.findOne({
       user:req.user.id
     });
@@ -105,7 +105,7 @@ const removeCartItem = async(req,res)=>{
 //cập nhật số lượng
 const updateCart = async(req,res)=>{
   try{
-    const {productId,size,color,type} = req.body;
+    const { productId,color,size = "",type } = req.body;
     const cart = await Cart.findOne({
       user:req.user.id
     });

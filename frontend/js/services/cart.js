@@ -1,4 +1,4 @@
-import {getToken} from "../utils/storage.js";
+import { getToken } from "../utils/storage.js";
 import { ENDPOINTS,getHeaders } from "../config/apiConfig.js";
 
 // lấy giỏ hàng
@@ -13,7 +13,7 @@ export async function getCart(){
   return await res.json();
 }
 
-export async function addCart( productId,color,size,quantity){
+export async function addCart(product){
  const res = await fetch(ENDPOINTS.cart.add,{
      method:"POST",
      headers:{
@@ -21,7 +21,7 @@ export async function addCart( productId,color,size,quantity){
        Authorization:
        `Bearer ${getToken()}`
      },
-     body:JSON.stringify({ productId,color,size,quantity })
+     body:JSON.stringify(product)
    }
  );
  return await res.json();

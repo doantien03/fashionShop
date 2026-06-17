@@ -19,23 +19,19 @@
   <div class="info">
     <h2 id="name"></h2>
     <p class="status">Còn hàng</p>
-    <p class="price" id="price"></p>
-
+    <p class="price" id="price"> </p>
     <h4> MÀU SẮC <span id="select-color"></span> </h4> <!-- Màu -->
-    <div class="colors" id="colors"></div>
+    <div class="colors" id="colors"></div> 
 
-    <h4>KÍCH THƯỚC</h4> <!-- Kích thước -->
-    <div class="sizes">
-      <span>2XL</span>
-      <span>XL</span>
-      <span>L</span>
-      <span>M</span>
+    <div id="size-wrapper">  <!-- Kích thước -->
+    <h4>KÍCH THƯỚC</h4>
+    <div class="sizes"></div>
     </div>
 
     <div class="quantity">  <!-- Số lượng -->
-      <button id="minus">-</button>
+      <button id="minus"> - </button>
       <input id="qty" value="1" />
-      <button id="plus">+</button>
+      <button id="plus"> + </button>
     </div>
     
     <p id="product-message" class="product-message"></p> <!-- Thông báo khi chọn thiếu màu or size -->
@@ -44,5 +40,34 @@
       <button class="buy-now">MUA NGAY</button>
     </div>
   </div>
+
+  <div class="shipping-info">
+       <div class="shipping-item">
+          <div class="shipping-icon">🚚</div>
+
+          <div class="shipping-content">
+            <h4>Miễn phí vận chuyển</h4>
+            <p>Cho đơn hàng từ <strong>499.000đ</strong> trên toàn quốc.</p>
+          </div>
+       </div>
+
+    <div class="shipping-item">
+       <div class="shipping-icon">🔄</div>
+
+       <div class="shipping-content">
+          <h4>Đổi trả dễ dàng</h4>
+          <p>Hỗ trợ đổi trả trong vòng <strong>7 ngày</strong> nếu sản phẩm còn nguyên tem.</p>
+       </div>
+    </div>
+
+    <div class="shipping-item">
+       <div class="shipping-icon">✔</div>
+
+       <div class="shipping-content">
+         <h4>Cam kết chính hãng</h4>
+         <p>100% sản phẩm chính hãng, hoàn tiền nếu phát hiện hàng giả.</p>
+       </div>
+    </div>
+   </div>
 </div>
 

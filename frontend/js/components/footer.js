@@ -9,6 +9,7 @@ export function renderFooter() {
         <p>Số điện thoại: 0869.865.313</p>
         <p>Email: doantienle@gmail.com.vn</p>
         <p>Địa chỉ: Số 55 Giải Phóng - phường Bạch Mai - TP.Hà Nội</p>
+        <p>FB: https://wwww.facebook.com/VN</p>
       </div>
 
       <div class="footer-center">

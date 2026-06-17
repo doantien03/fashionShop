@@ -1,13 +1,13 @@
-import {getCart,addCart,removeCart,updateCart} from "../services/cart.js";
+import { getCart,addCart,removeCart,updateCart } from "../services/cart.js";
 
 // thêm sản phẩm vào cart
 async function addToCart(product){
-  await addCart(
-    product._id,
-    product.color,
-    product.size,
-    product.quantity
-  );
+  await addCart({
+    productId: product._id,
+    color: product.color,
+    size: product.size || "",
+    quantity: product.quantity,
+  });
   await renderCart();
 }
 
@@ -63,7 +63,7 @@ async function Checkout(){
         <div>
           <h4>${item.productId.name}</h4>
           <p>Màu: ${item.color}</p>
-          <p>Size: ${item.size}</p>
+          ${item.size ? `<p>Size: ${item.size}</p>` : ""}
           <p>Giá: ${item.productId.price.toLocaleString("vi-VN")}đ × ${item.quantity}</p>
         </div>
       </div>
@@ -99,7 +99,7 @@ async function renderCart(){
       <div class="cart-info">
         <h4> ${item.productId.name} </h4>
         <p>Màu: ${item.color}</p>
-        <p>Size: ${item.size}</p>
+        ${item.size ? `<p>Size: ${item.size}</p>` : ""}
         <p>Giá: ${item.productId.price.toLocaleString("vi-VN")}đ × ${item.quantity}</p>
         
         <button

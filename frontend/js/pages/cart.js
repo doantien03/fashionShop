@@ -1,5 +1,5 @@
-import {removeCartItem,updateToCart,updateCount} from "../modules/cart.js";
-import {getCart} from "../services/cart.js";
+import { removeCartItem,updateToCart,updateCount } from "../modules/cart.js";
+import { getCart } from "../services/cart.js";
 
 
 async function CartPage(){
@@ -65,7 +65,6 @@ async function CartPage(){
   document.querySelectorAll(".remove-btn").forEach(button=>{
     button.onclick=async()=>{
       await removeCartItem(
-
         button.dataset.id,
         button.dataset.size,
         button.dataset.color
