@@ -119,6 +119,7 @@ body {
 }
 
 .description-title #description{
+  font-weight: 500;
   font-size: 15px;
   color:#333;
   margin-left:4px;
@@ -139,6 +140,7 @@ body {
 #select-color{
   margin-left:20px;
   font-size:13px;
+  font-weight: 500;
   color:#333;
   margin-bottom:10px;
 }
@@ -385,4 +387,63 @@ body {
   object-fit:contain;
   display:block;
   transition:.25s;
+}
+
+/* RELATED PRODUCTS */
+.related-products{
+  margin-top:70px;
+}
+
+.related-products h2{
+  margin-bottom:25px;
+  font-size:28px;
+  font-weight:600;
+}
+
+.related-list{
+  display:grid;
+  grid-template-columns:
+  repeat(4,1fr);
+  gap:24px;
+}
+
+.related-card{
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.related-card img{
+
+  width:100%;
+
+  aspect-ratio:3/4;
+
+  object-fit:cover;
+
+  border-radius:8px;
+}
+
+.related-card h3{
+
+  margin:12px 0 8px;
+
+  font-size:15px;
+
+  font-weight:500;
+}
+
+.related-card p{
+
+  color:#d0021b;
+
+  font-size:18px;
+
+  font-weight:600;
+}
+
+.related-card:hover{
+
+  transform:translateY(-4px);
 }

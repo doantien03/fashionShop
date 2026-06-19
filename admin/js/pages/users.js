@@ -71,7 +71,7 @@ export async function initUsers() {
         </td>
 
         <td>
-          ${user.status || "active"}
+        <span class="status-users active"> ${user.status || "active"} </span>
         </td>
 
         <td>

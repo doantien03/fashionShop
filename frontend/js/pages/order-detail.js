@@ -1,16 +1,9 @@
-import {
-  getOrderById,
-  cancelOrder
-} from "../services/order.js";
-
+import { getOrderById,cancelOrder} from "../services/order.js";
 import { showToast } from "../utils/toast.js";
 
 export async function initOrderDetail(path){
-
   try{
-
     const orderId = path.split("/")[2];
-
     const data = await getOrderById(orderId);
 
     if(!data.success){

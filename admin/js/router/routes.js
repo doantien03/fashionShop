@@ -4,7 +4,7 @@ import { renderProducts,initProducts } from "../pages/products.js";
 import { renderUsers,initUsers } from "../pages/users.js";
 
 export const routes = {
-  "/admin": (app) => {
+  "/admin/": (app) => {
     app.innerHTML = renderDashboard();
     return initDashboard;
   },
