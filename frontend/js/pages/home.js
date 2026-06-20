@@ -1,6 +1,7 @@
 import { getProducts } from "../services/product.js";
 import { openModal } from "../modules/modal.js";
 import { bindEvents } from "../components/productEvents.js";
+import { productCard } from "../components/productCard.js";
 
 let allProducts = [];
 
@@ -20,8 +21,8 @@ function initBanner() {
     };
     dotsContainer.appendChild(dot);
   });
-
   const dots = dotsContainer.querySelectorAll("span");
+
   function showSlide(index){
     slides.forEach(slide =>
       slide.classList.remove("active")
@@ -52,51 +53,10 @@ function renderProducts(products, elementId) {
     container.innerHTML = `<p>Không có sản phẩm nào</p>`;
     return;
   }
-
-  container.innerHTML = products.map(p => `
-    <div class="product" data-id="${p._id}">
-      
-      <div class="product-img">
-        <img 
-          id="img-${p._id}" 
-          src="${p.thumbnail}" 
-          alt="${p.name}" 
-          loading="lazy"
-        />
-        <div class="overlay">
-          <button class="btn-buy">
-          <img src="../assets/icons/cart.svg" class="icon" />
-          Mua nhanh
-          </button>
-          
-          <div class="divider"></div>
-
-          <button class="btn-detail">
-          <img src="../assets/icons/eye.svg" class="icon" />
-          Xem chi tiết
-          </button>
-        </div>
-      </div>
-
-      <div class="btn-colors">
-        ${p.colors.map(c => `
-          <span 
-            class="color-item"
-            style="background-color: ${c.code}"
-            data-image="${c.image}"
-            data-name="${c.name}"
-            title="${c.name}">
-          </span>
-        `).join("")}
-      </div>
-
-      <p class="product-name">${p.name}</p>
-      <p class="product-price">${p.price.toLocaleString("vi-VN")}đ</p>
-
-    </div>
-  `).join("");
+    container.innerHTML = products.map(productCard).join("");
 }
 
+  
 // sự kiện click menu
 function menuEvents() {
   document.querySelectorAll(".menu span").forEach(item => {

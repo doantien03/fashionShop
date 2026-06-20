@@ -162,6 +162,20 @@
   border: 1px solid #ccc;
 }
 
+.btn-colors {
+  margin: 10px 0;
+}
+
+.btn-colors span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 3px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
 /* tên + giá */
 .pants .product-name {
   font-size: 14px;

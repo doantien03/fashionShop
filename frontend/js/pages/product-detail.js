@@ -1,6 +1,7 @@
 import { getProducts } from "../services/product.js";
 import { addToCart, renderCart, openCart} from "../modules/cart.js";
 import { isAdmin } from "../utils/storage.js";
+import { productCard } from "../components/productCard.js";
 
 let currentProduct = null;
 let relatedProducts = [];
@@ -21,15 +22,12 @@ export async function initProductDetail(path) {
       return;
     }
     currentProduct = res.data.products.find(p => p._id === id);
-    relatedProducts = res.data.products.filter(
-      product => product._id !== currentProduct._id && product.type === currentProduct.type);
     if (!currentProduct) {
       document.body.innerHTML = "<h2>Không tìm thấy sản phẩm</h2>";
       return;
     }
 
-    renderProduct();
-    renderRelated();
+    productDetail();
     updateImage(0);
     bindEvents();
 
@@ -41,7 +39,7 @@ export async function initProductDetail(path) {
 }
 window.initProductDetail = initProductDetail;
 
-function renderProduct() {
+function productDetail() {
   document.getElementById("name").innerText = currentProduct.name; // tên sp
   document.getElementById("price").innerText = currentProduct.price.toLocaleString("vi-VN") + "đ"; // giá sp
   document.getElementById("description").innerText = currentProduct.description || "";
@@ -269,56 +267,4 @@ function updateImage(index) {
         i === index
     );
   });
-}
-
-function renderRelated() {
-
-  const container = document.getElementById("related-list");
-
-  if (!container) return;
-
-  container.innerHTML = relatedProducts.slice(0, 4)
-    .map(product => `
-      <div
-        class="related-card"
-        data-id="${product._id}"
-      >
-        <img
-          src="${product.thumbnail}"
-          alt="${product.name}"
-        >
-
-        <h3>${product.name}</h3>
-
-        <p>
-          ${product.price.toLocaleString("vi-VN")}đ
-        </p>
-      </div>
-    `)
-    .join("");
-
-    container.querySelectorAll(".related-card")
-.forEach(card => {
-
-  card.onclick = () => {
-
-    history.pushState(
-      {},
-      "",
-      `/product/${card.dataset.id}`
-    );
-
-    window.renderRoute(
-      `/product/${card.dataset.id}`
-    );
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-      });
-
-    };
-
-  });
-
 }

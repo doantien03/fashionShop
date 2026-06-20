@@ -33,8 +33,8 @@ async function handleLogin() {
       saveUser(data.user);
       setTimeout(() => {
         // admin
-        if (data.user &&data.user.role === "admin") {
-          window.location.href = "/admin";
+        if (data.user && data.user.role === "admin") {
+          window.location.href = "/admin/dashboard";
           return;
         }
         // user

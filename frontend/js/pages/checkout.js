@@ -1,9 +1,35 @@
-import { renderCart, Checkout } from "../modules/cart.js";
+import { renderCart,Checkout } from "../modules/cart.js";
 import { getCart,clearCart } from "../services/cart.js";
 import { createOrder } from "../services/order.js";
 import { showToast } from "../utils/toast.js";
+import { getProfile,updateProfile } from "../services/auth.js";
 
 let isSubmitting = false;
+
+async function fillUserInfo() {
+  try {
+    const res = await getProfile();
+    if (!res.success) return;
+    const user = res.user;
+
+    document.getElementById("customerName").value = user.name || "";
+    document.getElementById("email").value = user.email || "";
+    document.getElementById("phone").value = user.phone || "";
+    document.getElementById("address").value = user.address || "";
+
+    // city, district, ward là input
+    document.getElementById("city").value = user.city || "";
+    document.getElementById("district").value = user.district || "";
+    document.getElementById("ward").value = user.ward || "";
+
+    // Không cho sửa tên và email
+    document.getElementById("customerName").readOnly = true;
+    document.getElementById("email").readOnly = true;
+
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 async function handleOrder() {
 
@@ -51,6 +77,15 @@ async function handleOrder() {
       return;
     }
 
+    // Cập nhật thông tin người dùng
+    await updateProfile({
+      phone: orderData.phone,
+      city: orderData.city,
+      district: orderData.district,
+      ward: orderData.ward,
+      address: orderData.address
+    });
+
     const result = await createOrder(orderData);
     if(result.success){
       // xóa toàn bộ giỏ hàng
@@ -74,5 +109,6 @@ async function handleOrder() {
 
 export async function initCheckout(){
   await Checkout();
+  await fillUserInfo();
   document.getElementById("placeOrderBtn")?.addEventListener("click",handleOrder);
 }

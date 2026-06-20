@@ -53,7 +53,7 @@ export async function initOrders() {
       <tbody>
         ${orders.map(order => `
           <tr>
-            <td>${order._id}</td>
+            <td>${order._id.slice(-8)}</td>
             <td>${order.customerName || ""}</td>
             <td>${order.phone || ""}</td>
             <td>${order.totalPrice?.toLocaleString("vi-VN")}đ</td>

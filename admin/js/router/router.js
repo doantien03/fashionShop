@@ -1,33 +1,44 @@
 import { isLogin } from "../utils/auth.js";
 import { routes } from "./routes.js";
 import { setActiveMenu } from "../utils/setActive.js";
+import { requireAdmin } from "./guard.js";
 
-export function router() {
-  const path = window.location.pathname;
-  console.log(path);
-  console.log(routes);
-  const app = document.getElementById("app");
+export async function router() {
 
-  if (!isLogin()) {
-    window.location.href = "/login";
-    return;
-  }
+    const path = window.location.pathname;
+    const app = document.getElementById("app");
 
-  const page = routes[path];
-
-  if (!page) {
-    app.innerHTML = "<h2>404 Not Found</h2>";
-    return;
-  }
-
-  // 1. render UI
-  const needInit = page(app);
-
-  // 2. đợi DOM update xong rồi mới chạy logic page
-  requestAnimationFrame(() => {
-    if (typeof needInit === "function") {
-      needInit();
+    // Ẩn giao diện trước
+    app.style.display = "none";
+    if (!isLogin()) {
+        location.href="/login";
+        return;
     }
-    setActiveMenu();
-  });
+
+    // Chỉ kiểm tra quyền nếu đang ở admin
+    if(path.startsWith("/admin")){
+        const ok = await requireAdmin();
+        if(!ok){
+            return;
+        }
+    }
+
+    const page = routes[path];
+
+    if(!page){
+
+        app.innerHTML="<h2>404 Not Found</h2>";
+        app.style.display="block";
+        return;
+    }
+
+    const init = page(app);
+    app.style.display="block";
+    requestAnimationFrame(()=>{
+
+        if(typeof init==="function"){
+            init();
+        }
+        setActiveMenu();
+    });
 }

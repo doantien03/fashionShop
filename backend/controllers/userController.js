@@ -57,6 +57,47 @@ exports.login = async (req, res) => {
                     }
                  };
 
+// cập nhật thông tin user                 
+exports.updateProfile = async (req, res) => {
+  try {
+    const { phone,city,district,ward,address } = req.body;
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { phone,city,district,ward,address},
+      {
+        new: true
+      }
+    ).select("-password");
+
+    res.json({
+      success: true,
+      user
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server"
+    });
+  }
+};
+
+// lấy thông tin users
+exports.getProfile = async (req, res) => {
+  try {
+    res.json({
+      success: true,
+      user: req.user
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Lỗi server"
+    });
+
+  }
+};
+
 // admin (CRUD)
 exports.getUsers = async (req, res) => {
   try {

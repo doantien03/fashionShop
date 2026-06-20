@@ -22,3 +22,26 @@ export async function registerAPI(name, email, password) {
   const data = await res.json();
   return { ok: res.ok, data };
 }
+
+export async function getProfile() {
+
+    const res = await fetch(
+        ENDPOINTS.auth.profile,
+        {
+            headers: getHeaders(true)
+        }
+    );
+    return await res.json();
+}
+
+export async function updateProfile(data){
+    const res = await fetch(
+        ENDPOINTS.auth.profile,
+        {
+            method:"PUT",
+            headers:getHeaders(true),
+            body:JSON.stringify(data)
+        }
+    );
+    return await res.json();
+}

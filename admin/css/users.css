@@ -36,7 +36,7 @@
 .users-table th{
   padding:16px;
   text-align:left;
-  font-size:14px;
+  font-size:16px;
   font-weight:600;
   color:#555;
   border-bottom:2px solid #ececec;
@@ -44,7 +44,7 @@
 
 .users-table td{
   padding:16px;
-  font-size:14px;
+  font-size:16px;
   color:#444;
   border-bottom:1px solid #f1f1f1;
 }

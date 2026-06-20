@@ -47,16 +47,16 @@
 
 .orders-table th{
     text-align:left;
-    padding:12px;
-    font-size:13px;
+    padding:20px;
+    font-size:16px;
     color:#555;
     font-weight:600;
     border-bottom:1px solid #e5e5e5;
 }
 
 .orders-table td{
-    padding:12px;
-    font-size:14px;
+    padding:20px;
+    font-size:16px;
     color:#333;
     border-bottom:1px solid #f0f0f0;
     vertical-align:top;

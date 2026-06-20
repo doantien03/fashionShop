@@ -21,12 +21,10 @@ export async function initOrderDetail(path){
     );
 
     container.innerHTML = `
-
       <div class="order-info">
-
         <p>
           <strong>Mã đơn:</strong>
-          ${order._id}
+          ${order._id.slice(-8)}
         </p>
 
         <p>
@@ -41,7 +39,7 @@ export async function initOrderDetail(path){
 
         <p>
           <strong>Địa chỉ:</strong>
-          ${order.address}
+          ${order.address} - ${order.ward} - ${order.district} - ${order.city} 
         </p>
 
         <p>
@@ -50,9 +48,7 @@ export async function initOrderDetail(path){
           <span class="order-status ${order.status}">
             ${order.status}
           </span>
-
         </p>
-
       </div>
 
       <h2 class="order-products-title">

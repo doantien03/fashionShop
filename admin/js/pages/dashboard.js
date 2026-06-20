@@ -146,7 +146,7 @@ function getStatusText(status){
 }
 
 function renderLatestOrders(orders){
-  const container =document.getElementById("latest-orders");
+  const container = document.getElementById("latest-orders");
   if(!orders.length){
     container.innerHTML = "<p>Chưa có đơn hàng</p>";
     return;
@@ -163,7 +163,7 @@ function renderLatestOrders(orders){
       <tbody>
         ${orders.map(order=>`
           <tr>
-            <td> ${order._id.slice(-6)} </td>
+            <td> ${order._id.slice(-8)} </td>
             <td> ${order.customerName} </td>
             <td> <span class="status ${order.status}"> ${getStatusText(order.status)}</span> </td>
             <td> ${(order.totalPrice || 0).toLocaleString("vi-VN")}đ </td>
@@ -177,9 +177,7 @@ function renderLatestOrders(orders){
 }
 
 function renderRevenueChart(data){
-
     const canvas = document.getElementById("revenueChart");
-
     if(!canvas){
         return;
     }
@@ -189,62 +187,38 @@ function renderRevenueChart(data){
     }
 
     revenueChart = new Chart(canvas,{
-
         type:"line",
-
         data:{
-
             labels:data.map(item=>item._id),
-
             datasets:[{
-
                 label:"Doanh thu (VNĐ)",
-
                 data:data.map(item=>item.revenue),
-
                 borderWidth:3,
-
                 tension:0.35,
-
                 fill:true
-
             }]
-
         },
 
         options:{
-
             responsive:true,
-
             maintainAspectRatio:false,
-
             plugins:{
-
                 legend:{
                     display:false
                 }
-
             },
 
             scales:{
-
                 y:{
-
                     beginAtZero:true,
-
                     ticks:{
                         callback(value){
                             return value.toLocaleString("vi-VN")+"đ";
                         }
                     }
-
                 }
-
             }
-
         }
-
     });
-
-}
+  }
 

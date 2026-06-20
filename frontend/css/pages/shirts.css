@@ -158,6 +158,21 @@
   border: 1px solid #ccc;
 }
 
+/* đổi màu khi click titlt màu */
+.btn-colors {
+  margin: 10px 0;
+}
+
+.btn-colors span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 3px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+}
+
 /* tên + giá */
 .product-name {
   font-size: 14px;
