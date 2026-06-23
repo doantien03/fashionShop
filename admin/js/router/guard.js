@@ -7,7 +7,7 @@ export async function requireAdmin() {
   }
 
   try {
-    const res = await fetch("http://localhost:5000/api/auth/me", {
+    const res = await fetch("https://fashionshop-cjhc.onrender.com/api/auth/me", {
       headers: {
         Authorization: `Bearer ${token}`
       }
