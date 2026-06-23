@@ -4,10 +4,9 @@ let isRouting = false;
 
 function navigate(url) {
   window.history.pushState({}, "", url);
-  runRouter();
+  run();
 }
 
-// chặn click SPA
 document.addEventListener("click", (e) => {
   const link = e.target.closest("a[data-link]");
   if (!link) return;
@@ -16,11 +15,9 @@ document.addEventListener("click", (e) => {
   navigate(link.getAttribute("href"));
 });
 
-// back/forward
-window.addEventListener("popstate", runRouter);
+window.addEventListener("popstate", run);
 
-// wrapper chống spam
-async function runRouter() {
+async function run() {
   if (isRouting) return;
   isRouting = true;
 
@@ -31,5 +28,4 @@ async function runRouter() {
   }
 }
 
-// init
-runRouter();
+run();
