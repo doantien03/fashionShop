@@ -4,44 +4,38 @@ import { setActiveMenu } from "../utils/setActive.js";
 import { requireAdmin } from "./guard.js";
 
 export async function router() {
+    let path = window.location.pathname;
 
-    const path = window.location.pathname;
     const app = document.getElementById("app");
 
-    path = path.replace(/\/$/, ""); 
+    // normalize URL
+    path = path.replace(/\/$/, "");
     if (path === "") path = "/";
 
-    // Ẩn giao diện trước
-    app.style.display = "none";
     if (!isLogin()) {
-        location.href="/login";
+        location.href = "/login";
         return;
     }
 
-    // Chỉ kiểm tra quyền nếu đang ở admin
-    if(path.startsWith("/admin")){
-        const ok = await requireAdmin();
-        if(!ok){
-            return;
-        }
-    }
+    const ok = await requireAdmin();
+    if (!ok) return;
+
+    app.style.display = "none";
 
     const page = routes[path];
 
-    if(!page){
-
-        app.innerHTML="<h2>404 Not Found</h2>";
-        app.style.display="block";
+    if (!page) {
+        app.innerHTML = "<h2>404 Not Found</h2>";
+        app.style.display = "block";
         return;
     }
 
     const init = page(app);
-    app.style.display="block";
-    requestAnimationFrame(()=>{
 
-        if(typeof init==="function"){
-            init();
-        }
+    app.style.display = "block";
+
+    requestAnimationFrame(() => {
+        if (typeof init === "function") init();
         setActiveMenu();
     });
 }
