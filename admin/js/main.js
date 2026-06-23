@@ -1,11 +1,13 @@
 import { router } from "./router/router.js";
 
+let isRouting = false;
+
 function navigate(url) {
   window.history.pushState({}, "", url);
-  router();
+  runRouter();
 }
 
-// chặn click link SPA
+// chặn click SPA
 document.addEventListener("click", (e) => {
   const link = e.target.closest("a[data-link]");
   if (!link) return;
@@ -14,8 +16,20 @@ document.addEventListener("click", (e) => {
   navigate(link.getAttribute("href"));
 });
 
-// back/forward browser
-window.addEventListener("popstate", router);
+// back/forward
+window.addEventListener("popstate", runRouter);
 
-// chạy lần đầu
-router();
+// wrapper chống spam
+async function runRouter() {
+  if (isRouting) return;
+  isRouting = true;
+
+  try {
+    await router();
+  } finally {
+    isRouting = false;
+  }
+}
+
+// init
+runRouter();
