@@ -8,38 +8,38 @@ export async function router() {
     let path = window.location.pathname;
     const app = document.getElementById("app");
 
-    path = path.replace(/\/$/, ""); 
+    // normalize URL 
+    path = path.split("?")[0].replace(/\/$/, "");
     if (path === "") path = "/";
 
-    // Ẩn giao diện trước
-    app.style.display = "none";
+    // check login
     if (!isLogin()) {
-        location.href="/login";
+        location.href = "/login";
         return;
     }
 
-    // Chỉ kiểm tra quyền nếu đang ở admin
-    if(path.startsWith("/admin")){
-        const ok = await requireAdmin();
-        if(!ok){
-            return;
-        }
-    }
+    // check admin quyền 
+    const ok = await requireAdmin();
+    if (!ok) return;
 
+    // hide UI
+    app.style.display = "none";
+
+    // get page
     const page = routes[path];
 
-    if(!page){
-
-        app.innerHTML="<h2>404 Not Found</h2>";
-        app.style.display="block";
+    if (!page) {
+        app.innerHTML = "<h2>404 Not Found</h2>";
+        app.style.display = "block";
         return;
     }
 
+    // render
     const init = page(app);
-    app.style.display="block";
-    requestAnimationFrame(()=>{
+    app.style.display = "block";
 
-        if(typeof init==="function"){
+    requestAnimationFrame(() => {
+        if (typeof init === "function") {
             init();
         }
         setActiveMenu();
