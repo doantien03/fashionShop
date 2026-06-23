@@ -8,6 +8,9 @@ export async function router() {
     const path = window.location.pathname;
     const app = document.getElementById("app");
 
+    path = path.replace(/\/$/, ""); 
+    if (path === "") path = "/";
+
     // Ẩn giao diện trước
     app.style.display = "none";
     if (!isLogin()) {
