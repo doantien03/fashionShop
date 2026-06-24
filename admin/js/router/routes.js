@@ -29,11 +29,17 @@ import { renderDashboard, initDashboard } from "../pages/dashboard.js";
 import { renderOrders, initOrders } from "../pages/orders.js";
 import { renderProducts, initProducts } from "../pages/products.js";
 import { renderUsers, initUsers } from "../pages/users.js";
+import { renderLogin, initLogin } from "../pages/login.js";
 
 export const routes = {
   "/": (app) => {
     app.innerHTML = renderDashboard();
     return initDashboard;
+  },
+
+  "/login": (app) => {
+    app.innerHTML = renderLogin();
+    return initLogin;
   },
 
   "/dashboard": (app) => {

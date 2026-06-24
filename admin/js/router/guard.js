@@ -1,56 +1,59 @@
-const FRONTEND_URL = "https://fashion-shop-web.netlify.app";
-
+const ADMIN_URL = "https://fashion-admin-web.netlify.app";
+const API_URL = "https://fashionshop-cjhc.onrender.com/api/auth/me";
 
 export async function requireAdmin() {
   const token = localStorage.getItem("token");
 
-  console.log("TOKEN:", token);
-
+  // Không có token → về login admin
   if (!token) {
-    console.log("NO TOKEN");
-    window.location.href = `${FRONTEND_URL}/login`;
+    redirectToLogin();
     return false;
   }
 
   try {
-    const res = await fetch("https://fashionshop-cjhc.onrender.com/api/auth/me",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    const res = await fetch(API_URL, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
       }
-    );
+    });
 
-    console.log("STATUS:", res.status);
-
+    // token sai / hết hạn
     if (!res.ok) {
-      console.log("FETCH FAILED");
-      localStorage.clear();
-      window.location.href = `${FRONTEND_URL}/login`;
+      clearAuth();
+      redirectToLogin();
       return false;
     }
 
     const data = await res.json();
-    console.log("DATA:", data);
+    const user = data?.user ?? data;
 
-    const user = data.user || data;
-    console.log("ROLE:", user.role);
-
-    if (user.role !== "admin") {
-      console.log("NOT ADMIN");
-      localStorage.clear();
-      window.location.href = FRONTEND_URL;
+    // Không phải admin
+    if (!user || user.role !== "admin") {
+      clearAuth();
+      redirectToLogin();
       return false;
     }
 
-    console.log("requireAdmin SUCCESS");
+    //  OK
     return true;
 
   } catch (err) {
-    console.error("requireAdmin ERROR:", err);
+    console.error("requireAdmin error:", err);
 
-    localStorage.clear();
-    window.location.href = `${FRONTEND_URL}/login`;
+    clearAuth();
+    redirectToLogin();
     return false;
   }
+}
+
+/** Xóa auth */
+function clearAuth() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+}
+
+/** Redirect về login admin*/
+function redirectToLogin() {
+  window.location.href = `${ADMIN_URL}/login`;
 }
