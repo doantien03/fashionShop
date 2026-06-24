@@ -1,4 +1,4 @@
-const FRONTEND_URL = "https://fashion-shop-web.netlify.app/";
+const FRONTEND_URL = "https://fashion-shop-web.netlify.app";
 
 let cachedUser = null;
 
