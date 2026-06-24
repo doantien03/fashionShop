@@ -3,6 +3,8 @@ import { routes } from "./routes.js";
 import { setActiveMenu } from "../utils/setActive.js";
 import { requireAdmin } from "./guard.js";
 
+const FRONTEND_URL = "https://fashion-shopweb.netlify.app";
+
 export async function router() {
 
     let path = window.location.pathname;
@@ -14,7 +16,7 @@ export async function router() {
 
     // check login
     if (!isLogin()) {
-        location.href = "/login";
+        window.location.href = `${FRONTEND_URL}/login`;
         return;
     }
 
