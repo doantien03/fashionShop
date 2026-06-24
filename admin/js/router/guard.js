@@ -1,4 +1,5 @@
-const FRONTEND_URL = "https://fashion-admin-web.netlify.app/";
+const FRONTEND_URL = "https://fashion-shopweb.netlify.app/";
+
 let cachedUser = null;
 
 export async function requireAdmin() {
