@@ -4,8 +4,6 @@ import { validateEmail, validatePassword } from "../utils/validator.js";
 import { saveToken,saveUser } from "../utils/storage.js";
 import { renderHeader } from "../components/header.js";
 
-const ADMIN_URL = "https://fashion-admin-web.netlify.app";
-
 async function handleLogin() {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
@@ -33,17 +31,18 @@ async function handleLogin() {
     if (ok && data.token) {
       saveToken(data.token);
       saveUser(data.user);
+
       setTimeout(() => {
-        // admin
-        if (data.user && data.user.role === "admin") {
-          window.location.href = `${ADMIN_URL}/dashboard`;
+        if (data.user?.role === "admin") {
+          history.pushState({}, "", "/dashboard");
+          window.renderRoute("/dashboard");
           return;
-        }
-        // user
-        renderHeader();
-        history.pushState({},"","/home");
-        window.renderRoute("/home");
-      }, 1000);
+      }
+      renderHeader();
+      history.pushState({}, "", "/home");
+      window.renderRoute("/home");
+    }, 0);
+
     } else {
       showToast(data.message || "Đăng nhập thất bại", "error");
     }
