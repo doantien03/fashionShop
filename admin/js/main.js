@@ -1,6 +1,7 @@
 import { router } from "./router/router.js";
 
 let isRouting = false;
+console.count("main.js loaded");
 
 function navigate(url) {
   window.history.pushState({}, "", url);

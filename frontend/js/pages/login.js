@@ -4,6 +4,8 @@ import { validateEmail, validatePassword } from "../utils/validator.js";
 import { saveToken,saveUser } from "../utils/storage.js";
 import { renderHeader } from "../components/header.js";
 
+const ADMIN_URL = "https://fashion-admin-web.netlify.app";
+
 async function handleLogin() {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
@@ -34,7 +36,7 @@ async function handleLogin() {
       setTimeout(() => {
         // admin
         if (data.user && data.user.role === "admin") {
-          window.location.href = "/admin/dashboard";
+          window.location.href = `${ADMIN_URL}/dashboard`;
           return;
         }
         // user

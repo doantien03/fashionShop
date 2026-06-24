@@ -4,6 +4,7 @@ import { setActiveMenu } from "../utils/setActive.js";
 import { requireAdmin } from "./guard.js";
 
 const FRONTEND_URL = "https://fashion-shopweb.netlify.app";
+console.count("main.js loaded");
 
 export async function router() {
 
