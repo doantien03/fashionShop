@@ -15,12 +15,6 @@ export async function router() {
     path = path.split("?")[0].replace(/\/$/, "");
     if (path === "") path = "/";
 
-    // check login
-    if (!isLogin()) {
-        window.location.href = `${FRONTEND_URL}/login`;
-        return;
-    }
-
     // check admin quyền 
     const ok = await requireAdmin();
     if (!ok) return;
