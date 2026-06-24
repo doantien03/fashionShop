@@ -1,44 +1,48 @@
-import { isLogin } from "../utils/auth.js";
 import { routes } from "./routes.js";
 import { setActiveMenu } from "../utils/setActive.js";
 import { requireAdmin } from "./guard.js";
 
-const FRONTEND_URL = "https://fashion-shopweb.netlify.app";
-console.count("main.js loaded");
+let isRendering = false;
 
 export async function router() {
+    if (isRendering) return;
+    isRendering = true;
 
-    let path = window.location.pathname;
-    const app = document.getElementById("app");
+    try {
+        let path = window.location.pathname;
+        const app = document.getElementById("app");
 
-    // normalize URL 
-    path = path.split("?")[0].replace(/\/$/, "");
-    if (path === "") path = "/";
+        path = path.split("?")[0].replace(/\/$/, "");
+        if (path === "") path = "/dashboard";
 
-    // check admin quyền 
-    const ok = await requireAdmin();
-    if (!ok) return;
+        const ok = await requireAdmin();
+        if (!ok) return;
 
-    // hide UI
-    app.style.display = "none";
+        app.innerHTML = "";
+        app.style.display = "none";
 
-    // get page
-    const page = routes[path];
+        const page = routes[path];
 
-    if (!page) {
-        app.innerHTML = "<h2>404 Not Found</h2>";
-        app.style.display = "block";
-        return;
-    }
-
-    // render
-    const init = page(app);
-    app.style.display = "block";
-
-    requestAnimationFrame(() => {
-        if (typeof init === "function") {
-            init();
+        if (!page) {
+            app.innerHTML = "<h2>404 Not Found</h2>";
+            app.style.display = "block";
+            return;
         }
-        setActiveMenu();
-    });
+
+        const init = await page(app);
+        app.style.display = "block";
+
+        requestAnimationFrame(() => {
+            if (typeof init === "function") init();
+            setActiveMenu();
+        });
+
+    } catch (err) {
+        console.error("router error:", err);
+    } finally {
+        isRendering = false;
+    }
 }
+
+window.addEventListener("popstate", router);
+router();
