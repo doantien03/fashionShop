@@ -14,8 +14,10 @@ export async function router() {
 
         path = path.split("?")[0].replace(/\/$/, "");
         if (path === "") path = "/dashboard";
+        console.log("PATH:", path);
 
         const ok = await requireAdmin();
+        console.log("REQUIRE ADMIN:", ok);
         if (!ok) return;
 
         app.innerHTML = "";
